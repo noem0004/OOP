@@ -116,7 +116,6 @@ public class FormQuanLiUser extends javax.swing.JFrame {
     }
     
     public void viewtableNganh(){
-        bt_ThemSV.setVisible(false);
         cb_lop1.setVisible(false);
         cb_nganh1.setVisible(false);
         lbl_Lop.setVisible(false);

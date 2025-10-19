@@ -232,7 +232,7 @@ public class FormQuanLyKetQua extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel5.setText("DANH SÁCH QUẢN LÝ KẾT QUẢ THI");
+        jLabel5.setText("QUẢN LÝ KẾT QUẢ THI");
 
         cb_DeThi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

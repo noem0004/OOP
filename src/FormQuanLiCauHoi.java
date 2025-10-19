@@ -200,7 +200,7 @@ public class FormQuanLiCauHoi extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_suacauhoiActionPerformed
     
-    
+
     //======================================================================================================================================================================
     private void bt_ThemCauHoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ThemCauHoiActionPerformed
         // Mở form FormTaoCauHoi để người dùng nhập câu hỏi mới.

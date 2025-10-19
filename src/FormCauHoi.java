@@ -176,16 +176,25 @@ public class FormCauHoi extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblCauHoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCauHoi.setText("jLabel1");
 
-        bt_ChTieptheo.setText("Câu hỏi tiếp theo");
+        A.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        B.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        C.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        D.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        bt_ChTieptheo.setText("Next_Question");
         bt_ChTieptheo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ChTieptheoActionPerformed(evt);
             }
         });
 
-        bt_ChTruoc.setText("Câu hỏi trước");
+        bt_ChTruoc.setText("Pre_Question");
         bt_ChTruoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ChTruocActionPerformed(evt);
@@ -199,10 +208,11 @@ public class FormCauHoi extends javax.swing.JFrame {
             }
         });
 
-        lbl_noidungdt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_noidungdt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_noidungdt.setText("ĐỀ THI ");
 
-        lbl_time.setText("THỜI GIAN LÀM BÀI: ");
+        lbl_time.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_time.setText("THỜI GIAN:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,30 +223,42 @@ public class FormCauHoi extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(B)
-                            .addComponent(A)
-                            .addComponent(C)
-                            .addComponent(D)
-                            .addComponent(lbl_noidungdt)
-                            .addComponent(lbl_time)
-                            .addComponent(lblCauHoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lblCauHoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(B)
+                                    .addComponent(A)
+                                    .addComponent(C)
+                                    .addComponent(D))
+                                .addGap(0, 483, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(bt_ChTruoc, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(bt_ChTieptheo)
-                        .addGap(51, 51, 51)
-                        .addComponent(bt_Nopbai, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(236, 236, 236)
+                        .addComponent(lbl_noidungdt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_Nopbai, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(175, 175, 175)
+                                .addComponent(lbl_time))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(bt_ChTruoc, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(bt_ChTieptheo, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lbl_noidungdt)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_noidungdt)
+                    .addComponent(bt_Nopbai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(7, 7, 7)
                 .addComponent(lbl_time)
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCauHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(A)
@@ -246,12 +268,11 @@ public class FormCauHoi extends javax.swing.JFrame {
                 .addComponent(C)
                 .addGap(18, 18, 18)
                 .addComponent(D)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_ChTieptheo)
-                    .addComponent(bt_ChTruoc)
-                    .addComponent(bt_Nopbai))
-                .addContainerGap())
+                    .addComponent(bt_ChTruoc))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

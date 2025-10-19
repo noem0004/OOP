@@ -36,17 +36,17 @@ public class DangNhap extends javax.swing.JFrame {
         setTitle("Chương trình thi trắc nghiệm");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Tài Khoản :");
+        jLabel1.setText("Username:");
 
         txt_Taikhoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Mật Khẩu :");
+        jLabel2.setText("Password:");
 
         txt_Matkhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         bt_Dangnhap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        bt_Dangnhap.setText("Đăng Nhập");
+        bt_Dangnhap.setText("LOGIN");
         bt_Dangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_DangnhapActionPerformed(evt);
@@ -54,7 +54,7 @@ public class DangNhap extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel3.setText("Đăng Nhập");
+        jLabel3.setText("LOGIN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,16 +74,16 @@ public class DangNhap extends javax.swing.JFrame {
                                 .addComponent(txt_Taikhoan)
                                 .addComponent(txt_Matkhau, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
+                        .addGap(151, 151, 151)
                         .addComponent(jLabel3)))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel3)
-                .addGap(32, 32, 32)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt_Taikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
