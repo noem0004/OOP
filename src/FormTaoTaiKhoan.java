@@ -1,7 +1,7 @@
 
-import TMH.CTN;
-import TMH.DGD;
-import TMH.TMH_Admin;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
+import TMH.MaHoa_AD;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.Date;
@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class FormTaoTaiKhoan extends javax.swing.JFrame {
 
     private static final SecureRandom random = new SecureRandom();
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     
     
     //======================================================================================================================================================================
@@ -183,7 +183,7 @@ public class FormTaoTaiKhoan extends javax.swing.JFrame {
             vaitro = "NT";
         
         // Có vẻ như đây là bước gọi một lớp tùy chỉnh để mã hóa mật khẩu.
-        TMH_Admin TMHAD = new TMH_Admin(getMaukhau);
+        MaHoa_AD TMHAD = new MaHoa_AD(getMaukhau);
         
         
         try (Connection c = ctn.c()) {

@@ -5,13 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 
 
 public class FormSuaTaiKhoan extends javax.swing.JFrame {
     private static String id;
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     
     
     //======================================================================================================================================================================
@@ -189,7 +189,7 @@ public class FormSuaTaiKhoan extends javax.swing.JFrame {
                     // Các dòng code này chỉ chạy khi vai trò là "Sinh Viên".
                     Pst.setString(1, txt_TenTaikhoan.getText());
                     // Dòng này có vẻ đang gọi một lớp để mã hóa mật khẩu trước khi lưu.
-                    Pst.setString(2, new TMH.TMH_Admin(txt_Matkhau.getText()).getMH());
+                    Pst.setString(2, new TMH.MaHoa_AD(txt_Matkhau.getText()).getMH());
                     Pst.setString(3, vaitro); // Gán vai trò (NT hoặc GV).
                     Pst.setString(4, id); // Dùng `id` làm điều kiện WHERE.
                     Pst.executeUpdate(); // Thực thi lệnh UPDATE.
@@ -197,7 +197,7 @@ public class FormSuaTaiKhoan extends javax.swing.JFrame {
             }
             // Sau khi cập nhật, quay về form quản lý tài khoản.
             FormQuanLiTaiKhoan FQLTK = new FormQuanLiTaiKhoan();
-            new DGD(FQLTK);
+            new GoiGDN(FQLTK);
             this.dispose();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Cập Nhật Không Thành Công");

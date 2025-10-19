@@ -1,6 +1,6 @@
 
-import TMH.CTN;
-import TMH.ChiTietLichSu;
+import TMH.Ketnoi;
+import TMH.History;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,8 +13,8 @@ import javax.swing.table.TableColumnModel;
 
 
 public class FormQuanLyKetQua extends javax.swing.JFrame {
-    private List<ChiTietLichSu> CTLS = new ArrayList<>();
-    private CTN ctn = new CTN();
+    private List<History> CTLS = new ArrayList<>();
+    private Ketnoi ctn = new Ketnoi();
 
     
     //======================================================================================================================================================================
@@ -103,7 +103,7 @@ public class FormQuanLyKetQua extends javax.swing.JFrame {
                     rs.getDate("NgayThi")          // ngày thi
                 });
 
-                CTLS.add(new ChiTietLichSu(rs.getString("TTCT")));
+                CTLS.add(new History(rs.getString("TTCT")));
             }
 
 

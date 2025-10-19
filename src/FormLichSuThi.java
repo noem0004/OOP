@@ -1,7 +1,6 @@
 
-import TMH.CTN;
-import TMH.ChiTietLichSu;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.History;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,8 +13,8 @@ import javax.swing.table.TableColumnModel;
 
 
 public class FormLichSuThi extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
-    private List<ChiTietLichSu> CTLS = new ArrayList<>();
+    private Ketnoi ctn = new Ketnoi();
+    private List<History> CTLS = new ArrayList<>();
     private static String MTK;
     private static int made;
     
@@ -89,7 +88,7 @@ public class FormLichSuThi extends javax.swing.JFrame {
 
                 // Tạo một đối tượng `ChiTietLichSu` để lưu trữ TẤT CẢ thông tin của lần thi,
                 // bao gồm cả thông tin chi tiết "TTCT" không hiển thị trực tiếp trên bảng.
-                ChiTietLichSu ct_ls = new ChiTietLichSu(
+                History ct_ls = new History(
                     rs.getString("NoidungDeThi"),
                     rs.getInt("MaDe"),
                     rs.getFloat("KQ"),

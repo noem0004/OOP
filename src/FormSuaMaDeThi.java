@@ -1,7 +1,7 @@
 
-import TMH.CTN;
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 
 public class FormSuaMaDeThi extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private static int MADE;
     
     
@@ -178,7 +178,7 @@ public class FormSuaMaDeThi extends javax.swing.JFrame {
                 Pst.setString(4,txt_ngaythi.getText());
                 Pst.setInt(5, MADE);
                 Pst.executeUpdate();
-                new DGD(new FormQuanLiDeThi());
+                new GoiGDN(new FormQuanLiDeThi());
                 this.dispose();
                 JOptionPane.showMessageDialog(null, "Cập Nhật Đề Thì Thành Công!");
             }catch(Exception e){

@@ -1,5 +1,5 @@
 
-import TMH.CTN;
+import TMH.Ketnoi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class FormGanDeThi extends javax.swing.JFrame {
     private static int LMD;
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     
     
     //======================================================================================================================================================================

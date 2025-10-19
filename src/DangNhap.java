@@ -1,18 +1,16 @@
 
-import TMH.CTN;
-import TMH.DGD;
-import TMH.TMH_Admin;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
+import TMH.MaHoa_AD;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 
 public class DangNhap extends javax.swing.JFrame {
 
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     public DangNhap() {
         initComponents();
         setLocationRelativeTo(null);
@@ -106,7 +104,7 @@ public class DangNhap extends javax.swing.JFrame {
         String getTaikhoan = txt_Taikhoan.getText();
 
         //  Tạo đối tượng TMH_Admin, có thể dùng để xử lý hoặc mã hóa mật khẩu
-        TMH_Admin TMHAD = new TMH_Admin(getMatkhau);
+        MaHoa_AD TMHAD = new MaHoa_AD(getMatkhau);
 
         try (Connection c = ctn.c()) { // Mở kết nối đến cơ sở dữ liệu bằng đối tượng CTN
             //  Chuẩn bị câu truy vấn SQL kiểm tra thông tin đăng nhập
@@ -131,12 +129,12 @@ public class DangNhap extends javax.swing.JFrame {
                 if (rs.getString("PhanLoai").equals("GV")) { // Nếu là giáo viên
                     FormGiaoDienChinh FGDC = new FormGiaoDienChinh(true);
                     FGDC.getMTK(rs.getString("MaTaiKhoan"));
-                    new DGD(FGDC); // Mở giao diện chính của giáo viên
+                    new GoiGDN(FGDC); // Mở giao diện chính của giáo viên
 
                 } else if (rs.getString("PhanLoai").equals("NT")) { // Nếu là người thi (sinh viên)
                     PreparedStatement pst = c.prepareStatement("select MD from thi where MaTaiKhoan = ?"); pst.setString(1,rs.getString("MaTaiKhoan")); ResultSet RS = pst.executeQuery();
                     if(RS.next()){
-                        new DGD(new FormGiaoDienChinhUser(rs.getString("MaTaiKhoan"),RS.getInt("MD")));
+                        new GoiGDN(new FormGiaoDienChinhUser(rs.getString("MaTaiKhoan"),RS.getInt("MD")));
                     }
                    
                     

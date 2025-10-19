@@ -1,18 +1,14 @@
 
 
 
-import TMH.CTN;
-import TMH.CauHoi;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.Question;
+import TMH.GoiGDN;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +18,9 @@ public class FormCauHoi extends javax.swing.JFrame {
     private static int Made;
     private static String MTK;
     private int i = 0;
-    private List<CauHoi> CHD = new ArrayList<>();
+    private List<Question> CHD = new ArrayList<>();
     private Map<Integer, String> luubai = new HashMap<>();
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private javax.swing.Timer timer;
     private int thoiGianConLai;
     private int tongThoiGianLamBai;
@@ -67,7 +63,7 @@ public class FormCauHoi extends javax.swing.JFrame {
             int cauhoiso = 1;
             while (rs.next()) {
                 // Tạo đối tượng CauHoi từ dữ liệu đọc được và thêm vào danh sách CHD.
-                CauHoi CHM = new CauHoi(
+                Question CHM = new Question(
                     cauhoiso,
                     rs.getString("noidungch"),
                     rs.getString("A"),
@@ -100,7 +96,7 @@ public class FormCauHoi extends javax.swing.JFrame {
     private void hienthicauhoi(int index) {
         if (index < 0 || index >= CHD.size()) return; // Kiểm tra index hợp lệ.
         
-        CauHoi ch = CHD.get(index);
+        Question ch = CHD.get(index);
         
         if (ch.getLoaida() == 1) {
             // Gộp vào nhóm chỉ chọn được 1
@@ -283,7 +279,7 @@ public class FormCauHoi extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void bt_ChTieptheoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ChTieptheoActionPerformed
            // 1. Lưu lại đáp án của câu hỏi hiện tại (nếu có chọn).
-        CauHoi ch = CHD.get(i);
+        Question ch = CHD.get(i);
 
         if (ch.getLoaida() == 1) {
             // Câu hỏi 1 đáp án – giữ như cũ
@@ -322,7 +318,7 @@ public class FormCauHoi extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void bt_ChTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ChTruocActionPerformed
         // 1. Lưu lại đáp án của câu hỏi hiện tại (nếu có chọn).
-        CauHoi ch = CHD.get(i);
+        Question ch = CHD.get(i);
 
         if (ch.getLoaida() == 1) {
             // Câu hỏi 1 đáp án – giữ như cũ
@@ -373,7 +369,7 @@ public class FormCauHoi extends javax.swing.JFrame {
         
         // Đóng form làm bài và quay về giao diện chính của người dùng.
         this.dispose();
-        new DGD(new FormGiaoDienChinhUser(MTK, Made)); // DGD có thể là một lớp tùy chỉnh để hiển thị dialog.   
+        new GoiGDN(new FormGiaoDienChinhUser(MTK, Made)); // DGD có thể là một lớp tùy chỉnh để hiển thị dialog.   
     }//GEN-LAST:event_bt_NopbaiActionPerformed
     
     
@@ -382,7 +378,7 @@ public class FormCauHoi extends javax.swing.JFrame {
         int dung = 0, sai = 0;
 
         // Lặp qua từng câu hỏi để tính số câu đúng/sai
-        for (CauHoi ch : CHD) {
+        for (Question ch : CHD) {
             int maCau = ch.getMc();
             String dapAnDung = ch.getDapAnDung();
             String dapAnNguoiChon = luubai.get(maCau);
@@ -435,7 +431,7 @@ public class FormCauHoi extends javax.swing.JFrame {
 
         kq.append("===== KẾT QUẢ CHI TIẾT BÀI LÀM =====\n\n");
 
-        for (CauHoi ch : CHD) {
+        for (Question ch : CHD) {
             int maCau = ch.getMc();
             String dapAnDung = ch.getDapAnDung();
             String dapAnNguoiChon = luubai.get(maCau);

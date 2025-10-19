@@ -1,6 +1,6 @@
 
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 
 public class FormTaoCauHoi extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private boolean check = false;
     
     

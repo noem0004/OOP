@@ -5,8 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
-public class CTN {
-    public CTN(){
+public class Ketnoi {
+    public Ketnoi(){
         
     }
     private Connection con(){

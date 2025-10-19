@@ -1,12 +1,9 @@
 
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -14,7 +11,7 @@ import javax.swing.table.TableColumnModel;
 
 
 public class FormQuanLiUser extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private boolean goi = false;
     private static String TNganh;
     private static String MLop;
@@ -432,7 +429,7 @@ public class FormQuanLiUser extends javax.swing.JFrame {
             }else{
                 // Nếu có, mở form "Sửa thông tin" và truyền vào Mã tài khoản (cột 0).
                 FormSuaThongTinUser FSTTU = new FormSuaThongTinUser(tb.getValueAt(tb.getSelectedRow(), 0).toString());
-                new DGD(FSTTU);
+                new GoiGDN(FSTTU);
                 this.dispose();
             }
         }catch(Exception e){
@@ -539,7 +536,7 @@ public class FormQuanLiUser extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         FormQuanLiTaiKhoan FQLTK = new FormQuanLiTaiKhoan();
-        new DGD(FQLTK);
+        new GoiGDN(FQLTK);
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed

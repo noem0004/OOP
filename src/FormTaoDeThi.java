@@ -1,6 +1,6 @@
 
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 public class FormTaoDeThi extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private static int LMD;
     
     

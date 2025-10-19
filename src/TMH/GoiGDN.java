@@ -3,12 +3,12 @@ package TMH;
 
 import javax.swing.JDialog;
 
-public class DGD extends javax.swing.JFrame {
-    public DGD(){
+public class GoiGDN extends javax.swing.JFrame {
+    public GoiGDN(){
         
     }
     
-    public DGD(javax.swing.JFrame jf) {
+    public GoiGDN(javax.swing.JFrame jf) {
         initComponents();
         jf.setLocationRelativeTo(null);
         jf.setVisible(true);
@@ -41,7 +41,7 @@ public class DGD extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DGD().setVisible(true);
+                new GoiGDN().setVisible(true);
             }
         });
     }

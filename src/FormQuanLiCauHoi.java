@@ -1,10 +1,9 @@
 
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -13,7 +12,7 @@ import javax.swing.table.TableModel;
 
 
 public class FormQuanLiCauHoi extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private String idMD = "";
     private String idMC = "";
     
@@ -195,7 +194,7 @@ public class FormQuanLiCauHoi extends javax.swing.JFrame {
         if(tb.getSelectedRow() == -1){
             JOptionPane.showMessageDialog(null, "Chọn Câu Hỏi Để Sửa");
         }else{
-            new DGD(FSCH);
+            new GoiGDN(FSCH);
             this.dispose();
         }
     }//GEN-LAST:event_bt_suacauhoiActionPerformed
@@ -204,7 +203,7 @@ public class FormQuanLiCauHoi extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void bt_ThemCauHoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ThemCauHoiActionPerformed
         // Mở form FormTaoCauHoi để người dùng nhập câu hỏi mới.
-        new DGD(new FormTaoCauHoi());
+        new GoiGDN(new FormTaoCauHoi());
         // Đóng form quản lý câu hỏi hiện tại.
         this.dispose();
     }//GEN-LAST:event_bt_ThemCauHoiActionPerformed

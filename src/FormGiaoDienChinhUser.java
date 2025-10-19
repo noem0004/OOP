@@ -1,13 +1,13 @@
 
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
 public class FormGiaoDienChinhUser extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private static String MTK;
     private static int made;
     
@@ -234,7 +234,7 @@ public class FormGiaoDienChinhUser extends javax.swing.JFrame {
                 // pst1.executeUpdate(); // Có thể bật lại dòng này nếu cần.
 
                 // 3. Chuyển sang form làm bài thi.
-                new DGD(new FormCauHoi(made, MTK));
+                new GoiGDN(new FormCauHoi(made, MTK));
                 this.dispose(); // Đóng form hiện tại.
             }
         } catch (Exception e) {
@@ -246,7 +246,7 @@ public class FormGiaoDienChinhUser extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void bt_LichSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_LichSuActionPerformed
         // Mở form Lịch sử thi và truyền vào mã tài khoản, mã đề.
-        new DGD(new FormLichSuThi(MTK, made));
+        new GoiGDN(new FormLichSuThi(MTK, made));
         this.dispose(); // Đóng form hiện tại.
     }//GEN-LAST:event_bt_LichSuActionPerformed
 

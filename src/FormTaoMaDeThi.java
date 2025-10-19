@@ -1,15 +1,13 @@
 
-import TMH.CTN;
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 public class FormTaoMaDeThi extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     
     
     //======================================================================================================================================================================
@@ -202,7 +200,7 @@ public class FormTaoMaDeThi extends javax.swing.JFrame {
                 Pst.setDate(4,java.sql.Date.valueOf(ngaybatdauthi));
                 // Thực thi lệnh INSERT.
                 Pst.executeUpdate();
-                new DGD(new FormQuanLiDeThi());
+                new GoiGDN(new FormQuanLiDeThi());
                 this.dispose();
                 JOptionPane.showMessageDialog(null, "Thêm Đề Thì Mới Thành Công!");
                 // GHI CHÚ: Sau khi tạo thành công, nên có một thông báo cho người dùng

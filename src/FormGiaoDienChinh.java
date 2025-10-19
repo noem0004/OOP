@@ -1,21 +1,19 @@
 
-import TMH.CTN;
-import TMH.DGD;
-import TMH.TMH_Admin;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
+import TMH.MaHoa_AD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.Normalizer;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
 public class FormGiaoDienChinh extends javax.swing.JFrame {
     private boolean check = false;
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private static String MTK;
-    private TMH_Admin TMH = new TMH_Admin();
+    private MaHoa_AD TMH = new MaHoa_AD();
     
     //======================================================================================================================================================================
     public FormGiaoDienChinh(boolean check) { 
@@ -549,7 +547,7 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
         
         // Mở form FormGanDeThi và truyền mã đề vừa lấy được sang.
         // DGD có thể là một lớp tùy chỉnh để hiển thị form dưới dạng dialog.
-        new DGD(new FormGanDeThi(LMD));
+        new GoiGDN(new FormGanDeThi(LMD));
         
         // Đóng form hiện tại.
         this.dispose();
@@ -558,7 +556,7 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void mn_QLNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_QLNDMouseClicked
-        new DGD(new FormQuanLiUser());
+        new GoiGDN(new FormQuanLiUser());
         this.dispose();
     }//GEN-LAST:event_mn_QLNDMouseClicked
     
@@ -568,28 +566,28 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void mn_QLCHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_QLCHMouseClicked
         FormQuanLiCauHoi FQLCH = new FormQuanLiCauHoi();
-        new DGD(FQLCH);
+        new GoiGDN(FQLCH);
         this.dispose();
     }//GEN-LAST:event_mn_QLCHMouseClicked
     
     
     //======================================================================================================================================================================
     private void mn_QLLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_QLLMouseClicked
-        new DGD(new FormQuanLiLop());
+        new GoiGDN(new FormQuanLiLop());
         this.dispose();
     }//GEN-LAST:event_mn_QLLMouseClicked
     
     
     //======================================================================================================================================================================
     private void mn_QLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_QLDTMouseClicked
-       new DGD(new FormQuanLiDeThi());
+       new GoiGDN(new FormQuanLiDeThi());
         this.dispose();
     }//GEN-LAST:event_mn_QLDTMouseClicked
     
     
     //======================================================================================================================================================================
     private void mn_QLKQMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_QLKQMouseClicked
-        new DGD(new FormQuanLyKetQua());
+        new GoiGDN(new FormQuanLyKetQua());
         this.dispose();
     }//GEN-LAST:event_mn_QLKQMouseClicked
     
@@ -600,12 +598,12 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_mn_caidatMouseClicked
 
     private void mnItem_DoiMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnItem_DoiMKMouseClicked
-        new DGD(new FormDoiMatKhauADMIN(MTK));
+        new GoiGDN(new FormDoiMatKhauADMIN(MTK));
         this.dispose();
     }//GEN-LAST:event_mnItem_DoiMKMouseClicked
 
     private void mnItem_DangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnItem_DangXuatMouseClicked
-        new DGD(new DangNhap());
+        new GoiGDN(new DangNhap());
         this.dispose();
         JOptionPane.showMessageDialog(null, "Bạn đã Đăng Xuất Tài Khoản!");
     }//GEN-LAST:event_mnItem_DangXuatMouseClicked

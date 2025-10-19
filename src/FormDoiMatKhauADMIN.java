@@ -1,16 +1,14 @@
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import TMH.CTN;
-import TMH.DGD;
-import TMH.TMH_Admin;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
+import TMH.MaHoa_AD;
 
 public class FormDoiMatKhauADMIN extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private static String MTK;
     public FormDoiMatKhauADMIN(String MTK) {
         this.MTK = MTK;
@@ -103,8 +101,8 @@ public class FormDoiMatKhauADMIN extends javax.swing.JFrame {
         if(txt_MKC.getText().isEmpty() || txt_MKM.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Xin Nhập Mật Khẩu!");
         }else{
-            TMH_Admin TMH = new TMH_Admin(txt_MKC.getText());
-            TMH_Admin MKM = new TMH_Admin(txt_MKM.getText());
+            MaHoa_AD TMH = new MaHoa_AD(txt_MKC.getText());
+            MaHoa_AD MKM = new MaHoa_AD(txt_MKM.getText());
             try(Connection c = ctn.c()){
                 PreparedStatement Pst = c.prepareStatement("select MatKhau from dang_nhap where MaTaiKhoan = ?");Pst.setString(1,MTK);
                 ResultSet rs = Pst.executeQuery();
@@ -115,7 +113,7 @@ public class FormDoiMatKhauADMIN extends javax.swing.JFrame {
                         Pst1.setString(2,MTK);
                         Pst1.executeUpdate();
                         this.dispose();
-                        new DGD(new FormGiaoDienChinh());
+                        new GoiGDN(new FormGiaoDienChinh());
                         JOptionPane.showMessageDialog(null, "Đổi Mật Khẩu Thành Công!");
                         
                     }

@@ -9,15 +9,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-public class TMH_Admin {
+public class MaHoa_AD {
     
     private String password;
     private boolean check;
     
-    public TMH_Admin(){}
-    public TMH_Admin(String passwrod) {
+    public MaHoa_AD(){}
+    public MaHoa_AD(String passwrod) {
         this.password = passwrod;
-        new CTN().c();
+        new Ketnoi().c();
     }
     
      public String getMH(){

@@ -1,6 +1,6 @@
 package TMH;
 
-public class CauHoi {
+public class Question {
     private int mc; // Mã câu hỏi
     private String noiDung;
     private String dapAnA;
@@ -10,7 +10,7 @@ public class CauHoi {
     private String dapAnDung;
     private int loaiDa; // 1: chọn 1, 2: chọn nhiều
 
-    public CauHoi(int mc, String noiDung, String dapAnA, String dapAnB, String dapAnC, String dapAnD, String dapAnDung, int loaiDA) {
+    public Question(int mc, String noiDung, String dapAnA, String dapAnB, String dapAnC, String dapAnD, String dapAnDung, int loaiDA) {
         this.mc = mc;
         this.noiDung = noiDung;
         this.dapAnA = dapAnA;

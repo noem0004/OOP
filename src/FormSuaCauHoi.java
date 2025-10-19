@@ -1,12 +1,12 @@
 
-import TMH.CTN;
+import TMH.Ketnoi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class FormSuaCauHoi extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private static String MC;
    
     

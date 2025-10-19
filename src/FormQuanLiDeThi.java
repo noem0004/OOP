@@ -1,6 +1,6 @@
 
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class FormQuanLiDeThi extends javax.swing.JFrame {
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     
 
     //======================================================================================================================================================================
@@ -176,7 +176,7 @@ public class FormQuanLiDeThi extends javax.swing.JFrame {
    
     //======================================================================================================================================================================
     private void bt_TaoDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_TaoDTActionPerformed
-        new DGD(new FormTaoMaDeThi());
+        new GoiGDN(new FormTaoMaDeThi());
         this.dispose();
     }//GEN-LAST:event_bt_TaoDTActionPerformed
     
@@ -188,7 +188,7 @@ public class FormQuanLiDeThi extends javax.swing.JFrame {
         // Chuyển giá trị đó thành Integer.
         // Mở form FormTaoDeThi (form này thực chất là để thêm câu hỏi vào đề thi đã có)
         // và truyền mã đề vừa lấy được sang cho form đó xử lý.
-        new DGD(new FormTaoDeThi(Integer.parseInt(tb.getValueAt(tb.getSelectedRow(), 0).toString())));
+        new GoiGDN(new FormTaoDeThi(Integer.parseInt(tb.getValueAt(tb.getSelectedRow(), 0).toString())));
         // Đóng form hiện tại.
         this.dispose();
     }//GEN-LAST:event_bt_TaoCHDTActionPerformed
@@ -196,7 +196,7 @@ public class FormQuanLiDeThi extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void bt_TaoDT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_TaoDT1ActionPerformed
-        new DGD(new FormSuaMaDeThi(Integer.parseInt(tb.getValueAt(tb.getSelectedRow(), 0).toString())));
+        new GoiGDN(new FormSuaMaDeThi(Integer.parseInt(tb.getValueAt(tb.getSelectedRow(), 0).toString())));
         this.dispose();
     }//GEN-LAST:event_bt_TaoDT1ActionPerformed
 

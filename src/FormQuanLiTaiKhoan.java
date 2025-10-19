@@ -1,11 +1,9 @@
 
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +14,7 @@ import javax.swing.table.TableModel;
 
 public class FormQuanLiTaiKhoan extends javax.swing.JFrame {
     private  String idtk =""; 
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     
     
     //======================================================================================================================================================================
@@ -188,7 +186,7 @@ public class FormQuanLiTaiKhoan extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void bt_TaotaikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_TaotaikhoanActionPerformed
         FormTaoTaiKhoan FTK = new FormTaoTaiKhoan();
-        new DGD(FTK);
+        new GoiGDN(FTK);
         this.dispose();
     }//GEN-LAST:event_bt_TaotaikhoanActionPerformed
     
@@ -197,7 +195,7 @@ public class FormQuanLiTaiKhoan extends javax.swing.JFrame {
     private void bt_Taotaikhoan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Taotaikhoan1ActionPerformed
          // Mở form FormTaoTaiKhoan để người dùng nhập thông tin tài khoản mới.
         FormTaoTaiKhoan FTK = new FormTaoTaiKhoan();
-        new DGD(FTK);
+        new GoiGDN(FTK);
         // Đóng form quản lý tài khoản hiện tại.
         this.dispose();
     }//GEN-LAST:event_bt_Taotaikhoan1ActionPerformed
@@ -212,7 +210,7 @@ public class FormQuanLiTaiKhoan extends javax.swing.JFrame {
         // Mở form FormSuaTaiKhoan.
         // Truyền Mã Tài Khoản (lấy từ cột đầu tiên của hàng được chọn) vào constructor của form sửa.
         FormSuaTaiKhoan FSTK = new FormSuaTaiKhoan(tm.getValueAt(i, 0).toString());
-        new DGD(FSTK);
+        new GoiGDN(FSTK);
         // Đóng form hiện tại.
         this.dispose();
     }//GEN-LAST:event_bt_SuaTaikhoanActionPerformed

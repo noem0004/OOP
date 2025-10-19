@@ -1,12 +1,10 @@
 
-import TMH.CTN;
-import TMH.DGD;
+import TMH.Ketnoi;
+import TMH.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +13,7 @@ import javax.swing.table.TableColumnModel;
 
 public class FormQuanLiLop extends javax.swing.JFrame {
     private Map<String,String> DuyetNganh;
-    private CTN ctn = new CTN();
+    private Ketnoi ctn = new Ketnoi();
     private boolean isNganhLoaded = false;
     
     
@@ -432,7 +430,7 @@ public class FormQuanLiLop extends javax.swing.JFrame {
         }
 
         // Gọi form chi tiết và truyền tham số vào
-        new DGD(new FormQuanLiUser(tenLop));
+        new GoiGDN(new FormQuanLiUser(tenLop));
         this.dispose(); // Đóng form hiện tại
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Lỗi khi mở chi tiết: " + e.getMessage());
