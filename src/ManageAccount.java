@@ -116,7 +116,9 @@ public class ManageAccount extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tb);
 
-        bt_Taotaikhoan1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bt_Taotaikhoan1.setBackground(new java.awt.Color(66, 99, 235));
+        bt_Taotaikhoan1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_Taotaikhoan1.setForeground(new java.awt.Color(255, 255, 255));
         bt_Taotaikhoan1.setText("Tạo Tài Khoản");
         bt_Taotaikhoan1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +126,9 @@ public class ManageAccount extends javax.swing.JFrame {
             }
         });
 
+        bt_XoaTaikhoan.setBackground(new java.awt.Color(66, 99, 235));
+        bt_XoaTaikhoan.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_XoaTaikhoan.setForeground(new java.awt.Color(255, 255, 255));
         bt_XoaTaikhoan.setText("Xóa Tài Khoản");
         bt_XoaTaikhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,14 +136,18 @@ public class ManageAccount extends javax.swing.JFrame {
             }
         });
 
+        bt_SuaTaikhoan.setBackground(new java.awt.Color(66, 99, 235));
+        bt_SuaTaikhoan.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_SuaTaikhoan.setForeground(new java.awt.Color(255, 255, 255));
         bt_SuaTaikhoan.setText("Sửa Tài Khoản");
+        bt_SuaTaikhoan.setFocusPainted(false);
         bt_SuaTaikhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_SuaTaikhoanActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("QUẢN LÝ TÀI KHOẢN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,7 +185,7 @@ public class ManageAccount extends javax.swing.JFrame {
                     .addComponent(bt_Taotaikhoan1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_XoaTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_SuaTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();

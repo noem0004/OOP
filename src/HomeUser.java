@@ -111,6 +111,9 @@ public class HomeUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        bt_thi.setBackground(new java.awt.Color(66, 99, 235));
+        bt_thi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_thi.setForeground(new java.awt.Color(255, 255, 255));
         bt_thi.setText("BẮT ĐẦU THI");
         bt_thi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,26 +121,36 @@ public class HomeUser extends javax.swing.JFrame {
             }
         });
 
-        lbl_ten.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_ten.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_ten.setForeground(new java.awt.Color(113, 128, 150));
         lbl_ten.setText("Họ Tên Người Thi:");
 
-        lbl_lop.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_lop.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_lop.setForeground(new java.awt.Color(113, 128, 150));
         lbl_lop.setText("Lớp:");
 
-        lbl_nganh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbl_nganh.setText("Ngành:");
+        lbl_nganh.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_nganh.setForeground(new java.awt.Color(113, 128, 150));
+        lbl_nganh.setText("Ngành: ");
 
-        lbl_mtk.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_mtk.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_mtk.setForeground(new java.awt.Color(113, 128, 150));
         lbl_mtk.setText("Mã Tài Khoản:");
 
-        lbl_dethi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_dethi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lbl_dethi.setText("-");
         lbl_dethi.setToolTipText("");
         lbl_dethi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        lbl_time.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_time.setForeground(new java.awt.Color(113, 128, 150));
         lbl_time.setText("THỜI GIAN LÀM BÀI: ");
 
+        bt_LichSu.setBackground(new java.awt.Color(66, 99, 235));
+        bt_LichSu.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_LichSu.setForeground(new java.awt.Color(255, 255, 255));
         bt_LichSu.setText("LỊCH SỬ THI");
+        bt_LichSu.setFocusPainted(false);
         bt_LichSu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_LichSuActionPerformed(evt);
@@ -164,7 +177,7 @@ public class HomeUser extends javax.swing.JFrame {
                             .addComponent(lbl_ten, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
                             .addComponent(lbl_nganh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
+                        .addGap(14, 14, 14)
                         .addComponent(lbl_time)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,17 +185,15 @@ public class HomeUser extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_lop, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_mtk, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_thi, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bt_thi, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_dethi, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(bt_LichSu)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lbl_dethi, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(129, 129, 129))))))
+                        .addComponent(bt_LichSu)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +213,7 @@ public class HomeUser extends javax.swing.JFrame {
                     .addComponent(lbl_dethi, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_thi, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_time))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         pack();

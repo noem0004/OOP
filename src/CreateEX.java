@@ -103,6 +103,7 @@ public class CreateEX extends javax.swing.JFrame {
         lbl_Dethi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình thi trắc nghiệm");
 
         tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,14 +126,21 @@ public class CreateEX extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tb);
 
+        bt_Them.setBackground(new java.awt.Color(66, 99, 235));
+        bt_Them.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_Them.setForeground(new java.awt.Color(255, 255, 255));
         bt_Them.setText("THÊM CÂU HỎI CHO ĐỀ THI");
+        bt_Them.setBorderPainted(false);
+        bt_Them.setFocusPainted(false);
         bt_Them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ThemActionPerformed(evt);
             }
         });
 
-        lbl_Dethi.setText("jLabel1");
+        lbl_Dethi.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbl_Dethi.setText("Quản lý câu hỏi");
+        lbl_Dethi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(226, 232, 240)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,12 +149,14 @@ public class CreateEX extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 933, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_Dethi)
-                            .addComponent(bt_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(12, 12, 12)
+                        .addComponent(lbl_Dethi, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -156,9 +166,9 @@ public class CreateEX extends javax.swing.JFrame {
                 .addComponent(lbl_Dethi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(bt_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();

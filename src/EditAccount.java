@@ -78,26 +78,46 @@ public class EditAccount extends javax.swing.JFrame {
         cb_vaitro = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lb_TenNguoidung = new javax.swing.JLabel();
         bt_CapNhat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình thi trắc nghiệm");
 
+        txt_TenTaikhoan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txt_TenTaikhoan.setForeground(new java.awt.Color(26, 32, 44));
+        txt_TenTaikhoan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(113, 128, 150));
         jLabel1.setText("Tên Đăng Nhập");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(113, 128, 150));
         jLabel2.setText("Mật Khẩu");
 
-        cb_vaitro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giảng Viên", "Sinh Viên" }));
+        txt_Matkhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txt_Matkhau.setForeground(new java.awt.Color(26, 32, 44));
 
+        cb_vaitro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cb_vaitro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giảng Viên", "Sinh Viên" }));
+        cb_vaitro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(113, 120, 150));
         jLabel4.setText("Vai Trò");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(26, 32, 44));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("SỬA TÀI KHOẢN");
 
-        lb_TenNguoidung.setText("jLabel3");
-
+        bt_CapNhat.setBackground(new java.awt.Color(66, 99, 235));
+        bt_CapNhat.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_CapNhat.setForeground(new java.awt.Color(255, 255, 255));
         bt_CapNhat.setText("CẬP NHẬT THÔNG TIN");
         bt_CapNhat.setToolTipText("");
+        bt_CapNhat.setBorderPainted(false);
+        bt_CapNhat.setFocusPainted(false);
         bt_CapNhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_CapNhatActionPerformed(evt);
@@ -108,41 +128,35 @@ public class EditAccount extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lb_TenNguoidung)
-                .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_TenTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(txt_Matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
-                            .addComponent(cb_vaitro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
+                            .addComponent(txt_Matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(cb_vaitro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(bt_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addGap(43, 43, 43)
+                        .addComponent(bt_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(lb_TenNguoidung)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_TenTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_Matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,9 +164,9 @@ public class EditAccount extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_vaitro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(34, 34, 34)
                 .addComponent(bt_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -222,7 +236,6 @@ public class EditAccount extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel lb_TenNguoidung;
     private javax.swing.JTextField txt_Matkhau;
     private javax.swing.JTextField txt_TenTaikhoan;
     // End of variables declaration//GEN-END:variables

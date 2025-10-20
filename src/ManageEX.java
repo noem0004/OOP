@@ -109,6 +109,9 @@ public class ManageEX extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tb);
 
+        bt_TaoCHDT.setBackground(new java.awt.Color(66, 99, 235));
+        bt_TaoCHDT.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_TaoCHDT.setForeground(new java.awt.Color(255, 255, 255));
         bt_TaoCHDT.setText("TẠO CÂU HỎI CHO ĐỀ THI");
         bt_TaoCHDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +119,9 @@ public class ManageEX extends javax.swing.JFrame {
             }
         });
 
+        bt_TaoDT.setBackground(new java.awt.Color(66, 99, 235));
+        bt_TaoDT.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_TaoDT.setForeground(new java.awt.Color(255, 255, 255));
         bt_TaoDT.setText("TẠO ĐỀ THI");
         bt_TaoDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +129,9 @@ public class ManageEX extends javax.swing.JFrame {
             }
         });
 
+        bt_TaoDT1.setBackground(new java.awt.Color(66, 99, 235));
+        bt_TaoDT1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_TaoDT1.setForeground(new java.awt.Color(255, 255, 255));
         bt_TaoDT1.setText("CẬP NHẬT ĐỀ THI");
         bt_TaoDT1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +139,7 @@ public class ManageEX extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("QUẢN LÝ ĐỀ THI");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,8 +151,8 @@ public class ManageEX extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(bt_TaoCHDT, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_TaoCHDT, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bt_TaoDT, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_TaoDT1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)

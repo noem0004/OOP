@@ -107,6 +107,9 @@ public class ManageQuestion extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tb);
 
+        bt_ThemCauHoi.setBackground(new java.awt.Color(66, 99, 235));
+        bt_ThemCauHoi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_ThemCauHoi.setForeground(new java.awt.Color(255, 255, 255));
         bt_ThemCauHoi.setText("Thêm");
         bt_ThemCauHoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +117,9 @@ public class ManageQuestion extends javax.swing.JFrame {
             }
         });
 
+        bt_suacauhoi.setBackground(new java.awt.Color(66, 99, 235));
+        bt_suacauhoi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_suacauhoi.setForeground(new java.awt.Color(255, 255, 255));
         bt_suacauhoi.setText("Sửa");
         bt_suacauhoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +127,9 @@ public class ManageQuestion extends javax.swing.JFrame {
             }
         });
 
+        bt_XoaCauHoi.setBackground(new java.awt.Color(66, 99, 235));
+        bt_XoaCauHoi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_XoaCauHoi.setForeground(new java.awt.Color(255, 255, 255));
         bt_XoaCauHoi.setText("Xóa");
         bt_XoaCauHoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,9 +137,12 @@ public class ManageQuestion extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("QUẢN LÝ CÂU HỎI");
 
+        reset.setBackground(new java.awt.Color(66, 99, 235));
+        reset.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        reset.setForeground(new java.awt.Color(255, 255, 255));
         reset.setText("reset");
         reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

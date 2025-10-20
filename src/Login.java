@@ -32,18 +32,27 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình thi trắc nghiệm");
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(113, 128, 150));
         jLabel1.setText("Username:");
 
-        txt_Taikhoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_Taikhoan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txt_Taikhoan.setForeground(new java.awt.Color(26, 32, 44));
+        txt_Taikhoan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(113, 128, 150));
         jLabel2.setText("Password:");
 
-        txt_Matkhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_Matkhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txt_Matkhau.setForeground(new java.awt.Color(26, 32, 44));
+        txt_Matkhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        bt_Dangnhap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bt_Dangnhap.setBackground(new java.awt.Color(66, 99, 235));
+        bt_Dangnhap.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_Dangnhap.setForeground(new java.awt.Color(255, 255, 255));
         bt_Dangnhap.setText("LOGIN");
         bt_Dangnhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,7 +60,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 28)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(26, 32, 44));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("LOGIN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -66,11 +78,12 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_Dangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txt_Taikhoan)
-                                .addComponent(txt_Matkhau, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_Taikhoan)
+                            .addComponent(txt_Matkhau, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(bt_Dangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(151, 151, 151)
                         .addComponent(jLabel3)))
@@ -89,9 +102,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txt_Matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(bt_Dangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();

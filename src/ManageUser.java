@@ -287,6 +287,9 @@ public class ManageUser extends javax.swing.JFrame {
             tb.getColumnModel().getColumn(6).setHeaderValue("Ngành Học");
         }
 
+        bt_CapNhatTT.setBackground(new java.awt.Color(66, 99, 235));
+        bt_CapNhatTT.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_CapNhatTT.setForeground(new java.awt.Color(255, 255, 255));
         bt_CapNhatTT.setText("Sửa");
         bt_CapNhatTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,6 +297,9 @@ public class ManageUser extends javax.swing.JFrame {
             }
         });
 
+        bt_XoaSV.setBackground(new java.awt.Color(66, 99, 235));
+        bt_XoaSV.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_XoaSV.setForeground(new java.awt.Color(255, 255, 255));
         bt_XoaSV.setText("Xóa");
         bt_XoaSV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,9 +325,12 @@ public class ManageUser extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("DANH SÁCH THÔNG TIN SINH VIÊN");
 
+        jButton1.setBackground(new java.awt.Color(66, 99, 235));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Quản lý tài khoản");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,11 +362,11 @@ public class ManageUser extends javax.swing.JFrame {
                                 .addGap(32, 32, 32)
                                 .addComponent(bt_XoaSV, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(340, Short.MAX_VALUE)
+                .addContainerGap(288, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(319, 319, 319))
         );

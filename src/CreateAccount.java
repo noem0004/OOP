@@ -92,23 +92,50 @@ public class CreateAccount extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình thi trắc nghiệm");
 
+        txt_TenDangnhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txt_TenDangnhap.setForeground(new java.awt.Color(26, 32, 16));
+        txt_TenDangnhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+
+        txt_TaoMatkhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txt_TaoMatkhau.setForeground(new java.awt.Color(26, 32, 44));
+        txt_TaoMatkhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+
+        txt_XacNhanMatkhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txt_XacNhanMatkhau.setForeground(new java.awt.Color(26, 32, 44));
+        txt_XacNhanMatkhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+
+        Cb_Vaitro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        Cb_Vaitro.setForeground(new java.awt.Color(26, 32, 44));
         Cb_Vaitro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giảng Viên", "Sinh Viên" }));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(113, 128, 150));
         jLabel1.setText("Tên Đăng Nhập");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(113, 128, 150));
         jLabel2.setText("Tạo Mật Khẩu");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(113, 128, 150));
         jLabel3.setText("Xác Nhận Mật Khẩu");
 
+        bt_TaoTaiKhoan.setBackground(new java.awt.Color(66, 99, 235));
+        bt_TaoTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_TaoTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
         bt_TaoTaiKhoan.setText("Tạo Tài Khoản");
+        bt_TaoTaiKhoan.setBorderPainted(false);
+        bt_TaoTaiKhoan.setFocusPainted(false);
         bt_TaoTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_TaoTaiKhoanActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("TẠO TÀI KHOẢN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,29 +145,30 @@ public class CreateAccount extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txt_TenDangnhap, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
                             .addComponent(txt_TaoMatkhau, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Cb_Vaitro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_XacNhanMatkhau, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(txt_XacNhanMatkhau, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Cb_Vaitro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel7))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(bt_TaoTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 105, Short.MAX_VALUE)
+                .addComponent(bt_TaoTaiKhoan)
+                .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGap(8, 8, 8)
                 .addComponent(txt_TenDangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,9 +182,9 @@ public class CreateAccount extends javax.swing.JFrame {
                 .addComponent(txt_XacNhanMatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Cb_Vaitro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(bt_TaoTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();

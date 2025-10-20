@@ -173,17 +173,27 @@ public class ManageClass extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tb);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(113, 128, 150));
         jLabel1.setText("Danh sách sinh viên lớp");
 
+        cb_lop.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cb_lop.setForeground(new java.awt.Color(26, 32, 44));
         cb_lop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Lớp" }));
+        cb_lop.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
         cb_lop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_lopActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(113, 128, 150));
         jLabel2.setText("Lớp");
 
+        bt_ThemLop.setBackground(new java.awt.Color(66, 99, 235));
+        bt_ThemLop.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_ThemLop.setForeground(new java.awt.Color(255, 255, 255));
         bt_ThemLop.setText("Thêm");
         bt_ThemLop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +201,9 @@ public class ManageClass extends javax.swing.JFrame {
             }
         });
 
+        bt_Xoalop.setBackground(new java.awt.Color(66, 99, 235));
+        bt_Xoalop.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_Xoalop.setForeground(new java.awt.Color(255, 255, 255));
         bt_Xoalop.setText("Xóa");
         bt_Xoalop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -198,17 +211,31 @@ public class ManageClass extends javax.swing.JFrame {
             }
         });
 
+        txt_Lop.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txt_Lop.setForeground(new java.awt.Color(26, 32, 44));
+        txt_Lop.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+
+        cb_nganh.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cb_nganh.setForeground(new java.awt.Color(26, 32, 44));
         cb_nganh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Ngành Học" }));
+        cb_nganh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
         cb_nganh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_nganhActionPerformed(evt);
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(113, 128, 150));
         jLabel3.setText("Ngành");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(113, 128, 150));
         jLabel4.setText("Tên Lớp");
 
+        bt_XemChiTiet.setBackground(new java.awt.Color(66, 99, 235));
+        bt_XemChiTiet.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_XemChiTiet.setForeground(new java.awt.Color(255, 255, 255));
         bt_XemChiTiet.setText("Xem Chi Tiết");
         bt_XemChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,7 +298,7 @@ public class ManageClass extends javax.swing.JFrame {
                     .addComponent(bt_ThemLop, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_Xoalop, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_XemChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
