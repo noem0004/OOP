@@ -1,9 +1,9 @@
 
 
 
-import TMH.Ketnoi;
-import TMH.Question;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.Question;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

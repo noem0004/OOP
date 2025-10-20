@@ -1,7 +1,7 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
-import TMH.MaHoa_AD;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
+import MaHoa.MaHoa_AD;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.Date;

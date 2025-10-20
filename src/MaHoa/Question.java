@@ -1,4 +1,4 @@
-package TMH;
+package MaHoa;
 
 public class Question {
     private int mc; // Mã câu hỏi

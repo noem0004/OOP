@@ -1,5 +1,5 @@
 
-package TMH;
+package MaHoa;
 
 import javax.swing.JDialog;
 

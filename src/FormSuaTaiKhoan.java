@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 
 
 public class FormSuaTaiKhoan extends javax.swing.JFrame {
@@ -189,7 +189,7 @@ public class FormSuaTaiKhoan extends javax.swing.JFrame {
                     // Các dòng code này chỉ chạy khi vai trò là "Sinh Viên".
                     Pst.setString(1, txt_TenTaikhoan.getText());
                     // Dòng này có vẻ đang gọi một lớp để mã hóa mật khẩu trước khi lưu.
-                    Pst.setString(2, new TMH.MaHoa_AD(txt_Matkhau.getText()).getMH());
+                    Pst.setString(2, new MaHoa.MaHoa_AD(txt_Matkhau.getText()).getMH());
                     Pst.setString(3, vaitro); // Gán vai trò (NT hoặc GV).
                     Pst.setString(4, id); // Dùng `id` làm điều kiện WHERE.
                     Pst.executeUpdate(); // Thực thi lệnh UPDATE.

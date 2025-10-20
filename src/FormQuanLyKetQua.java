@@ -1,6 +1,6 @@
 
-import TMH.Ketnoi;
-import TMH.History;
+import MaHoa.Ketnoi;
+import MaHoa.History;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
