@@ -1,17 +1,17 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
-public class FormTaoMaDeThi extends javax.swing.JFrame {
+public class CreateEX2 extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     
     
     //======================================================================================================================================================================
-     public FormTaoMaDeThi() {
+     public CreateEX2() {
         initComponents(); // Khởi tạo các thành phần giao diện.
         ctn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
@@ -28,7 +28,7 @@ public class FormTaoMaDeThi extends javax.swing.JFrame {
                 // nên là quay trở về `FormQuanLiDeThi`.
                 
                 // Khi đóng cửa sổ, quay trở lại giao diện quản lý người dùng.
-                new FormQuanLiDeThi().setVisible(true);
+                new ManageEX().setVisible(true);
 
                 // Đóng form hiện tại.
                 dispose();
@@ -200,7 +200,7 @@ public class FormTaoMaDeThi extends javax.swing.JFrame {
                 Pst.setDate(4,java.sql.Date.valueOf(ngaybatdauthi));
                 // Thực thi lệnh INSERT.
                 Pst.executeUpdate();
-                new GoiGDN(new FormQuanLiDeThi());
+                new GoiGDN(new ManageEX());
                 this.dispose();
                 JOptionPane.showMessageDialog(null, "Thêm Đề Thì Mới Thành Công!");
                 // GHI CHÚ: Sau khi tạo thành công, nên có một thông báo cho người dùng
@@ -216,7 +216,7 @@ public class FormTaoMaDeThi extends javax.swing.JFrame {
     //======================================================================================================================================================================
     public static void main(String args[]) {
 
-        java.awt.EventQueue.invokeLater(() -> new FormTaoMaDeThi().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new CreateEX2().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

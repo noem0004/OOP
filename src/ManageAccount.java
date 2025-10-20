@@ -1,6 +1,6 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,13 +12,13 @@ import javax.swing.table.TableModel;
 
 
 
-public class FormQuanLiTaiKhoan extends javax.swing.JFrame {
+public class ManageAccount extends javax.swing.JFrame {
     private  String idtk =""; 
     private Ketnoi ctn = new Ketnoi();
     
     
     //======================================================================================================================================================================
-     public FormQuanLiTaiKhoan() {
+     public ManageAccount() {
         initComponents(); // Khởi tạo các thành phần giao diện.
         ctn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
@@ -32,7 +32,7 @@ public class FormQuanLiTaiKhoan extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 // Khi đóng cửa sổ, quay trở lại giao diện chính của admin.
-                new FormGiaoDienChinh().setVisible(true);
+                new HomeAD().setVisible(true);
                 // Đóng form hiện tại.
                 dispose();
             }
@@ -185,7 +185,7 @@ public class FormQuanLiTaiKhoan extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void bt_TaotaikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_TaotaikhoanActionPerformed
-        FormTaoTaiKhoan FTK = new FormTaoTaiKhoan();
+        CreateAccount FTK = new CreateAccount();
         new GoiGDN(FTK);
         this.dispose();
     }//GEN-LAST:event_bt_TaotaikhoanActionPerformed
@@ -194,7 +194,7 @@ public class FormQuanLiTaiKhoan extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void bt_Taotaikhoan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_Taotaikhoan1ActionPerformed
          // Mở form FormTaoTaiKhoan để người dùng nhập thông tin tài khoản mới.
-        FormTaoTaiKhoan FTK = new FormTaoTaiKhoan();
+        CreateAccount FTK = new CreateAccount();
         new GoiGDN(FTK);
         // Đóng form quản lý tài khoản hiện tại.
         this.dispose();
@@ -209,7 +209,7 @@ public class FormQuanLiTaiKhoan extends javax.swing.JFrame {
         int i = tb.getSelectedRow();
         // Mở form FormSuaTaiKhoan.
         // Truyền Mã Tài Khoản (lấy từ cột đầu tiên của hàng được chọn) vào constructor của form sửa.
-        FormSuaTaiKhoan FSTK = new FormSuaTaiKhoan(tm.getValueAt(i, 0).toString());
+        EditAccount FSTK = new EditAccount(tm.getValueAt(i, 0).toString());
         new GoiGDN(FSTK);
         // Đóng form hiện tại.
         this.dispose();
@@ -255,7 +255,7 @@ public class FormQuanLiTaiKhoan extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormQuanLiTaiKhoan().setVisible(true);
+                new ManageAccount().setVisible(true);
             }
         });
     }

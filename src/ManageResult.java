@@ -1,6 +1,6 @@
 
-import TMH.Ketnoi;
-import TMH.History;
+import MaHoa.Ketnoi;
+import MaHoa.History;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,13 +12,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 
-public class FormQuanLyKetQua extends javax.swing.JFrame {
+public class ManageResult extends javax.swing.JFrame {
     private List<History> CTLS = new ArrayList<>();
     private Ketnoi ctn = new Ketnoi();
 
     
     //======================================================================================================================================================================
-    public FormQuanLyKetQua() {
+    public ManageResult() {
         initComponents(); // Khởi tạo các thành phần giao diện (nút, bảng, label,...).
         ctn.c(); // Thực hiện kết nối thử đến CSDL.
         setLocationRelativeTo(null);
@@ -35,7 +35,7 @@ public class FormQuanLyKetQua extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                new FormGiaoDienChinh().setVisible(true); // Mở lại form chính.
+                new HomeAD().setVisible(true); // Mở lại form chính.
                 dispose(); // Đóng form hiện tại.
             }
         });
@@ -388,7 +388,7 @@ public class FormQuanLyKetQua extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> new FormQuanLyKetQua().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ManageResult().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

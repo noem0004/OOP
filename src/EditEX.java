@@ -1,20 +1,20 @@
 
-import TMH.Ketnoi;
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 
-public class FormSuaMaDeThi extends javax.swing.JFrame {
+public class EditEX extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     private static int MADE;
     
     
     //======================================================================================================================================================================
-    public FormSuaMaDeThi(int Made) {
+    public EditEX(int Made) {
         this.MADE = Made;
         initComponents();
         ctn.c();
@@ -33,7 +33,7 @@ public class FormSuaMaDeThi extends javax.swing.JFrame {
                 // nên là quay trở về `FormQuanLiDeThi`.
                 
                 // Khi đóng cửa sổ, quay trở lại giao diện quản lý người dùng.
-                new FormQuanLiDeThi().setVisible(true);
+                new ManageEX().setVisible(true);
 
                 // Đóng form hiện tại.
                 dispose();
@@ -178,7 +178,7 @@ public class FormSuaMaDeThi extends javax.swing.JFrame {
                 Pst.setString(4,txt_ngaythi.getText());
                 Pst.setInt(5, MADE);
                 Pst.executeUpdate();
-                new GoiGDN(new FormQuanLiDeThi());
+                new GoiGDN(new ManageEX());
                 this.dispose();
                 JOptionPane.showMessageDialog(null, "Cập Nhật Đề Thì Thành Công!");
             }catch(Exception e){
@@ -191,7 +191,7 @@ public class FormSuaMaDeThi extends javax.swing.JFrame {
     //======================================================================================================================================================================
     public static void main(String args[]) {
  
-        java.awt.EventQueue.invokeLater(() -> new FormSuaMaDeThi(MADE).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new EditEX(MADE).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

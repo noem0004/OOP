@@ -1,5 +1,5 @@
 
-import TMH.Ketnoi;
+import MaHoa.Ketnoi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,16 +9,16 @@ import javax.swing.table.DefaultTableModel;
 
 
 
-public class FormGanDeThi extends javax.swing.JFrame {
+public class AssignEX extends javax.swing.JFrame {
     private static int LMD;
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     
     
     //======================================================================================================================================================================
-    public FormGanDeThi(int MD) {
+    public AssignEX(int MD) {
         this.LMD = MD; // Lưu mã đề thi vào biến toàn cục.
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
         showNguoiThi(); // Tải và hiển thị danh sách tất cả các thí sinh.
         showLop();
@@ -28,7 +28,7 @@ public class FormGanDeThi extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                new FormGiaoDienChinh().setVisible(true); // Mở lại form chính.
+                new HomeAD().setVisible(true); // Mở lại form chính.
                 dispose(); // Đóng form hiện tại.
             }
         });
@@ -61,7 +61,7 @@ public class FormGanDeThi extends javax.swing.JFrame {
             "LEFT JOIN thi t ON dn.MaTaiKhoan = t.MaTaiKhoan " +
             "WHERE dn.phanloai = 'NT'"; // Chỉ lấy những tài khoản là 'Người Thi'
 
-        try (Connection c = ctn.c();
+        try (Connection c = kn.c();
              PreparedStatement pst = c.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
 
@@ -92,7 +92,7 @@ public class FormGanDeThi extends javax.swing.JFrame {
 
     //======================================================================================================================================================================
     private void showLop(){
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             PreparedStatement Pst = c.prepareStatement("select * from lop");
             ResultSet rs = Pst.executeQuery();
             while(rs.next()){
@@ -228,7 +228,7 @@ public class FormGanDeThi extends javax.swing.JFrame {
         int countInsert = 0; // Đếm số lượng gán mới.
         int countUpdate = 0; // Đếm số lượng cập nhật.
 
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // Lặp qua từng hàng đã được chọn.
             for (int row : selectedRows) {
                 // Lấy mã tài khoản từ cột thứ 2 (index 1) của hàng được chọn.
@@ -274,7 +274,7 @@ public class FormGanDeThi extends javax.swing.JFrame {
 
         lbl_Dethi.setText("Gán Mã Đề Thi Số: " + LMD);
  
-        try (Connection c = ctn.c()){
+        try (Connection c = kn.c()){
             PreparedStatement pst = c.prepareStatement("SELECT dn.MaTaiKhoan, dn.TenDangNhap, tt.HoTen, l.TenLop, n.TenNganh, t.MD AS MaDeThi " + 
                 "FROM ttnguoithi tt " +
                 "JOIN dang_nhap dn ON tt.MaTaiKhoan = dn.MaTaiKhoan " +
@@ -313,7 +313,7 @@ public class FormGanDeThi extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> new FormGanDeThi(LMD).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new AssignEX(LMD).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

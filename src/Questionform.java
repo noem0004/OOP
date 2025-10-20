@@ -1,9 +1,9 @@
 
 
 
-import TMH.Ketnoi;
-import TMH.Question;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.Question;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FormCauHoi extends javax.swing.JFrame {
+public class Questionform extends javax.swing.JFrame {
     private static int Made;
     private static String MTK;
     private int i = 0;
@@ -28,7 +28,7 @@ public class FormCauHoi extends javax.swing.JFrame {
     
     
     //======================================================================================================================================================================
-    public FormCauHoi(int made, String MTK) {
+    public Questionform(int made, String MTK) {
         this.Made = made;
         this.MTK = MTK;
         setLocationRelativeTo(null);
@@ -369,7 +369,7 @@ public class FormCauHoi extends javax.swing.JFrame {
         
         // Đóng form làm bài và quay về giao diện chính của người dùng.
         this.dispose();
-        new GoiGDN(new FormGiaoDienChinhUser(MTK, Made)); // DGD có thể là một lớp tùy chỉnh để hiển thị dialog.   
+        new GoiGDN(new HomeUser(MTK, Made)); // DGD có thể là một lớp tùy chỉnh để hiển thị dialog.   
     }//GEN-LAST:event_bt_NopbaiActionPerformed
     
     
@@ -579,7 +579,7 @@ public class FormCauHoi extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormCauHoi(Made,MTK).setVisible(true);
+                new Questionform(Made,MTK).setVisible(true);
             }
         });
     }

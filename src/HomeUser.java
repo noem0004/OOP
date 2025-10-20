@@ -1,19 +1,19 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-public class FormGiaoDienChinhUser extends javax.swing.JFrame {
+public class HomeUser extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     private static String MTK;
     private static int made;
     
     
     //======================================================================================================================================================================
-    public FormGiaoDienChinhUser(String MTK, int mde) {
+    public HomeUser(String MTK, int mde) {
         this.MTK = MTK;
         this.made = mde;
         initComponents(); // Khởi tạo các thành phần giao diện.
@@ -166,16 +166,16 @@ public class FormGiaoDienChinhUser extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addComponent(lbl_time)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_lop, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_mtk, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bt_thi, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(bt_LichSu)
@@ -234,7 +234,7 @@ public class FormGiaoDienChinhUser extends javax.swing.JFrame {
                 // pst1.executeUpdate(); // Có thể bật lại dòng này nếu cần.
 
                 // 3. Chuyển sang form làm bài thi.
-                new GoiGDN(new FormCauHoi(made, MTK));
+                new GoiGDN(new Questionform(made, MTK));
                 this.dispose(); // Đóng form hiện tại.
             }
         } catch (Exception e) {
@@ -246,7 +246,7 @@ public class FormGiaoDienChinhUser extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void bt_LichSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_LichSuActionPerformed
         // Mở form Lịch sử thi và truyền vào mã tài khoản, mã đề.
-        new GoiGDN(new FormLichSuThi(MTK, made));
+        new GoiGDN(new EXHistory(MTK, made));
         this.dispose(); // Đóng form hiện tại.
     }//GEN-LAST:event_bt_LichSuActionPerformed
 
@@ -254,7 +254,7 @@ public class FormGiaoDienChinhUser extends javax.swing.JFrame {
     //======================================================================================================================================================================
     public static void main(String args[]) {
         
-        java.awt.EventQueue.invokeLater(() -> new FormGiaoDienChinhUser(MTK,made).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new HomeUser(MTK,made).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,6 +1,6 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 
-public class FormTaoCauHoi extends javax.swing.JFrame {
+public class CreateQuestion extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     private boolean check = false;
     
     
     //======================================================================================================================================================================
-    public FormTaoCauHoi() {
+    public CreateQuestion() {
         initComponents(); // Khởi tạo các thành phần giao diện.
         ctn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
@@ -26,7 +26,7 @@ public class FormTaoCauHoi extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 // SỬA LẠI: Mở lại form Quản Lý Câu Hỏi thay vì Quản Lý Tài Khoản.
-                new FormQuanLiCauHoi().setVisible(true);
+                new ManageQuestion().setVisible(true);
 
                 // Đóng form hiện tại.
                 dispose();
@@ -229,7 +229,7 @@ public class FormTaoCauHoi extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> new FormTaoCauHoi().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new CreateQuestion().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

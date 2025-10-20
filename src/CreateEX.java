@@ -1,6 +1,6 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,13 +10,13 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
-public class FormTaoDeThi extends javax.swing.JFrame {
+public class CreateEX extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     private static int LMD;
     
     
     //======================================================================================================================================================================
-    public FormTaoDeThi(int LMD) {
+    public CreateEX(int LMD) {
         this.LMD = LMD; // Lưu mã đề thi vào biến toàn cục.
         initComponents(); // Khởi tạo các thành phần giao diện.
         ctn.c(); // Mở kết nối CSDL.
@@ -38,7 +38,7 @@ public class FormTaoDeThi extends javax.swing.JFrame {
                 // Bạn có thể cân nhắc sửa `FormQuanLiTaiKhoan` thành `FormQuanLiDeThi`.
                 
                 // Khi đóng cửa sổ, quay trở lại giao diện quản lý tài khoản.
-                new FormQuanLiDeThi().setVisible(true);
+                new ManageEX().setVisible(true);
                 // Đóng form hiện tại.
                 dispose();
             }
@@ -191,7 +191,7 @@ public class FormTaoDeThi extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormTaoDeThi(LMD).setVisible(true);
+                new CreateEX(LMD).setVisible(true);
             }
         });
     }

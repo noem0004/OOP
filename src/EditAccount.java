@@ -5,17 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 
 
-public class FormSuaTaiKhoan extends javax.swing.JFrame {
+public class EditAccount extends javax.swing.JFrame {
     private static String id;
     private Ketnoi ctn = new Ketnoi();
     
     
     //======================================================================================================================================================================
-    public FormSuaTaiKhoan(String id) {
+    public EditAccount(String id) {
         initComponents(); // Khởi tạo các thành phần giao diện.
         this.id = id; // Lưu mã tài khoản vào biến toàn cục.
         ctn.c(); // Mở kết nối CSDL.
@@ -30,7 +30,7 @@ public class FormSuaTaiKhoan extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 // Khi đóng cửa sổ, quay trở lại giao diện quản lý tài khoản.
-                new FormQuanLiTaiKhoan().setVisible(true);
+                new ManageAccount().setVisible(true);
                 // Đóng form hiện tại.
                 dispose();
             }
@@ -189,14 +189,14 @@ public class FormSuaTaiKhoan extends javax.swing.JFrame {
                     // Các dòng code này chỉ chạy khi vai trò là "Sinh Viên".
                     Pst.setString(1, txt_TenTaikhoan.getText());
                     // Dòng này có vẻ đang gọi một lớp để mã hóa mật khẩu trước khi lưu.
-                    Pst.setString(2, new TMH.MaHoa_AD(txt_Matkhau.getText()).getMH());
+                    Pst.setString(2, new MaHoa.MaHoa_AD(txt_Matkhau.getText()).getMH());
                     Pst.setString(3, vaitro); // Gán vai trò (NT hoặc GV).
                     Pst.setString(4, id); // Dùng `id` làm điều kiện WHERE.
                     Pst.executeUpdate(); // Thực thi lệnh UPDATE.
                     JOptionPane.showMessageDialog(null, "Cập Nhật Thành Công");
             }
             // Sau khi cập nhật, quay về form quản lý tài khoản.
-            FormQuanLiTaiKhoan FQLTK = new FormQuanLiTaiKhoan();
+            ManageAccount FQLTK = new ManageAccount();
             new GoiGDN(FQLTK);
             this.dispose();
         }catch(Exception e){
@@ -210,7 +210,7 @@ public class FormSuaTaiKhoan extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormSuaTaiKhoan(id).setVisible(true);
+                new EditAccount(id).setVisible(true);
             }
         });
     }

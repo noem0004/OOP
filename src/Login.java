@@ -1,17 +1,17 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
-import TMH.MaHoa_AD;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
+import MaHoa.MaHoa_AD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 
-public class DangNhap extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     private Ketnoi ctn = new Ketnoi();
-    public DangNhap() {
+    public Login() {
         initComponents();
         setLocationRelativeTo(null);
         ctn.c();
@@ -127,14 +127,14 @@ public class DangNhap extends javax.swing.JFrame {
 
                 //  Kiểm tra loại tài khoản để mở giao diện tương ứng
                 if (rs.getString("PhanLoai").equals("GV")) { // Nếu là giáo viên
-                    FormGiaoDienChinh FGDC = new FormGiaoDienChinh(true);
+                    HomeAD FGDC = new HomeAD(true);
                     FGDC.getMTK(rs.getString("MaTaiKhoan"));
                     new GoiGDN(FGDC); // Mở giao diện chính của giáo viên
 
                 } else if (rs.getString("PhanLoai").equals("NT")) { // Nếu là người thi (sinh viên)
                     PreparedStatement pst = c.prepareStatement("select MD from thi where MaTaiKhoan = ?"); pst.setString(1,rs.getString("MaTaiKhoan")); ResultSet RS = pst.executeQuery();
                     if(RS.next()){
-                        new GoiGDN(new FormGiaoDienChinhUser(rs.getString("MaTaiKhoan"),RS.getInt("MD")));
+                        new GoiGDN(new HomeUser(rs.getString("MaTaiKhoan"),RS.getInt("MD")));
                     }
                    
                     
@@ -156,7 +156,7 @@ public class DangNhap extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DangNhap().setVisible(true);
+                new Login().setVisible(true);
             }
         });
     }

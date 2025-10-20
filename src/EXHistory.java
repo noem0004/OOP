@@ -1,6 +1,6 @@
 
-import TMH.Ketnoi;
-import TMH.History;
+import MaHoa.Ketnoi;
+import MaHoa.History;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 
-public class FormLichSuThi extends javax.swing.JFrame {
+public class EXHistory extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     private List<History> CTLS = new ArrayList<>();
     private static String MTK;
@@ -20,7 +20,7 @@ public class FormLichSuThi extends javax.swing.JFrame {
     
     
     //======================================================================================================================================================================
-    public FormLichSuThi(String MTK, int mde) {
+    public EXHistory(String MTK, int mde) {
         this.MTK = MTK;
         this.made = mde;
         initComponents(); // Khởi tạo các thành phần giao diện.
@@ -37,7 +37,7 @@ public class FormLichSuThi extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 // Khi đóng cửa sổ lịch sử, quay trở lại giao diện chính của người dùng.
-                new FormGiaoDienChinhUser(MTK, made).setVisible(true);
+                new HomeUser(MTK, made).setVisible(true);
                 dispose(); // Đóng form hiện tại.
             }
         });
@@ -184,7 +184,7 @@ public class FormLichSuThi extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormLichSuThi(MTK,made).setVisible(true);
+                new EXHistory(MTK,made).setVisible(true);
             }
         });
     }

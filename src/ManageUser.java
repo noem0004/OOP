@@ -1,6 +1,6 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,13 +10,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 
-public class FormQuanLiUser extends javax.swing.JFrame {
+public class ManageUser extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     private boolean goi = false;
     private static String TNganh;
     private static String MLop;
     
-    public FormQuanLiUser(String MNganh){
+    public ManageUser(String MNganh){
         this.TNganh = MNganh;
         initComponents();
         setLocationRelativeTo(null);
@@ -24,7 +24,7 @@ public class FormQuanLiUser extends javax.swing.JFrame {
         viewtableNganh();
     }
     //======================================================================================================================================================================
-    public FormQuanLiUser() {
+    public ManageUser() {
         initComponents(); // Khởi tạo các thành phần giao diện.
         ctn.c(); // Mở kết nối CSDL.
         showComboBox(); // Tải dữ liệu cho ComboBox Lớp (bộ lọc).
@@ -40,7 +40,7 @@ public class FormQuanLiUser extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 // Khi đóng cửa sổ, quay trở lại giao diện chính của admin.
-                new FormGiaoDienChinh().setVisible(true);
+                new HomeAD().setVisible(true);
                 // Đóng form hiện tại.
                 dispose();
             }
@@ -428,7 +428,7 @@ public class FormQuanLiUser extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Chọn thông tin cần sửa");
             }else{
                 // Nếu có, mở form "Sửa thông tin" và truyền vào Mã tài khoản (cột 0).
-                FormSuaThongTinUser FSTTU = new FormSuaThongTinUser(tb.getValueAt(tb.getSelectedRow(), 0).toString());
+                EditInfoUser FSTTU = new EditInfoUser(tb.getValueAt(tb.getSelectedRow(), 0).toString());
                 new GoiGDN(FSTTU);
                 this.dispose();
             }
@@ -535,7 +535,7 @@ public class FormQuanLiUser extends javax.swing.JFrame {
     }//GEN-LAST:event_tbMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FormQuanLiTaiKhoan FQLTK = new FormQuanLiTaiKhoan();
+        ManageAccount FQLTK = new ManageAccount();
         new GoiGDN(FQLTK);
         this.dispose();
         // TODO add your handling code here:
@@ -547,7 +547,7 @@ public class FormQuanLiUser extends javax.swing.JFrame {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormQuanLiUser().setVisible(true);
+                new ManageUser().setVisible(true);
             }
         });
     }

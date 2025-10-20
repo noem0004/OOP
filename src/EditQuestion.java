@@ -1,17 +1,17 @@
 
-import TMH.Ketnoi;
+import MaHoa.Ketnoi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-public class FormSuaCauHoi extends javax.swing.JFrame {
+public class EditQuestion extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     private static String MC;
    
     
     //======================================================================================================================================================================
-    public FormSuaCauHoi(String mc) {
+    public EditQuestion(String mc) {
         initComponents(); // Khởi tạo các thành phần giao diện.
         ctn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
@@ -22,7 +22,7 @@ public class FormSuaCauHoi extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                new FormQuanLiCauHoi().setVisible(true); // Mở lại form chính.
+                new ManageQuestion().setVisible(true); // Mở lại form chính.
                 dispose(); // Đóng form hiện tại.
             }
         });
@@ -236,7 +236,7 @@ public class FormSuaCauHoi extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormSuaCauHoi(MC).setVisible(true);
+                new EditQuestion(MC).setVisible(true);
             }
         });
     }

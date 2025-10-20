@@ -1,7 +1,7 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
-import TMH.MaHoa_AD;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
+import MaHoa.MaHoa_AD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,14 +9,14 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
-public class FormGiaoDienChinh extends javax.swing.JFrame {
+public class HomeAD extends javax.swing.JFrame {
     private boolean check = false;
     private Ketnoi ctn = new Ketnoi();
     private static String MTK;
     private MaHoa_AD TMH = new MaHoa_AD();
     
     //======================================================================================================================================================================
-    public FormGiaoDienChinh(boolean check) { 
+    public HomeAD(boolean check) { 
        this.check = check; // Gán trạng thái đăng nhập.
        TMH.getTMH_Admin(check);
        initComponents(); // Khởi tạo các thành phần giao diện.
@@ -29,7 +29,7 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
     
     
     //======================================================================================================================================================================
-    public FormGiaoDienChinh() {
+    public HomeAD() {
         // Gọi lại hàm khởi tạo chính với giá trị `check` mặc định là `false`.
         this(false); 
     }
@@ -547,7 +547,7 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
         
         // Mở form FormGanDeThi và truyền mã đề vừa lấy được sang.
         // DGD có thể là một lớp tùy chỉnh để hiển thị form dưới dạng dialog.
-        new GoiGDN(new FormGanDeThi(LMD));
+        new GoiGDN(new AssignEX(LMD));
         
         // Đóng form hiện tại.
         this.dispose();
@@ -556,7 +556,7 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void mn_QLNDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_QLNDMouseClicked
-        new GoiGDN(new FormQuanLiUser());
+        new GoiGDN(new ManageUser());
         this.dispose();
     }//GEN-LAST:event_mn_QLNDMouseClicked
     
@@ -565,7 +565,7 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void mn_QLCHMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_QLCHMouseClicked
-        FormQuanLiCauHoi FQLCH = new FormQuanLiCauHoi();
+        ManageQuestion FQLCH = new ManageQuestion();
         new GoiGDN(FQLCH);
         this.dispose();
     }//GEN-LAST:event_mn_QLCHMouseClicked
@@ -573,21 +573,21 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void mn_QLLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_QLLMouseClicked
-        new GoiGDN(new FormQuanLiLop());
+        new GoiGDN(new ManageClass());
         this.dispose();
     }//GEN-LAST:event_mn_QLLMouseClicked
     
     
     //======================================================================================================================================================================
     private void mn_QLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_QLDTMouseClicked
-       new GoiGDN(new FormQuanLiDeThi());
+       new GoiGDN(new ManageEX());
         this.dispose();
     }//GEN-LAST:event_mn_QLDTMouseClicked
     
     
     //======================================================================================================================================================================
     private void mn_QLKQMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mn_QLKQMouseClicked
-        new GoiGDN(new FormQuanLyKetQua());
+        new GoiGDN(new ManageResult());
         this.dispose();
     }//GEN-LAST:event_mn_QLKQMouseClicked
     
@@ -598,12 +598,12 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_mn_caidatMouseClicked
 
     private void mnItem_DoiMKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnItem_DoiMKMouseClicked
-        new GoiGDN(new FormDoiMatKhauADMIN(MTK));
+        new GoiGDN(new ChangePWAD(MTK));
         this.dispose();
     }//GEN-LAST:event_mnItem_DoiMKMouseClicked
 
     private void mnItem_DangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnItem_DangXuatMouseClicked
-        new GoiGDN(new DangNhap());
+        new GoiGDN(new Login());
         this.dispose();
         JOptionPane.showMessageDialog(null, "Bạn đã Đăng Xuất Tài Khoản!");
     }//GEN-LAST:event_mnItem_DangXuatMouseClicked
@@ -613,7 +613,7 @@ public class FormGiaoDienChinh extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormGiaoDienChinh().setVisible(true);
+                new HomeAD().setVisible(true);
             }
         });
     }

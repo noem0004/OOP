@@ -1,6 +1,6 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 
-public class FormQuanLiLop extends javax.swing.JFrame {
+public class ManageClass extends javax.swing.JFrame {
     private Map<String,String> DuyetNganh;
     private Ketnoi ctn = new Ketnoi();
     private boolean isNganhLoaded = false;
@@ -19,7 +19,7 @@ public class FormQuanLiLop extends javax.swing.JFrame {
     
     
     //======================================================================================================================================================================
-    public FormQuanLiLop() {
+    public ManageClass() {
         initComponents(); 
         
         // Thực hiện một kết nối thử đến CSDL (có thể không cần thiết ở đây).
@@ -47,7 +47,7 @@ public class FormQuanLiLop extends javax.swing.JFrame {
             // Phương thức này sẽ được gọi khi người dùng bấm nút X để đóng cửa sổ.
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 // Tạo và hiển thị lại form giao diện chính.
-                new FormGiaoDienChinh().setVisible(true);
+                new HomeAD().setVisible(true);
                 // Đóng form quản lý lớp hiện tại.
                 dispose();
             }
@@ -430,7 +430,7 @@ public class FormQuanLiLop extends javax.swing.JFrame {
         }
 
         // Gọi form chi tiết và truyền tham số vào
-        new GoiGDN(new FormQuanLiUser(tenLop));
+        new GoiGDN(new ManageUser(tenLop));
         this.dispose(); // Đóng form hiện tại
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Lỗi khi mở chi tiết: " + e.getMessage());
@@ -441,7 +441,7 @@ public class FormQuanLiLop extends javax.swing.JFrame {
     //======================================================================================================================================================================
     public static void main(String args[]) {
 
-        java.awt.EventQueue.invokeLater(() -> new FormQuanLiLop().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ManageClass().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

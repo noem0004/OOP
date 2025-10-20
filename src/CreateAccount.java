@@ -1,7 +1,7 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
-import TMH.MaHoa_AD;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
+import MaHoa.MaHoa_AD;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,14 +15,14 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 
-public class FormTaoTaiKhoan extends javax.swing.JFrame {
+public class CreateAccount extends javax.swing.JFrame {
 
     private static final SecureRandom random = new SecureRandom();
     private Ketnoi ctn = new Ketnoi();
     
     
     //======================================================================================================================================================================
-    public FormTaoTaiKhoan() {
+    public CreateAccount() {
         initComponents(); // Khởi tạo các thành phần giao diện.
         ctn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
@@ -34,7 +34,7 @@ public class FormTaoTaiKhoan extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 // Khi đóng cửa sổ, quay trở lại giao diện quản lý tài khoản.
-                new FormQuanLiTaiKhoan().setVisible(true);
+                new ManageAccount().setVisible(true);
                 // Đóng form hiện tại.
                 dispose();
             }
@@ -230,7 +230,7 @@ public class FormTaoTaiKhoan extends javax.swing.JFrame {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormTaoTaiKhoan().setVisible(true);
+                new CreateAccount().setVisible(true);
             }
         });
     }

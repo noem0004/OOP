@@ -1,6 +1,6 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,14 +11,14 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
 
-public class FormQuanLiCauHoi extends javax.swing.JFrame {
+public class ManageQuestion extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     private String idMD = "";
     private String idMC = "";
     
     
     //======================================================================================================================================================================
-    public FormQuanLiCauHoi() {
+    public ManageQuestion() {
         initComponents(); // Khởi tạo các thành phần giao diện.
         ctn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
@@ -32,7 +32,7 @@ public class FormQuanLiCauHoi extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 // Khi đóng cửa sổ, quay trở lại giao diện chính của admin.
-                new FormGiaoDienChinh().setVisible(true);
+                new HomeAD().setVisible(true);
                 // Đóng form hiện tại.
                 dispose();
             }
@@ -189,7 +189,7 @@ public class FormQuanLiCauHoi extends javax.swing.JFrame {
     private void bt_suacauhoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_suacauhoiActionPerformed
         // Tạo một đối tượng của FormSuaCauHoi.
         // Truyền `idMC` (Mã Câu hỏi đã được lưu khi click chuột) vào constructor của form sửa.
-        FormSuaCauHoi FSCH = new FormSuaCauHoi(idMC);
+        EditQuestion FSCH = new EditQuestion(idMC);
         // Hiển thị form sửa câu hỏi dưới dạng một dialog.
         if(tb.getSelectedRow() == -1){
             JOptionPane.showMessageDialog(null, "Chọn Câu Hỏi Để Sửa");
@@ -203,7 +203,7 @@ public class FormQuanLiCauHoi extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void bt_ThemCauHoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ThemCauHoiActionPerformed
         // Mở form FormTaoCauHoi để người dùng nhập câu hỏi mới.
-        new GoiGDN(new FormTaoCauHoi());
+        new GoiGDN(new CreateQuestion());
         // Đóng form quản lý câu hỏi hiện tại.
         this.dispose();
     }//GEN-LAST:event_bt_ThemCauHoiActionPerformed
@@ -251,7 +251,7 @@ public class FormQuanLiCauHoi extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormQuanLiCauHoi().setVisible(true);
+                new ManageQuestion().setVisible(true);
             }
         });
     }

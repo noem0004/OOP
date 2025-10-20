@@ -1,19 +1,19 @@
 
-import TMH.Ketnoi;
-import TMH.GoiGDN;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 
-public class FormSuaThongTinUser extends javax.swing.JFrame {
+public class EditInfoUser extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     private static String maTaiKhoan;
     
     
     //======================================================================================================================================================================
-    public FormSuaThongTinUser(String goi) {
+    public EditInfoUser(String goi) {
         this.maTaiKhoan = goi; // Lưu mã tài khoản vào biến toàn cục.
         initComponents(); // Khởi tạo các thành phần giao diện.
         ctn.c(); // Mở kết nối CSDL.
@@ -29,7 +29,7 @@ public class FormSuaThongTinUser extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 // Khi đóng cửa sổ, quay trở lại giao diện quản lý người dùng.
-                new FormQuanLiUser().setVisible(true);
+                new ManageUser().setVisible(true);
                 // Đóng form hiện tại.
                 dispose();
             }
@@ -284,7 +284,7 @@ public class FormSuaThongTinUser extends javax.swing.JFrame {
     public static void main(String args[]) {
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormSuaThongTinUser(maTaiKhoan).setVisible(true);
+                new EditInfoUser(maTaiKhoan).setVisible(true);
             }
         });
     }

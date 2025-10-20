@@ -3,14 +3,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import TMH.Ketnoi;
-import TMH.GoiGDN;
-import TMH.MaHoa_AD;
+import MaHoa.Ketnoi;
+import MaHoa.GoiGDN;
+import MaHoa.MaHoa_AD;
 
-public class FormDoiMatKhauADMIN extends javax.swing.JFrame {
+public class ChangePWAD extends javax.swing.JFrame {
     private Ketnoi ctn = new Ketnoi();
     private static String MTK;
-    public FormDoiMatKhauADMIN(String MTK) {
+    public ChangePWAD(String MTK) {
         this.MTK = MTK;
         initComponents();
         setLocationRelativeTo(null);
@@ -21,7 +21,7 @@ public class FormDoiMatKhauADMIN extends javax.swing.JFrame {
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 // Khi đóng cửa sổ, quay trở lại giao diện chính của admin.
-                new FormGiaoDienChinh().setVisible(true);
+                new HomeAD().setVisible(true);
                 // Đóng form hiện tại.
                 dispose();
             }
@@ -113,7 +113,7 @@ public class FormDoiMatKhauADMIN extends javax.swing.JFrame {
                         Pst1.setString(2,MTK);
                         Pst1.executeUpdate();
                         this.dispose();
-                        new GoiGDN(new FormGiaoDienChinh());
+                        new GoiGDN(new HomeAD());
                         JOptionPane.showMessageDialog(null, "Đổi Mật Khẩu Thành Công!");
                         
                     }
@@ -129,7 +129,7 @@ public class FormDoiMatKhauADMIN extends javax.swing.JFrame {
     
     public static void main(String args[]) {
         
-        java.awt.EventQueue.invokeLater(() -> new FormDoiMatKhauADMIN(MTK).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ChangePWAD(MTK).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
