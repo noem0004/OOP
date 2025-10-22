@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 22, 2025 at 08:13 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 22, 2025 lúc 08:38 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test`
+-- Cơ sở dữ liệu: `test`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cauhoi`
+-- Cấu trúc bảng cho bảng `cauhoi`
 --
 
 CREATE TABLE `cauhoi` (
@@ -39,7 +39,7 @@ CREATE TABLE `cauhoi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `cauhoi`
+-- Đang đổ dữ liệu cho bảng `cauhoi`
 --
 
 INSERT INTO `cauhoi` (`MC`, `noidungch`, `A`, `B`, `C`, `D`, `DapAn`, `loaida`) VALUES
@@ -381,7 +381,7 @@ INSERT INTO `cauhoi` (`MC`, `noidungch`, `A`, `B`, `C`, `D`, `DapAn`, `loaida`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ctdt`
+-- Cấu trúc bảng cho bảng `ctdt`
 --
 
 CREATE TABLE `ctdt` (
@@ -391,7 +391,7 @@ CREATE TABLE `ctdt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `ctdt`
+-- Đang đổ dữ liệu cho bảng `ctdt`
 --
 
 INSERT INTO `ctdt` (`IDCau`, `MC`, `MD`) VALUES
@@ -417,8 +417,6 @@ INSERT INTO `ctdt` (`IDCau`, `MC`, `MD`) VALUES
 (5905, 1, 1),
 (5906, 1, 1),
 (5907, 1, 1),
-(6067, 1, 10),
-(6068, 2, 7),
 (5935, 6, 5),
 (5936, 6, 5),
 (5937, 6, 5),
@@ -465,7 +463,6 @@ INSERT INTO `ctdt` (`IDCau`, `MC`, `MD`) VALUES
 (5978, 6, 5),
 (5979, 6, 5),
 (5980, 6, 5),
-(6066, 6, 14),
 (5908, 7, 1),
 (5909, 7, 1),
 (5910, 7, 1),
@@ -493,16 +490,6 @@ INSERT INTO `ctdt` (`IDCau`, `MC`, `MD`) VALUES
 (5932, 7, 1),
 (5933, 7, 1),
 (5934, 7, 1),
-(6069, 8, 6),
-(6070, 8, 6),
-(6071, 8, 6),
-(6072, 8, 6),
-(6073, 8, 6),
-(6074, 8, 6),
-(6075, 8, 6),
-(6076, 8, 6),
-(6077, 8, 6),
-(6078, 8, 6),
 (5981, 60, 15),
 (5982, 60, 15),
 (5983, 60, 15),
@@ -592,7 +579,7 @@ INSERT INTO `ctdt` (`IDCau`, `MC`, `MD`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dakt`
+-- Cấu trúc bảng cho bảng `dakt`
 --
 
 CREATE TABLE `dakt` (
@@ -605,7 +592,7 @@ CREATE TABLE `dakt` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dang_nhap`
+-- Cấu trúc bảng cho bảng `dang_nhap`
 --
 
 CREATE TABLE `dang_nhap` (
@@ -616,7 +603,7 @@ CREATE TABLE `dang_nhap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `dang_nhap`
+-- Đang đổ dữ liệu cho bảng `dang_nhap`
 --
 
 INSERT INTO `dang_nhap` (`MaTaiKhoan`, `TenDangNhap`, `MatKhau`, `PhanLoai`) VALUES
@@ -665,7 +652,7 @@ INSERT INTO `dang_nhap` (`MaTaiKhoan`, `TenDangNhap`, `MatKhau`, `PhanLoai`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dethi`
+-- Cấu trúc bảng cho bảng `dethi`
 --
 
 CREATE TABLE `dethi` (
@@ -677,7 +664,7 @@ CREATE TABLE `dethi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `dethi`
+-- Đang đổ dữ liệu cho bảng `dethi`
 --
 
 INSERT INTO `dethi` (`MD`, `NoidungDeThi`, `ThoiGian`, `NgayTao`, `NgayThi`) VALUES
@@ -713,7 +700,7 @@ INSERT INTO `dethi` (`MD`, `NoidungDeThi`, `ThoiGian`, `NgayTao`, `NgayThi`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lichsuthi`
+-- Cấu trúc bảng cho bảng `lichsuthi`
 --
 
 CREATE TABLE `lichsuthi` (
@@ -727,21 +714,10 @@ CREATE TABLE `lichsuthi` (
   `TTCT` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `lichsuthi`
---
-
-INSERT INTO `lichsuthi` (`MLS`, `MaTaiKhoan`, `MaDe`, `KQ`, `socaudung`, `NgayThi`, `ThoiGianLam`, `TTCT`) VALUES
-(32, '7273897839', 2, 0, 0, '2025-10-16', '0:0:3', '===== KẾT QUẢ CHI TIẾT BÀI LÀM =====\n\nCâu 1: ai dẹp trai nhất\n   A. D\n   B. H\n   C. H\n   D. K\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 2: Trong HTML, thẻ nào để chèn hình ảnh?\n   A. <image>\n   B. <img>\n   C. <picture>\n   D. <src>\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 3: Biến static trong Java thuộc về?\n   A. Đối tượng\n   B. Lớp\n   C. Phương thức\n   D. Biến cục bộ\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 4: Kết quả của biểu thức (true && false) || true là?\n   A. true\n   B. false\n   C. error\n   D. null\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 5: Trong MySQL, để xóa bảng dùng lệnh nào?\n   A. DROP TABLE\n   B. DELETE TABLE\n   C. REMOVE TABLE\n   D. CLEAR TABLE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 6: Trong Java, từ khóa nào dùng để kế thừa lớp?\n   A. super\n   B. extends\n   C. this\n   D. inherits\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: AB\n   Kết quả: Sai\n\nCâu 7: Kết quả của 2 + 2 * 2 = ?\n   A. 6\n   B. 8\n   C. 4\n   D. 2\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 8: Phương thức main() trong Java phải có dạng nào?\n   A. public void main(String args[])\n   B. static void main(String args[])\n   C. public static void main(String[] args)\n   D. void main()\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 9: Đâu là cú pháp đúng để khai báo mảng trong Java?\n   A. int[] arr;\n   B. int arr[];\n   C. Cả hai đều đúng\n   D. arr int[];\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 10: Phép toán nào có độ ưu tiên cao nhất?\n   A. +\n   B. -\n   C. *\n   D. =\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\n=====================================\nTỔNG KẾT:\n   Tổng số câu: 10\n   Số câu đúng: 0\n   Số câu sai: 10\n   Số điểm: 0.00\n'),
-(33, '7273897839', 3, 0, 0, '2025-11-15', '0:0:3', '===== KẾT QUẢ CHI TIẾT BÀI LÀM =====\n\nCâu 1: Câu lệnh SQL nào dùng để cập nhật dữ liệu?\n   A. INSERT\n   B. UPDATE\n   C. ALTER\n   D. CHANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 2: Phần mở rộng của file Java là?\n   A. .jav\n   B. .java\n   C. .class\n   D. .jar\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 3: Đâu là cú pháp đúng để khai báo mảng trong Java?\n   A. int[] arr;\n   B. int arr[];\n   C. Cả hai đều đúng\n   D. arr int[];\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 4: Trong HTML, thẻ nào để chèn hình ảnh?\n   A. <image>\n   B. <img>\n   C. <picture>\n   D. <src>\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 5: Trong MySQL, khóa chính được định nghĩa bằng?\n   A. PRIMARY KEY\n   B. FOREIGN KEY\n   C. UNIQUE KEY\n   D. IDENTITY\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 6: Trong SQL, để sắp xếp dữ liệu dùng từ khóa nào?\n   A. GROUP BY\n   B. ORDER BY\n   C. SORT\n   D. ARRANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 7: Kiểu dữ liệu nào lưu chuỗi ký tự trong Java?\n   A. int\n   B. String\n   C. char\n   D. float\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 8: Kết quả của 5 + 2 * 3 là?\n   A. 21\n   B. 11\n   C. 13\n   D. 10\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 9: ai dẹp trai nhất\n   A. D\n   B. H\n   C. H\n   D. K\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\n=====================================\nTỔNG KẾT:\n   Tổng số câu: 9\n   Số câu đúng: 0\n   Số câu sai: 9\n   Số điểm: 0.00\n'),
-(34, '5555697626', 3, 0, 0, '2025-11-15', '0:0:5', '===== KẾT QUẢ CHI TIẾT BÀI LÀM =====\n\nCâu 1: Câu lệnh SQL nào dùng để cập nhật dữ liệu?\n   A. INSERT\n   B. UPDATE\n   C. ALTER\n   D. CHANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 2: Phần mở rộng của file Java là?\n   A. .jav\n   B. .java\n   C. .class\n   D. .jar\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 3: Đâu là cú pháp đúng để khai báo mảng trong Java?\n   A. int[] arr;\n   B. int arr[];\n   C. Cả hai đều đúng\n   D. arr int[];\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 4: Trong HTML, thẻ nào để chèn hình ảnh?\n   A. <image>\n   B. <img>\n   C. <picture>\n   D. <src>\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 5: Trong MySQL, khóa chính được định nghĩa bằng?\n   A. PRIMARY KEY\n   B. FOREIGN KEY\n   C. UNIQUE KEY\n   D. IDENTITY\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 6: Trong SQL, để sắp xếp dữ liệu dùng từ khóa nào?\n   A. GROUP BY\n   B. ORDER BY\n   C. SORT\n   D. ARRANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 7: Kiểu dữ liệu nào lưu chuỗi ký tự trong Java?\n   A. int\n   B. String\n   C. char\n   D. float\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 8: Kết quả của 5 + 2 * 3 là?\n   A. 21\n   B. 11\n   C. 13\n   D. 10\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 9: ai dẹp trai nhất\n   A. D\n   B. H\n   C. H\n   D. K\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\n=====================================\nTỔNG KẾT:\n   Tổng số câu: 9\n   Số câu đúng: 0\n   Số câu sai: 9\n   Số điểm: 0.00\n'),
-(35, '5555697626', 5, 0, 0, '2025-10-21', '0:0:3', '===== KẾT QUẢ CHI TIẾT BÀI LÀM =====\n\nCâu 1: 5 % 2 trong Java cho kết quả là?\n   A. 1\n   B. 2\n   C. 2.5\n   D. 0\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 2: Phép toán nào có độ ưu tiên cao nhất?\n   A. +\n   B. -\n   C. *\n   D. =\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 3: Phần mở rộng của file Java là?\n   A. .jav\n   B. .java\n   C. .class\n   D. .jar\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 4: Trong SQL, để sắp xếp dữ liệu dùng từ khóa nào?\n   A. GROUP BY\n   B. ORDER BY\n   C. SORT\n   D. ARRANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 5: Phương thức main() trong Java phải có dạng nào?\n   A. public void main(String args[])\n   B. static void main(String args[])\n   C. public static void main(String[] args)\n   D. void main()\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 6: Đâu là cú pháp đúng để khai báo mảng trong Java?\n   A. int[] arr;\n   B. int arr[];\n   C. Cả hai đều đúng\n   D. arr int[];\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 7: Trong SQL, câu lệnh nào dùng để lấy dữ liệu?\n   A. INSERT\n   B. SELECT\n   C. UPDATE\n   D. DELETE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: BC\n   Kết quả: Sai\n\nCâu 8: Kiểu dữ liệu nào lưu chuỗi ký tự trong Java?\n   A. int\n   B. String\n   C. char\n   D. float\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 9: Kết quả của biểu thức (true && false) || true là?\n   A. true\n   B. false\n   C. error\n   D. null\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 10: Câu lệnh SQL nào dùng để cập nhật dữ liệu?\n   A. INSERT\n   B. UPDATE\n   C. ALTER\n   D. CHANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\n=====================================\nTỔNG KẾT:\n   Tổng số câu: 10\n   Số câu đúng: 0\n   Số câu sai: 10\n   Số điểm: 0.00\n'),
-(36, '1142719170', 15, 0, 0, '2025-04-10', '0:0:36', '===== KẾT QUẢ CHI TIẾT BÀI LÀM =====\n\nCâu 1: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: A\n   Đáp án đúng: ABCD\n\nCâu 2: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: A\n   Đáp án đúng: ABCD\n\nCâu 3: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 4: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 5: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 6: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 7: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 8: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 9: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 10: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 11: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 12: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 13: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 14: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 15: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 16: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 17: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 18: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 19: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 20: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 21: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 22: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 23: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 24: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 25: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 26: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 27: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: ABC\n   Đáp án đúng: ABCD\n\nCâu 28: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 29: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 30: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 31: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 32: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 33: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 34: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 35: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 36: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 37: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 38: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 39: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 40: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 41: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 42: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 43: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 44: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 45: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 46: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 47: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 48: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 49: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 50: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 51: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 52: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 53: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 54: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 55: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 56: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 57: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 58: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 59: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 60: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 61: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 62: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 63: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 64: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 65: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 66: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 67: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 68: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 69: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 70: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 71: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 72: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 73: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 74: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 75: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 76: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 77: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 78: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 79: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 80: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 81: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 82: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 83: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 84: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\nCâu 85: Các bộ phận cơ bản của máy tính gồm?\n   A. CPU\n   B. RAM\n   C. Ổ cứng\n   D. Màn hình\n   Kết quả: Sai\n   Bạn chọn: AD\n   Đáp án đúng: ABCD\n\n=====================================\nTỔNG KẾT:\n   Tổng số câu: 85\n   Số câu đúng: 0\n   Số câu sai: 85\n   Số điểm: 0.00\n');
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lop`
+-- Cấu trúc bảng cho bảng `lop`
 --
 
 CREATE TABLE `lop` (
@@ -751,7 +727,7 @@ CREATE TABLE `lop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `lop`
+-- Đang đổ dữ liệu cho bảng `lop`
 --
 
 INSERT INTO `lop` (`MaLop`, `TenLop`, `MaNganh`) VALUES
@@ -792,7 +768,7 @@ INSERT INTO `lop` (`MaLop`, `TenLop`, `MaNganh`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nganh`
+-- Cấu trúc bảng cho bảng `nganh`
 --
 
 CREATE TABLE `nganh` (
@@ -801,7 +777,7 @@ CREATE TABLE `nganh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `nganh`
+-- Đang đổ dữ liệu cho bảng `nganh`
 --
 
 INSERT INTO `nganh` (`MaNganh`, `TenNganh`) VALUES
@@ -816,7 +792,7 @@ INSERT INTO `nganh` (`MaNganh`, `TenNganh`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `thi`
+-- Cấu trúc bảng cho bảng `thi`
 --
 
 CREATE TABLE `thi` (
@@ -826,13 +802,12 @@ CREATE TABLE `thi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `thi`
+-- Đang đổ dữ liệu cho bảng `thi`
 --
 
 INSERT INTO `thi` (`MD`, `MaTaiKhoan`, `trangthai`) VALUES
 (1, '1142719170', 0),
 (4, '1142719170', 0),
-(5, '1142719170', 0),
 (15, '1142719170', 1),
 (4, '1876855490', 0),
 (15, '1876855490', 1),
@@ -852,6 +827,12 @@ INSERT INTO `thi` (`MD`, `MaTaiKhoan`, `trangthai`) VALUES
 (15, '2300000014', 1),
 (15, '2300000015', 1),
 (15, '2300000016', 1),
+(15, '2300000017', 1),
+(15, '2300000018', 1),
+(15, '2300000019', 1),
+(15, '2300000020', 1),
+(15, '2300000021', 1),
+(15, '2300000022', 1),
 (4, '5050273971', 0),
 (15, '5050273971', 1),
 (4, '5498295965', 0),
@@ -865,7 +846,7 @@ INSERT INTO `thi` (`MD`, `MaTaiKhoan`, `trangthai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ttnguoithi`
+-- Cấu trúc bảng cho bảng `ttnguoithi`
 --
 
 CREATE TABLE `ttnguoithi` (
@@ -878,7 +859,7 @@ CREATE TABLE `ttnguoithi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `ttnguoithi`
+-- Đang đổ dữ liệu cho bảng `ttnguoithi`
 --
 
 INSERT INTO `ttnguoithi` (`MaTaiKhoan`, `HoTen`, `Malop`, `NgaySinh`, `MaNganh`, `SDT`) VALUES
@@ -912,17 +893,17 @@ INSERT INTO `ttnguoithi` (`MaTaiKhoan`, `HoTen`, `Malop`, `NgaySinh`, `MaNganh`,
 ('2300000022', 'Lâm Tường Vy', 88, '2005-09-25', 'NA', '0901234522');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `cauhoi`
+-- Chỉ mục cho bảng `cauhoi`
 --
 ALTER TABLE `cauhoi`
   ADD PRIMARY KEY (`MC`);
 
 --
--- Indexes for table `ctdt`
+-- Chỉ mục cho bảng `ctdt`
 --
 ALTER TABLE `ctdt`
   ADD PRIMARY KEY (`IDCau`),
@@ -930,7 +911,7 @@ ALTER TABLE `ctdt`
   ADD KEY `FK_Dethi_ctdt` (`MD`);
 
 --
--- Indexes for table `dakt`
+-- Chỉ mục cho bảng `dakt`
 --
 ALTER TABLE `dakt`
   ADD PRIMARY KEY (`MaKT`),
@@ -938,48 +919,48 @@ ALTER TABLE `dakt`
   ADD KEY `fk_dakt_dang_nhap` (`MaTaiKhoan`);
 
 --
--- Indexes for table `dang_nhap`
+-- Chỉ mục cho bảng `dang_nhap`
 --
 ALTER TABLE `dang_nhap`
   ADD PRIMARY KEY (`MaTaiKhoan`),
   ADD UNIQUE KEY `TenDangNhap` (`TenDangNhap`);
 
 --
--- Indexes for table `dethi`
+-- Chỉ mục cho bảng `dethi`
 --
 ALTER TABLE `dethi`
   ADD PRIMARY KEY (`MD`);
 
 --
--- Indexes for table `lichsuthi`
+-- Chỉ mục cho bảng `lichsuthi`
 --
 ALTER TABLE `lichsuthi`
   ADD PRIMARY KEY (`MLS`),
-  ADD KEY `fk_lst_dt` (`MaDe`),
-  ADD KEY `fk_lst_dn` (`MaTaiKhoan`) USING BTREE;
+  ADD KEY `FK_LS_DN` (`MaTaiKhoan`),
+  ADD KEY `FK_LS_DT` (`MaDe`);
 
 --
--- Indexes for table `lop`
+-- Chỉ mục cho bảng `lop`
 --
 ALTER TABLE `lop`
   ADD PRIMARY KEY (`MaLop`),
   ADD KEY `FK_Lop_Nganh` (`MaNganh`);
 
 --
--- Indexes for table `nganh`
+-- Chỉ mục cho bảng `nganh`
 --
 ALTER TABLE `nganh`
   ADD PRIMARY KEY (`MaNganh`);
 
 --
--- Indexes for table `thi`
+-- Chỉ mục cho bảng `thi`
 --
 ALTER TABLE `thi`
   ADD PRIMARY KEY (`MaTaiKhoan`,`MD`),
   ADD KEY `FK_thi_dethi` (`MD`);
 
 --
--- Indexes for table `ttnguoithi`
+-- Chỉ mục cho bảng `ttnguoithi`
 --
 ALTER TABLE `ttnguoithi`
   ADD KEY `fk_ttnt_dang_nhap` (`MaTaiKhoan`),
@@ -987,78 +968,85 @@ ALTER TABLE `ttnguoithi`
   ADD KEY `fk_ttn_nganh` (`MaNganh`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `cauhoi`
+-- AUTO_INCREMENT cho bảng `cauhoi`
 --
 ALTER TABLE `cauhoi`
   MODIFY `MC` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=337;
 
 --
--- AUTO_INCREMENT for table `ctdt`
+-- AUTO_INCREMENT cho bảng `ctdt`
 --
 ALTER TABLE `ctdt`
-  MODIFY `IDCau` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6079;
+  MODIFY `IDCau` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6066;
 
 --
--- AUTO_INCREMENT for table `dakt`
+-- AUTO_INCREMENT cho bảng `dakt`
 --
 ALTER TABLE `dakt`
   MODIFY `MaKT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `dethi`
+-- AUTO_INCREMENT cho bảng `dethi`
 --
 ALTER TABLE `dethi`
   MODIFY `MD` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT for table `lichsuthi`
+-- AUTO_INCREMENT cho bảng `lichsuthi`
 --
 ALTER TABLE `lichsuthi`
-  MODIFY `MLS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `MLS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT for table `lop`
+-- AUTO_INCREMENT cho bảng `lop`
 --
 ALTER TABLE `lop`
   MODIFY `MaLop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `ctdt`
+-- Các ràng buộc cho bảng `ctdt`
 --
 ALTER TABLE `ctdt`
   ADD CONSTRAINT `FK_Dethi_ctdt` FOREIGN KEY (`MD`) REFERENCES `dethi` (`MD`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_cauhoi_ctdt` FOREIGN KEY (`MC`) REFERENCES `cauhoi` (`MC`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `dakt`
+-- Các ràng buộc cho bảng `dakt`
 --
 ALTER TABLE `dakt`
   ADD CONSTRAINT `fk_dakt_dang_nhap` FOREIGN KEY (`MaTaiKhoan`) REFERENCES `dang_nhap` (`MaTaiKhoan`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_dakt_dethi` FOREIGN KEY (`MD`) REFERENCES `dethi` (`MD`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `lop`
+-- Các ràng buộc cho bảng `lichsuthi`
+--
+ALTER TABLE `lichsuthi`
+  ADD CONSTRAINT `lichsuthi_ibfk_1` FOREIGN KEY (`MaTaiKhoan`) REFERENCES `dang_nhap` (`MaTaiKhoan`) ON DELETE CASCADE,
+  ADD CONSTRAINT `lichsuthi_ibfk_2` FOREIGN KEY (`MaDe`) REFERENCES `dethi` (`MD`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `lop`
 --
 ALTER TABLE `lop`
   ADD CONSTRAINT `FK_Lop_Nganh` FOREIGN KEY (`MaNganh`) REFERENCES `nganh` (`MaNganh`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `thi`
+-- Các ràng buộc cho bảng `thi`
 --
 ALTER TABLE `thi`
   ADD CONSTRAINT `FK_thi_dangnhap` FOREIGN KEY (`MaTaiKhoan`) REFERENCES `dang_nhap` (`MaTaiKhoan`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_thi_dethi` FOREIGN KEY (`MD`) REFERENCES `dethi` (`MD`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `ttnguoithi`
+-- Các ràng buộc cho bảng `ttnguoithi`
 --
 ALTER TABLE `ttnguoithi`
   ADD CONSTRAINT `FK_dn_ttnt` FOREIGN KEY (`MaTaiKhoan`) REFERENCES `dang_nhap` (`MaTaiKhoan`) ON DELETE CASCADE ON UPDATE CASCADE,
