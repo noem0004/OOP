@@ -54,7 +54,7 @@ public class EditAccount extends javax.swing.JFrame {
                 // Điền thông tin lấy được vào các thành phần trên giao diện.
                 txt_TenTaikhoan.setText(rs.getString("TenDangNhap"));
                 txt_Matkhau.setText(rs.getString("MatKhau")); // GHI CHÚ: Mật khẩu hiển thị ở đây có thể là dạng đã mã hóa.
-                lb_TenNguoidung.setText(rs.getString("HoTen"));
+                txt_TenTaikhoan.setText(rs.getString("HoTen"));
                 // Kiểm tra vai trò và chọn mục tương ứng trong ComboBox.
                 if(rs.getString("PhanLoai").equals("NT"))
                     cb_vaitro.setSelectedItem("Sinh Viên");
