@@ -117,6 +117,7 @@ public class AssignEX extends javax.swing.JFrame {
         cb_Lop = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        bt_GanDT1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình thi trắc nghiệm");
@@ -151,7 +152,7 @@ public class AssignEX extends javax.swing.JFrame {
         bt_GanDT.setBackground(new java.awt.Color(66, 99, 235));
         bt_GanDT.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         bt_GanDT.setForeground(new java.awt.Color(255, 255, 255));
-        bt_GanDT.setText("Gán");
+        bt_GanDT.setText("Bỏ Gán");
         bt_GanDT.setBorderPainted(false);
         bt_GanDT.setFocusPainted(false);
         bt_GanDT.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +177,18 @@ public class AssignEX extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(26, 32, 44));
         jLabel2.setText("Quản lý gán đề thi");
 
+        bt_GanDT1.setBackground(new java.awt.Color(66, 99, 235));
+        bt_GanDT1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_GanDT1.setForeground(new java.awt.Color(255, 255, 255));
+        bt_GanDT1.setText("Gán");
+        bt_GanDT1.setBorderPainted(false);
+        bt_GanDT1.setFocusPainted(false);
+        bt_GanDT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_GanDT1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -184,44 +197,42 @@ public class AssignEX extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 599, Short.MAX_VALUE)
+                        .addGap(250, 250, 250)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_Lop, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addComponent(bt_GanDT, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_Dethi)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel2))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(bt_GanDT1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bt_GanDT)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_Dethi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bt_GanDT, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(lbl_Dethi))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lbl_Dethi))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cb_Lop, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42))
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_GanDT1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_GanDT, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_Lop, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -230,70 +241,53 @@ public class AssignEX extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void bt_GanDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GanDTActionPerformed
-       // Lấy tất cả các hàng đang được chọn trong bảng (hỗ trợ chọn nhiều sinh viên cùng lúc).
-        int[] selectedRows = tb.getSelectedRows();
+           // Lấy tất cả các hàng đang được chọn trong bảng (hỗ trợ chọn nhiều sinh viên cùng lúc).
+       int[] selectedRows = tb.getSelectedRows();
 
-        // Nếu không có sinh viên nào được chọn, thông báo và dừng lại.
         if (selectedRows.length == 0) {
-            JOptionPane.showMessageDialog(this, "Hãy chọn ít nhất một sinh viên để gán đề.");
+            JOptionPane.showMessageDialog(this, "Hãy chọn ít nhất một sinh viên để bỏ gán đề.");
             return;
         }
 
-        // Hiển thị hộp thoại xác nhận trước khi thực hiện hành động quan trọng.
         int confirm = JOptionPane.showConfirmDialog(this, 
-            "Gán đề số " + LMD + " cho " + selectedRows.length + " sinh viên đã chọn?",
+            "Bạn có chắc muốn BỎ GÁN đề số " + LMD + " cho " + selectedRows.length + " sinh viên đã chọn?",
             "Xác nhận", JOptionPane.YES_NO_OPTION);
 
-        // Nếu người dùng không chọn "YES", dừng lại.
         if (confirm != JOptionPane.YES_OPTION) return;
 
-        // Chuẩn bị các câu lệnh SQL cho việc "UPSERT" (UPDATE hoặc INSERT).
-        String checkSql = "SELECT * FROM thi WHERE MaTaiKhoan = ?"; // Kiểm tra sự tồn tại
-        String insertSql = "INSERT INTO thi (MaTaiKhoan, MD) VALUES (?, ?)"; // Thêm mới nếu chưa có
-        String updateSql = "UPDATE thi SET MD = ? WHERE MaTaiKhoan = ?"; // Cập nhật nếu đã có
+        String checkSql = "SELECT * FROM thi WHERE MaTaiKhoan = ? AND MD = ?"; 
+        String deleteSql = "DELETE FROM thi WHERE MaTaiKhoan = ? AND MD = ?"; 
 
-        int countInsert = 0; // Đếm số lượng gán mới.
-        int countUpdate = 0; // Đếm số lượng cập nhật.
+        int countDelete = 0;
 
         try (Connection c = kn.c()) {
-            // Lặp qua từng hàng đã được chọn.
             for (int row : selectedRows) {
-                // Lấy mã tài khoản từ cột thứ 2 (index 1) của hàng được chọn.
                 String maTK = tb.getValueAt(row, 1).toString();
 
-                // 1. KIỂM TRA: Sinh viên này đã có bản ghi trong bảng `thi` chưa?
                 PreparedStatement checkPst = c.prepareStatement(checkSql);
                 checkPst.setString(1, maTK);
+                checkPst.setInt(2, LMD);
                 ResultSet rs = checkPst.executeQuery();
 
+                // 🔹 Nếu có bản ghi thì mới thực hiện xóa
                 if (rs.next()) {
-                    // 2a. CẬP NHẬT (UPDATE): Nếu đã tồn tại, cập nhật lại mã đề thi.
-                    PreparedStatement updatePst = c.prepareStatement(updateSql);
-                    updatePst.setInt(1, LMD);
-                    updatePst.setString(2, maTK);
-                    updatePst.executeUpdate();
-                    countUpdate++;
-                } else {
-                    // 2b. THÊM MỚI (INSERT): Nếu chưa tồn tại, tạo một bản ghi mới.
-                    PreparedStatement insertPst = c.prepareStatement(insertSql);
-                    insertPst.setString(1, maTK);
-                    insertPst.setInt(2, LMD);
-                    insertPst.executeUpdate();
-                    countInsert++;
+                    PreparedStatement deletePst = c.prepareStatement(deleteSql);
+                    deletePst.setString(1, maTK);
+                    deletePst.setInt(2, LMD);
+                    deletePst.executeUpdate();
+                    countDelete++;
                 }
             }
 
-            // Hiển thị thông báo tổng kết kết quả.
             JOptionPane.showMessageDialog(this,
-                " Đã gán mới cho " + countInsert + " SV, cập nhật cho " + countUpdate + " SV.");
+                "Đã bỏ gán " + countDelete + " đề thi cho các sinh viên được chọn.");
 
-            // Tải lại danh sách để cập nhật trạng thái trên giao diện ngay lập tức.
-            showNguoiThi();
-
+            showNguoiThi(); // Cập nhật lại danh sách hiển thị
         } catch (SQLException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, " Lỗi khi gán đề thi.\n" + e.getMessage(),
-                    "Lỗi SQL", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, 
+                "Lỗi khi bỏ gán đề thi.\n" + e.getMessage(),
+                "Lỗi SQL", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_bt_GanDTActionPerformed
 
@@ -337,6 +331,10 @@ public class AssignEX extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_cb_LopActionPerformed
 
+    private void bt_GanDT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GanDT1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_GanDT1ActionPerformed
+
     
     //======================================================================================================================================================================
     public static void main(String args[]) {
@@ -345,6 +343,7 @@ public class AssignEX extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_GanDT;
+    private javax.swing.JButton bt_GanDT1;
     private javax.swing.JComboBox<String> cb_Lop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

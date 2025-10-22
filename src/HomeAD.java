@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class HomeAD extends javax.swing.JFrame {
     private boolean check = false;
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     private static String MTK;
     private MaHoa_AD TMH = new MaHoa_AD();
     
@@ -21,7 +21,7 @@ public class HomeAD extends javax.swing.JFrame {
        TMH.getTMH_Admin(check);
        initComponents(); // Khởi tạo các thành phần giao diện.
        setLocationRelativeTo(null);
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         showDeThi(); // Tải và hiển thị danh sách đề thi lên bảng.
         // kiemTraDangNhap(); // GHI CHÚ: Phương thức này nên được gọi ở đây để bảo mật.
         
@@ -49,14 +49,16 @@ public class HomeAD extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
      private void showDeThi() {
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // Chuẩn bị câu lệnh SQL để lấy thông tin đề thi và đếm số câu hỏi tương ứng.
             // LEFT JOIN: Để đảm bảo những đề thi chưa có câu hỏi nào vẫn được hiển thị (với số lượng câu là 0).
             // GROUP BY: Bắt buộc phải có khi sử dụng hàm tổng hợp như COUNT().
             PreparedStatement Pst = c.prepareStatement(
-                "SELECT dethi.MD, dethi.NoidungDeThi, COUNT(ctdt.IDCau) AS SOLUONGCAU, dethi.ThoiGian, dethi.NgayThi "
+
+                "SELECT dethi.MD, dethi.NoidungDeThi, COUNT(DISTINCT thi.MaTaiKhoan) AS soluongnguoith, COUNT(DISTINCT ctdt.IDCau) AS SOLUONGCAU, dethi.ThoiGian, dethi.NgayThi, thi.trangthai "
                 + "FROM dethi "
                 + "LEFT JOIN ctdt ON ctdt.MD = dethi.MD "
+                + "LEFT JOIN thi ON thi.MD = dethi.MD "
                 + "GROUP BY dethi.MD, dethi.NoidungDeThi, dethi.ThoiGian, dethi.NgayThi" // Sửa lại group by cho đúng
             );
             ResultSet rs = Pst.executeQuery();
@@ -65,12 +67,19 @@ public class HomeAD extends javax.swing.JFrame {
 
             // Lặp qua từng dòng kết quả và thêm vào bảng.
             while (rs.next()) {
+                String trangthaidethi = "";
+                if(rs.getInt("trangthai") == 0){
+                    trangthaidethi = "Chưa Sẵn Sàng";
+                }else
+                    trangthaidethi = "Sẵn Sàng";
                 Object[] o = {
                     rs.getInt("MD"),
                     rs.getString("NoidungDeThi"),
                     rs.getDate("NgayThi"),
                     rs.getInt("ThoiGian"),
                     rs.getInt("SOLUONGCAU"),
+                    trangthaidethi,
+                    rs.getInt("soluongnguoith")
                 };
                 tm.addRow(o);
             }
@@ -120,6 +129,8 @@ public class HomeAD extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tb = new javax.swing.JTable();
         bt_ganDT = new javax.swing.JButton();
+        bt_ganDT1 = new javax.swing.JButton();
+        bt_ganDT2 = new javax.swing.JButton();
         jMenuBar3 = new javax.swing.JMenuBar();
         mn_QLDT = new javax.swing.JMenu();
         mn_QLND = new javax.swing.JMenu();
@@ -373,13 +384,13 @@ public class HomeAD extends javax.swing.JFrame {
 
         tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã Đề", "Đề Thi", "Ngày Thi", "Thời Gian Thi", "Tổng Số Câu "
+                "Mã Đề", "Đề Thi", "Ngày Thi", "Thời Gian Thi", "Tổng Số Câu ", "Trạng Thái", "Số lượng người thi"
             }
         ));
         jScrollPane3.setViewportView(tb);
@@ -387,10 +398,30 @@ public class HomeAD extends javax.swing.JFrame {
         bt_ganDT.setBackground(new java.awt.Color(66, 99, 235));
         bt_ganDT.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         bt_ganDT.setForeground(new java.awt.Color(255, 255, 255));
-        bt_ganDT.setText("Gán Đề Thi");
+        bt_ganDT.setText("Assign");
         bt_ganDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_ganDTActionPerformed(evt);
+            }
+        });
+
+        bt_ganDT1.setBackground(new java.awt.Color(66, 99, 235));
+        bt_ganDT1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_ganDT1.setForeground(new java.awt.Color(255, 255, 255));
+        bt_ganDT1.setText("Ready");
+        bt_ganDT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_ganDT1ActionPerformed(evt);
+            }
+        });
+
+        bt_ganDT2.setBackground(new java.awt.Color(66, 99, 235));
+        bt_ganDT2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_ganDT2.setForeground(new java.awt.Color(255, 255, 255));
+        bt_ganDT2.setText("Not Ready");
+        bt_ganDT2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_ganDT2ActionPerformed(evt);
             }
         });
 
@@ -476,13 +507,18 @@ public class HomeAD extends javax.swing.JFrame {
                                 .addGap(0, 671, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 646, Short.MAX_VALUE)
-                        .addComponent(bt_ganDT)
-                        .addGap(33, 33, 33))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(277, 277, 277))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(277, 277, 277))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(bt_ganDT)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_ganDT1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bt_ganDT2)
+                                .addGap(60, 60, 60))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,7 +530,10 @@ public class HomeAD extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bt_ganDT)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_ganDT)
+                    .addComponent(bt_ganDT1)
+                    .addComponent(bt_ganDT2))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -610,6 +649,46 @@ public class HomeAD extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Bạn đã Đăng Xuất Tài Khoản!");
     }//GEN-LAST:event_mnItem_DangXuatMouseClicked
 
+    private void bt_ganDT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ganDT1ActionPerformed
+         try(Connection c = kn.c()){
+            PreparedStatement Pst = c.prepareStatement("select * from thi where MD = ?"); Pst.setInt(1,Integer.parseInt(tb.getValueAt(tb.getSelectedRow(),0).toString()));
+            ResultSet rs = Pst.executeQuery();
+            if(rs.next()){
+                    if(rs.getInt("trangthai") == 0){
+                        PreparedStatement pst = c.prepareStatement("update thi set trangthai = ? where MD = ?");
+                        pst.setInt(1,1);
+                        pst.setInt(2,Integer.parseInt(tb.getValueAt(tb.getSelectedRow(),0).toString()));
+                        pst.executeUpdate();
+                        showDeThi();
+                    }else
+                    JOptionPane.showMessageDialog(null,"Đề thi này đã trạng thái sẵn sàng");
+            }
+        }catch(Exception e){
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_ganDT1ActionPerformed
+
+    private void bt_ganDT2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ganDT2ActionPerformed
+        try(Connection c = kn.c()){
+            PreparedStatement Pst = c.prepareStatement("select * from thi where MD = ?"); Pst.setInt(1,Integer.parseInt(tb.getValueAt(tb.getSelectedRow(),0).toString()));
+            ResultSet rs = Pst.executeQuery();
+            if(rs.next()){
+                if(rs.getInt("trangthai") == 1){
+                    PreparedStatement pst = c.prepareStatement("update thi set trangthai = ? where MD = ?");
+                    pst.setInt(1,0);
+                    pst.setInt(2,Integer.parseInt(tb.getValueAt(tb.getSelectedRow(),0).toString()));
+                    pst.executeUpdate();
+                    showDeThi();
+                }else
+                JOptionPane.showMessageDialog(null,"Đề thi này đã trạng thái hũy sẵn sàng");
+            }
+        }catch(Exception e){
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_ganDT2ActionPerformed
+
     
     //======================================================================================================================================================================
     public static void main(String args[]) {
@@ -622,6 +701,8 @@ public class HomeAD extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_ganDT;
+    private javax.swing.JButton bt_ganDT1;
+    private javax.swing.JButton bt_ganDT2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

@@ -4,10 +4,11 @@ import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 
 public class HomeUser extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     private static String MTK;
     private static int made;
     
@@ -17,7 +18,7 @@ public class HomeUser extends javax.swing.JFrame {
         this.MTK = MTK;
         this.made = mde;
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
         // Kiểm tra xem người dùng đã làm bài thi này trước đó chưa.
         if (!kiemtraBaiLam()) {
@@ -30,12 +31,13 @@ public class HomeUser extends javax.swing.JFrame {
         
         // Tải và hiển thị thông tin của người dùng và đề thi lên giao diện.
         xuatthongtinUSER();
+        xuatDethi();
     }
     
     
     //======================================================================================================================================================================
     private void xuatthongtinUSER() {
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // Chuẩn bị câu lệnh SQL để lấy thông tin từ nhiều bảng.
             // Cú pháp JOIN bằng dấu phẩy là cú pháp cũ, nên dùng JOIN...ON để rõ ràng hơn.
             PreparedStatement Pst = c.prepareStatement(
@@ -62,11 +64,31 @@ public class HomeUser extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+     private void xuatDethi() {
+        try (Connection c = kn.c()) {
+            String sql = "select NoidungDeThi from dethi, thi where dethi.MD = thi.MD and MaTaiKhoan = ?";
+
+            PreparedStatement pst = c.prepareStatement(sql);
+            pst.setString(1, MTK); // MTK là mã tài khoản hiện tại
+
+            ResultSet rs = pst.executeQuery();
+
+            cbde.removeAllItems();
+            while (rs.next()) {
+                cbde.addItem(rs.getString("NoidungDeThi"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, 
+                "Lỗi khi tải danh sách đề thi: " + e.getMessage());
+        }
+    }
+
     
     //======================================================================================================================================================================
     private boolean kiemtraBaiLam() {
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // Truy vấn bảng `dakt` (có thể là "đã kiểm tra") để tìm bản ghi.
             PreparedStatement pst = c.prepareStatement(
                 "SELECT * FROM lichsuthi WHERE MaTaiKhoan = ? AND MaDe = ?"
@@ -101,9 +123,10 @@ public class HomeUser extends javax.swing.JFrame {
         lbl_dethi = new javax.swing.JLabel();
         lbl_time = new javax.swing.JLabel();
         bt_LichSu = new javax.swing.JButton();
+        cbde = new javax.swing.JComboBox<>();
+        lb_trangthai = new javax.swing.JLabel();
+        bt_LichSu1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -157,12 +180,24 @@ public class HomeUser extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        cbde.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbdeActionPerformed(evt);
+            }
+        });
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        lb_trangthai.setText("Trạng Thái:");
 
+        bt_LichSu1.setBackground(new java.awt.Color(66, 99, 235));
+        bt_LichSu1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        bt_LichSu1.setForeground(new java.awt.Color(255, 255, 255));
+        bt_LichSu1.setText("ĐĂNG XUẤT");
+        bt_LichSu1.setFocusPainted(false);
+        bt_LichSu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_LichSu1ActionPerformed(evt);
+            }
+        });
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,15 +227,25 @@ public class HomeUser extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_LichSu1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bt_LichSu)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbde, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addComponent(lb_trangthai, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bt_LichSu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_LichSu)
+                    .addComponent(bt_LichSu1))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_ten)
                     .addComponent(lbl_mtk))
@@ -208,21 +253,43 @@ public class HomeUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nganh)
                     .addComponent(lbl_lop))
-                .addGap(85, 85, 85)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lb_trangthai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbde, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_dethi, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_thi, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_time))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private boolean KTtrangthaithi(){
+        try(Connection c = kn.c()){
+            PreparedStatement Pst = c.prepareStatement("select thi.* from thi, dethi "
+                                                     + "where MaTaiKhoan = ? and dethi.NoidungDeThi = ? "
+                                                     + "and thi.MD = dethi.MD"); 
+            Pst.setString(1,MTK);
+            Pst.setString(2,cbde.getSelectedItem().toString());
+            ResultSet rs = Pst.executeQuery();
+            if(rs.next()){
+                if(rs.getInt("trangthai") == 0){
+                    lb_trangthai.setText("Bài thi chưa sẵn sàng");
+                    return false;
+                }
+            }
+        }catch(Exception e){
+            
+        }
+        return true;
+    }
     
     //======================================================================================================================================================================
     private void bt_thiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_thiActionPerformed
-         try (Connection c = ctn.c()) {
+         try (Connection c = kn.c()) {
             // 1. Lấy lại mã đề thi được gán cho tài khoản này (để đảm bảo chắc chắn).
             PreparedStatement pst = c.prepareStatement("SELECT MD FROM thi WHERE MaTaiKhoan = ?");
             pst.setString(1, MTK);
@@ -261,6 +328,57 @@ public class HomeUser extends javax.swing.JFrame {
         this.dispose(); // Đóng form hiện tại.
     }//GEN-LAST:event_bt_LichSuActionPerformed
 
+    private void cbdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbdeActionPerformed
+        try (Connection c = kn.c()) {
+            String sql = "SELECT thi.MD, thi.trangthai, NoidungDeThi, ThoiGian " +
+                         "FROM dethi, thi " +
+                         "WHERE dethi.MD = thi.MD " +
+                         "AND dethi.NoidungDeThi = ? " +
+                         "AND thi.MaTaiKhoan = ?";
+
+            PreparedStatement pst = c.prepareStatement(sql);
+            pst.setString(1, cbde.getSelectedItem().toString());
+            pst.setString(2, MTK);
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                if (!KTtrangthaithi()){
+                    lbl_dethi.setText("Tên Đề Thi: "+rs.getString("NoidungDeThi").toUpperCase());
+                    lbl_time.setText("Thời Gian Làm Bài: "+rs.getInt("ThoiGian"));
+                    lb_trangthai.setText("Bài Thi Chưa Sẵn Sàng");
+                    bt_thi.setEnabled(false);
+                } else {
+                    lbl_dethi.setText("Tên Đề Thi: "+rs.getString("NoidungDeThi").toUpperCase());
+                    lbl_time.setText("Thời Gian Làm Bài: "+rs.getInt("ThoiGian"));
+                    lb_trangthai.setText("Bài Thi Sẵn Sàng");
+                    made = rs.getInt("MD");
+                    // Cập nhật thông tin đề thi đã chọn
+                    if (!kiemtraBaiLam()) {
+                        // Nếu đã làm rồi (hàm trả về false), vô hiệu hóa nút "THI NGAY".
+                        lb_trangthai.setText("Bài Thi Đã Thực Hiện");
+                        bt_thi.setEnabled(false);
+                    } else {
+                        // Nếu chưa làm, cho phép nhấn nút "THI NGAY".
+                        bt_thi.setEnabled(true);
+                        xuatthongtinUSER();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, 
+                "Lỗi khi kiểm tra trạng thái đề thi: " + e.getMessage());
+        }
+            // TODO add your handling code here:
+    }//GEN-LAST:event_cbdeActionPerformed
+
+    private void bt_LichSu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_LichSu1ActionPerformed
+        new GoiGDN(new Login());
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_LichSu1ActionPerformed
+
     
     //======================================================================================================================================================================
     public static void main(String args[]) {
@@ -270,12 +388,13 @@ public class HomeUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_LichSu;
+    private javax.swing.JButton bt_LichSu1;
     private javax.swing.JButton bt_thi;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JComboBox<String> cbde;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lb_trangthai;
     private javax.swing.JLabel lbl_dethi;
     private javax.swing.JLabel lbl_lop;
     private javax.swing.JLabel lbl_mtk;

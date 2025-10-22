@@ -177,8 +177,11 @@ public class CreateEX extends javax.swing.JFrame {
     
     private void bt_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ThemActionPerformed
         // Lấy Mã Câu hỏi (MC) từ dòng đang được chọn trong bảng (cột đầu tiên, index 0).
+        int[] selectrow = tb.getSelectedRows();
         int LMC = Integer.parseInt(tb.getValueAt(tb.getSelectedRow(), 0).toString());
+        int count = 0;
         try(Connection c = ctn.c()){
+            for(int row : selectrow){
             // Chuẩn bị câu lệnh INSERT để tạo một bản ghi mới trong bảng `ctdt`.
             // Bảng `ctdt` là bảng trung gian, lưu mối quan hệ giữa câu hỏi và đề thi.
             PreparedStatement Pst = c.prepareStatement("INSERT INTO `ctdt`(`MC`, `MD`) VALUES (?,?)");
@@ -189,6 +192,9 @@ public class CreateEX extends javax.swing.JFrame {
             Pst.executeUpdate();
             // Sau khi thêm thành công, gọi lại hàm `showCauhoi()` để làm mới danh sách.
             // Câu hỏi vừa được thêm sẽ biến mất khỏi bảng này.
+            count++;
+            }
+            JOptionPane.showConfirmDialog(null,"Đã thêm " + count+" vào đề ["+LMD+"]");
             showCauhoi();
         }catch(Exception e){
             // Khối catch trống.
