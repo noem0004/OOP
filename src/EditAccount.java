@@ -54,7 +54,7 @@ public class EditAccount extends javax.swing.JFrame {
                 // Điền thông tin lấy được vào các thành phần trên giao diện.
                 txt_TenTaikhoan.setText(rs.getString("TenDangNhap"));
                 txt_Matkhau.setText(rs.getString("MatKhau")); // GHI CHÚ: Mật khẩu hiển thị ở đây có thể là dạng đã mã hóa.
-                lb_TenNguoidung.setText(rs.getString("HoTen"));
+                lbl_tendangnhap.setText(rs.getString("HoTen"));
                 // Kiểm tra vai trò và chọn mục tương ứng trong ComboBox.
                 if(rs.getString("PhanLoai").equals("NT"))
                     cb_vaitro.setSelectedItem("Sinh Viên");
@@ -72,7 +72,7 @@ public class EditAccount extends javax.swing.JFrame {
     private void initComponents() {
 
         txt_TenTaikhoan = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_tendangnhap = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txt_Matkhau = new javax.swing.JTextField();
         cb_vaitro = new javax.swing.JComboBox<>();
@@ -87,9 +87,9 @@ public class EditAccount extends javax.swing.JFrame {
         txt_TenTaikhoan.setForeground(new java.awt.Color(26, 32, 44));
         txt_TenTaikhoan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(113, 128, 150));
-        jLabel1.setText("Tên Đăng Nhập");
+        lbl_tendangnhap.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_tendangnhap.setForeground(new java.awt.Color(113, 128, 150));
+        lbl_tendangnhap.setText("Tên Đăng Nhập");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(113, 128, 150));
@@ -137,7 +137,7 @@ public class EditAccount extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_TenTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
+                            .addComponent(lbl_tendangnhap)
                             .addComponent(jLabel2)
                             .addComponent(txt_Matkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
@@ -153,7 +153,7 @@ public class EditAccount extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addComponent(lbl_tendangnhap)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_TenTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -232,10 +232,10 @@ public class EditAccount extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_CapNhat;
     private javax.swing.JComboBox<String> cb_vaitro;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lbl_tendangnhap;
     private javax.swing.JTextField txt_Matkhau;
     private javax.swing.JTextField txt_TenTaikhoan;
     // End of variables declaration//GEN-END:variables
