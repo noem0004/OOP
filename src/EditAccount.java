@@ -109,7 +109,7 @@ public class EditAccount extends javax.swing.JFrame {
         jLabel4.setText("Vai Trò");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(26, 32, 44));
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("SỬA TÀI KHOẢN");
 

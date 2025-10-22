@@ -105,6 +105,8 @@ public class CreateEX extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình thi trắc nghiệm");
 
+        tb.setBackground(new java.awt.Color(204, 204, 204));
+        tb.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -124,6 +126,7 @@ public class CreateEX extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tb.setToolTipText("");
         jScrollPane1.setViewportView(tb);
 
         bt_Them.setBackground(new java.awt.Color(66, 99, 235));
@@ -139,6 +142,7 @@ public class CreateEX extends javax.swing.JFrame {
         });
 
         lbl_Dethi.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbl_Dethi.setForeground(new java.awt.Color(102, 102, 102));
         lbl_Dethi.setText("Quản lý câu hỏi");
         lbl_Dethi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(226, 232, 240)));
 
@@ -156,7 +160,7 @@ public class CreateEX extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bt_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bt_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

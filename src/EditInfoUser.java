@@ -161,7 +161,6 @@ public class EditInfoUser extends javax.swing.JFrame {
         bt_CapNhat.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         bt_CapNhat.setForeground(new java.awt.Color(255, 255, 255));
         bt_CapNhat.setText("Cập Nhật Thông Tin");
-        bt_CapNhat.setActionCommand("Cập Nhật Thông Tin");
         bt_CapNhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_CapNhatActionPerformed(evt);
@@ -189,6 +188,7 @@ public class EditInfoUser extends javax.swing.JFrame {
         jLabel5.setText("Họ Tên");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("CẬP NHẬT THÔNG TIN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

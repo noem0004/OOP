@@ -123,8 +123,9 @@ public class AssignEX extends javax.swing.JFrame {
         setTitle("Chương trình thi trắc nghiệm");
         setBackground(new java.awt.Color(255, 255, 255));
 
+        tb.setBackground(new java.awt.Color(204, 204, 204));
         tb.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        tb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -145,6 +146,7 @@ public class AssignEX extends javax.swing.JFrame {
             }
         });
         tb.setRowHeight(35);
+        tb.setSelectionForeground(new java.awt.Color(102, 102, 102));
         jScrollPane1.setViewportView(tb);
 
         lbl_Dethi.setText(" ");
@@ -152,7 +154,7 @@ public class AssignEX extends javax.swing.JFrame {
         bt_GanDT.setBackground(new java.awt.Color(66, 99, 235));
         bt_GanDT.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         bt_GanDT.setForeground(new java.awt.Color(255, 255, 255));
-        bt_GanDT.setText("Bỏ Gán");
+        bt_GanDT.setText("Assign");
         bt_GanDT.setBorderPainted(false);
         bt_GanDT.setFocusPainted(false);
         bt_GanDT.addActionListener(new java.awt.event.ActionListener() {
@@ -174,13 +176,13 @@ public class AssignEX extends javax.swing.JFrame {
         jLabel1.setText("Gán Theo Lớp");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(26, 32, 44));
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Quản lý gán đề thi");
 
         bt_GanDT1.setBackground(new java.awt.Color(66, 99, 235));
         bt_GanDT1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         bt_GanDT1.setForeground(new java.awt.Color(255, 255, 255));
-        bt_GanDT1.setText("Gán");
+        bt_GanDT1.setText("Un Assign");
         bt_GanDT1.setBorderPainted(false);
         bt_GanDT1.setFocusPainted(false);
         bt_GanDT1.addActionListener(new java.awt.event.ActionListener() {
@@ -202,15 +204,18 @@ public class AssignEX extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_Lop, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_GanDT1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bt_GanDT)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bt_GanDT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bt_GanDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_Dethi)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(417, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,8 +246,104 @@ public class AssignEX extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void bt_GanDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GanDTActionPerformed
-           // Lấy tất cả các hàng đang được chọn trong bảng (hỗ trợ chọn nhiều sinh viên cùng lúc).
-       int[] selectedRows = tb.getSelectedRows();
+          int[] selectedRows = tb.getSelectedRows();
+
+        // Nếu không có sinh viên nào được chọn, thông báo và dừng lại.
+        if (selectedRows.length == 0) {
+            JOptionPane.showMessageDialog(this, "Hãy chọn ít nhất một sinh viên để gán đề.");
+            return;
+        }
+
+        // Hiển thị hộp thoại xác nhận trước khi thực hiện hành động quan trọng.
+        int confirm = JOptionPane.showConfirmDialog(this, 
+            "Gán đề số " + LMD + " cho " + selectedRows.length + " sinh viên đã chọn?",
+            "Xác nhận", JOptionPane.YES_NO_OPTION);
+
+        // Nếu người dùng không chọn "YES", dừng lại.
+        if (confirm != JOptionPane.YES_OPTION) return;
+
+        // Chuẩn bị các câu lệnh SQL cho việc "UPSERT" (UPDATE hoặc INSERT).
+        String checkSql = "SELECT * FROM thi WHERE MaTaiKhoan = ? AND MD = ?"; 
+        String insertSql = "INSERT INTO thi (MaTaiKhoan, MD, trangthai) VALUES (?, ?, ?)"; 
+
+
+        int countInsert = 0;
+
+        try (Connection c = kn.c()) {
+            for (int row : selectedRows) {
+                String maTK = tb.getValueAt(row, 1).toString();
+
+                PreparedStatement checkPst = c.prepareStatement(checkSql);
+                checkPst.setString(1, maTK);
+                checkPst.setInt(2, LMD);
+                ResultSet rs = checkPst.executeQuery();
+
+                if (!rs.next()) {
+                    PreparedStatement insertPst = c.prepareStatement(insertSql);
+                    insertPst.setString(1, maTK);
+                    insertPst.setInt(2, LMD);
+                    insertPst.setInt(3, 0); // trạng thái ban đầu (nếu có)
+                    insertPst.executeUpdate();
+                    countInsert++;
+                }
+            }
+
+            JOptionPane.showMessageDialog(this,
+                "Đã gán mới " + countInsert + " đề thi cho các sinh viên được chọn.");
+
+            showNguoiThi();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, 
+                "Lỗi khi gán đề thi.\n" + e.getMessage(),
+                "Lỗi SQL", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bt_GanDTActionPerformed
+
+    private void cb_LopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_LopActionPerformed
+
+        lbl_Dethi.setText("Gán Mã Đề Thi Số: " + LMD);
+ 
+        try (Connection c = kn.c()){
+            PreparedStatement pst = c.prepareStatement("SELECT dn.MaTaiKhoan, dn.TenDangNhap, tt.HoTen, l.TenLop, n.TenNganh, t.MD AS MaDeThi " + 
+                "FROM ttnguoithi tt " +
+                "JOIN dang_nhap dn ON tt.MaTaiKhoan = dn.MaTaiKhoan " +
+                "JOIN lop l ON tt.MaLop = l.MaLop " +
+                "JOIN nganh n ON tt.MaNganh = n.MaNganh " +
+                "JOIN thi t ON dn.MaTaiKhoan = t.MaTaiKhoan " +
+                "WHERE dn.phanloai = ? AND TenLop = ?"); 
+                pst.setString(1,"NT");
+                pst.setString(2,cb_Lop.getSelectedItem().toString());
+                ResultSet rs = pst.executeQuery();
+
+            DefaultTableModel tm = (DefaultTableModel) tb.getModel();
+            tm.setRowCount(0); // Xóa dữ liệu cũ trên bảng.
+
+            while (rs.next()) {
+                Object maDe = rs.getObject("MaDeThi"); // Dùng getObject để xử lý NULL dễ dàng.
+                // Tạo chuỗi trạng thái dựa trên việc mã đề có NULL hay không.
+                String trangThai = (maDe == null) ? "Chưa có đề" : "Đã có đề (" + maDe + ")";
+                
+                // Thêm một dòng mới vào bảng với thông tin đã xử lý.
+                tm.addRow(new Object[]{
+                    trangThai,
+                    rs.getString("MaTaiKhoan"),
+                    rs.getString("TenDangNhap"),
+                    rs.getString("HoTen"),
+                    rs.getString("TenLop"),
+                    rs.getString("TenNganh")
+                });
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Lỗi khi tải danh sách thí sinh.", "Lỗi SQL", JOptionPane.ERROR_MESSAGE);
+        } 
+    }//GEN-LAST:event_cb_LopActionPerformed
+
+    private void bt_GanDT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GanDT1ActionPerformed
+        
+        int[] selectedRows = tb.getSelectedRows();
 
         if (selectedRows.length == 0) {
             JOptionPane.showMessageDialog(this, "Hãy chọn ít nhất một sinh viên để bỏ gán đề.");
@@ -289,49 +390,6 @@ public class AssignEX extends javax.swing.JFrame {
                 "Lỗi khi bỏ gán đề thi.\n" + e.getMessage(),
                 "Lỗi SQL", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_bt_GanDTActionPerformed
-
-    private void cb_LopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_LopActionPerformed
-
-        lbl_Dethi.setText("Gán Mã Đề Thi Số: " + LMD);
- 
-        try (Connection c = kn.c()){
-            PreparedStatement pst = c.prepareStatement("SELECT dn.MaTaiKhoan, dn.TenDangNhap, tt.HoTen, l.TenLop, n.TenNganh, t.MD AS MaDeThi " + 
-                "FROM ttnguoithi tt " +
-                "JOIN dang_nhap dn ON tt.MaTaiKhoan = dn.MaTaiKhoan " +
-                "JOIN lop l ON tt.MaLop = l.MaLop " +
-                "JOIN nganh n ON tt.MaNganh = n.MaNganh " +
-                "JOIN thi t ON dn.MaTaiKhoan = t.MaTaiKhoan " +
-                "WHERE dn.phanloai = ? AND TenLop = ?"); 
-                pst.setString(1,"NT");
-                pst.setString(2,cb_Lop.getSelectedItem().toString());
-                ResultSet rs = pst.executeQuery();
-
-            DefaultTableModel tm = (DefaultTableModel) tb.getModel();
-            tm.setRowCount(0); // Xóa dữ liệu cũ trên bảng.
-
-            while (rs.next()) {
-                Object maDe = rs.getObject("MaDeThi"); // Dùng getObject để xử lý NULL dễ dàng.
-                // Tạo chuỗi trạng thái dựa trên việc mã đề có NULL hay không.
-                String trangThai = (maDe == null) ? "Chưa có đề" : "Đã có đề (" + maDe + ")";
-                
-                // Thêm một dòng mới vào bảng với thông tin đã xử lý.
-                tm.addRow(new Object[]{
-                    trangThai,
-                    rs.getString("MaTaiKhoan"),
-                    rs.getString("TenDangNhap"),
-                    rs.getString("HoTen"),
-                    rs.getString("TenLop"),
-                    rs.getString("TenNganh")
-                });
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Lỗi khi tải danh sách thí sinh.", "Lỗi SQL", JOptionPane.ERROR_MESSAGE);
-        } 
-    }//GEN-LAST:event_cb_LopActionPerformed
-
-    private void bt_GanDT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_GanDT1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_GanDT1ActionPerformed
 

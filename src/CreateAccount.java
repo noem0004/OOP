@@ -96,19 +96,19 @@ public class CreateAccount extends javax.swing.JFrame {
 
         txt_TenDangnhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txt_TenDangnhap.setForeground(new java.awt.Color(26, 32, 16));
-        txt_TenDangnhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        txt_TenDangnhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
         txt_TaoMatkhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txt_TaoMatkhau.setForeground(new java.awt.Color(26, 32, 44));
-        txt_TaoMatkhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        txt_TaoMatkhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
         txt_XacNhanMatkhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txt_XacNhanMatkhau.setForeground(new java.awt.Color(26, 32, 44));
-        txt_XacNhanMatkhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        txt_XacNhanMatkhau.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
         Cb_Vaitro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         Cb_Vaitro.setForeground(new java.awt.Color(26, 32, 44));
         Cb_Vaitro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giảng Viên", "Sinh Viên" }));
+        Cb_Vaitro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(113, 128, 150));
@@ -135,6 +135,7 @@ public class CreateAccount extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("TẠO TÀI KHOẢN");
 

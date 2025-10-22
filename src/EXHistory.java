@@ -123,6 +123,8 @@ public class EXHistory extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình thi trắc nghiệm");
 
+        tb.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
+        tb.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -141,6 +143,7 @@ public class EXHistory extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tb);
 
+        txp_ttct.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         jScrollPane2.setViewportView(txp_ttct);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

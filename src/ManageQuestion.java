@@ -88,7 +88,9 @@ public class ManageQuestion extends javax.swing.JFrame {
         reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình thi trắc nghiệm");
 
+        tb.setBackground(new java.awt.Color(204, 204, 204));
         tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -138,6 +140,7 @@ public class ManageQuestion extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("QUẢN LÝ CÂU HỎI");
 
         reset.setBackground(new java.awt.Color(66, 99, 235));

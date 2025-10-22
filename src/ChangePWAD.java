@@ -45,11 +45,11 @@ public class ChangePWAD extends javax.swing.JFrame {
 
         txt_MKC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txt_MKC.setForeground(new java.awt.Color(26, 32, 44));
-        txt_MKC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        txt_MKC.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
         txt_MKM.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txt_MKM.setForeground(new java.awt.Color(26, 32, 44));
-        txt_MKM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        txt_MKM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(113, 128, 150));
@@ -72,6 +72,7 @@ public class ChangePWAD extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("ĐỔI MẬT KHẨU QUẢN TRỊ VIÊN");
 

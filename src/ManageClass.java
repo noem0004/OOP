@@ -152,6 +152,7 @@ public class ManageClass extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tb.setBackground(new java.awt.Color(204, 204, 204));
         tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},

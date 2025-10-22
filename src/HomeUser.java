@@ -126,6 +126,7 @@ public class HomeUser extends javax.swing.JFrame {
         cbde = new javax.swing.JComboBox<>();
         lb_trangthai = new javax.swing.JLabel();
         bt_LichSu1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jTextArea1.setColumns(20);
@@ -133,6 +134,7 @@ public class HomeUser extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương ttrinhf thi trắc nghiệm");
 
         bt_thi.setBackground(new java.awt.Color(66, 99, 235));
         bt_thi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -198,6 +200,10 @@ public class HomeUser extends javax.swing.JFrame {
                 bt_LichSu1ActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setText("Phút");
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -213,7 +219,9 @@ public class HomeUser extends javax.swing.JFrame {
                             .addComponent(lbl_nganh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(lbl_time)))
+                        .addComponent(lbl_time)
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -261,7 +269,8 @@ public class HomeUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_dethi, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_thi, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_time))
+                    .addComponent(lbl_time)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(124, Short.MAX_VALUE))
         );
 
@@ -391,6 +400,7 @@ public class HomeUser extends javax.swing.JFrame {
     private javax.swing.JButton bt_LichSu1;
     private javax.swing.JButton bt_thi;
     private javax.swing.JComboBox<String> cbde;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;

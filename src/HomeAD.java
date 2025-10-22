@@ -24,7 +24,18 @@ public class HomeAD extends javax.swing.JFrame {
         kn.c(); // Mở kết nối CSDL.
         showDeThi(); // Tải và hiển thị danh sách đề thi lên bảng.
         // kiemTraDangNhap(); // GHI CHÚ: Phương thức này nên được gọi ở đây để bảo mật.
-        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        // Thêm một bộ lắng nghe sự kiện để xử lý việc đóng cửa sổ.
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                // Khi đóng cửa sổ, quay trở lại giao diện chính của admin.
+                new Login().setVisible(true);
+                // Đóng form hiện tại.
+                dispose();
+            }
+        });
     }
     
     
@@ -136,10 +147,10 @@ public class HomeAD extends javax.swing.JFrame {
         mn_QLND = new javax.swing.JMenu();
         mn_QLL = new javax.swing.JMenu();
         mn_QLKQ = new javax.swing.JMenu();
-        mn_QLCH = new javax.swing.JMenu();
         mn_caidat = new javax.swing.JMenu();
         mnItem_DoiMK = new javax.swing.JMenu();
         mnItem_DangXuat = new javax.swing.JMenu();
+        mn_QLCH = new javax.swing.JMenu();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jFrame1.setTitle("Trang Chủ : ADMIN");
@@ -374,14 +385,17 @@ public class HomeAD extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình thi trắc nghiệm");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("QUẢN TRỊ VIÊN");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(113, 128, 150));
         jLabel6.setText("Danh Sách Đề Thi");
 
+        tb.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -425,6 +439,11 @@ public class HomeAD extends javax.swing.JFrame {
             }
         });
 
+        jMenuBar3.setBackground(new java.awt.Color(0, 102, 204));
+        jMenuBar3.setForeground(new java.awt.Color(255, 255, 255));
+
+        mn_QLDT.setBackground(new java.awt.Color(0, 153, 204));
+        mn_QLDT.setForeground(new java.awt.Color(255, 255, 255));
         mn_QLDT.setText("Quản Lí Đề Thi");
         mn_QLDT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -433,6 +452,8 @@ public class HomeAD extends javax.swing.JFrame {
         });
         jMenuBar3.add(mn_QLDT);
 
+        mn_QLND.setBackground(new java.awt.Color(0, 153, 204));
+        mn_QLND.setForeground(new java.awt.Color(255, 255, 255));
         mn_QLND.setText("Quản Lí Người Dùng");
         mn_QLND.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -441,6 +462,8 @@ public class HomeAD extends javax.swing.JFrame {
         });
         jMenuBar3.add(mn_QLND);
 
+        mn_QLL.setBackground(new java.awt.Color(0, 153, 204));
+        mn_QLL.setForeground(new java.awt.Color(255, 255, 255));
         mn_QLL.setText("Quản Lý Lớp");
         mn_QLL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -449,6 +472,8 @@ public class HomeAD extends javax.swing.JFrame {
         });
         jMenuBar3.add(mn_QLL);
 
+        mn_QLKQ.setBackground(new java.awt.Color(0, 153, 204));
+        mn_QLKQ.setForeground(new java.awt.Color(255, 255, 255));
         mn_QLKQ.setText("Quản Lý Kết Quả");
         mn_QLKQ.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -457,14 +482,8 @@ public class HomeAD extends javax.swing.JFrame {
         });
         jMenuBar3.add(mn_QLKQ);
 
-        mn_QLCH.setText("Quản Lý Câu Hỏi");
-        mn_QLCH.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mn_QLCHMouseClicked(evt);
-            }
-        });
-        jMenuBar3.add(mn_QLCH);
-
+        mn_caidat.setBackground(new java.awt.Color(0, 153, 204));
+        mn_caidat.setForeground(new java.awt.Color(255, 255, 255));
         mn_caidat.setText("Cài Đặt");
         mn_caidat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -487,6 +506,14 @@ public class HomeAD extends javax.swing.JFrame {
             }
         });
         mn_caidat.add(mnItem_DangXuat);
+
+        mn_QLCH.setText("Quản Lý Câu Hỏi");
+        mn_QLCH.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mn_QLCHMouseClicked(evt);
+            }
+        });
+        mn_caidat.add(mn_QLCH);
 
         jMenuBar3.add(mn_caidat);
 
@@ -534,7 +561,7 @@ public class HomeAD extends javax.swing.JFrame {
                     .addComponent(bt_ganDT)
                     .addComponent(bt_ganDT1)
                     .addComponent(bt_ganDT2))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();

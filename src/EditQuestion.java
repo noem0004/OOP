@@ -89,6 +89,7 @@ public class EditQuestion extends javax.swing.JFrame {
         lbl_MaCau = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình thi trắc nghiệm");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(113, 128, 150));
@@ -99,6 +100,7 @@ public class EditQuestion extends javax.swing.JFrame {
         C.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
 
         lbl_MaDe.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbl_MaDe.setForeground(new java.awt.Color(102, 102, 102));
         lbl_MaDe.setText("CẬP NHẬT CÂU HỎI");
 
         bt_SuaCauhoi.setBackground(new java.awt.Color(66, 99, 235));
@@ -154,6 +156,8 @@ public class EditQuestion extends javax.swing.JFrame {
         txt_DA.setForeground(new java.awt.Color(26, 32, 44));
         txt_DA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
 
+        lbl_MaCau.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_MaCau.setForeground(new java.awt.Color(102, 102, 102));
         lbl_MaCau.setText("Mã Câu:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

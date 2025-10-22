@@ -58,21 +58,22 @@ public class CreateQuestion extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình thi trắc nghiệm");
 
         txt_noidungch.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txt_noidungch.setForeground(new java.awt.Color(26, 32, 44));
-        txt_noidungch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        txt_noidungch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
         A.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        A.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        A.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
         B.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         B.setForeground(new java.awt.Color(26, 32, 44));
-        B.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        B.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
         C.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         C.setForeground(new java.awt.Color(26, 32, 44));
-        C.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        C.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(113, 128, 150));
@@ -96,7 +97,7 @@ public class CreateQuestion extends javax.swing.JFrame {
 
         D.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         D.setForeground(new java.awt.Color(26, 32, 44));
-        D.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        D.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(113, 128, 150));
@@ -105,7 +106,7 @@ public class CreateQuestion extends javax.swing.JFrame {
         cb_loai.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         cb_loai.setForeground(new java.awt.Color(26, 32, 44));
         cb_loai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Loại Đáp Án", "Một Đáp Án", "Nhiều Đáp Án" }));
-        cb_loai.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        cb_loai.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(113, 128, 150));
@@ -113,7 +114,7 @@ public class CreateQuestion extends javax.swing.JFrame {
 
         txt_dapan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txt_dapan.setForeground(new java.awt.Color(26, 32, 44));
-        txt_dapan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(203, 213, 224)));
+        txt_dapan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
 
         bt_TaoCauHoi.setBackground(new java.awt.Color(66, 99, 235));
         bt_TaoCauHoi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -128,7 +129,7 @@ public class CreateQuestion extends javax.swing.JFrame {
         });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(26, 32, 44));
+        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("TẠO CÂU HỎI");
 
@@ -160,11 +161,11 @@ public class CreateQuestion extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(txt_dapan, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(bt_TaoCauHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(bt_TaoCauHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -197,12 +198,14 @@ public class CreateQuestion extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cb_loai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_dapan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txt_dapan)
+                        .addGap(2, 2, 2)))
+                .addGap(27, 27, 27)
                 .addComponent(bt_TaoCauHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();

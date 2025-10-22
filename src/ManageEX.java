@@ -87,7 +87,10 @@ public class ManageEX extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình thi trắc nghiệm");
 
+        tb.setBackground(new java.awt.Color(204, 204, 204));
+        tb.setForeground(new java.awt.Color(51, 51, 51));
         tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -140,6 +143,7 @@ public class ManageEX extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("QUẢN LÝ ĐỀ THI");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

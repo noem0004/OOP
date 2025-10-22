@@ -171,6 +171,7 @@ public class Questionform extends javax.swing.JFrame {
         lbl_time = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình thi trắc nghiệm");
 
         lblCauHoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCauHoi.setText("jLabel1");
@@ -214,6 +215,7 @@ public class Questionform extends javax.swing.JFrame {
         });
 
         lbl_noidungdt.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lbl_noidungdt.setForeground(new java.awt.Color(102, 102, 102));
         lbl_noidungdt.setText("ĐỀ THI ");
 
         lbl_time.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -238,7 +240,9 @@ public class Questionform extends javax.swing.JFrame {
                                     .addComponent(D))
                                 .addGap(0, 483, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 419, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_noidungdt)
+                        .addGap(107, 107, 107)
                         .addComponent(bt_Nopbai, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,24 +250,20 @@ public class Questionform extends javax.swing.JFrame {
                                 .addGap(175, 175, 175)
                                 .addComponent(lbl_time))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
+                                .addGap(79, 79, 79)
                                 .addComponent(bt_ChTruoc, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
+                                .addGap(64, 64, 64)
                                 .addComponent(bt_ChTieptheo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(lbl_noidungdt)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_noidungdt)
-                .addGap(1, 1, 1)
-                .addComponent(bt_Nopbai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_Nopbai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_noidungdt))
                 .addGap(7, 7, 7)
                 .addComponent(lbl_time)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -276,11 +276,11 @@ public class Questionform extends javax.swing.JFrame {
                 .addComponent(C)
                 .addGap(18, 18, 18)
                 .addComponent(D)
-                .addGap(69, 69, 69)
+                .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_ChTieptheo)
                     .addComponent(bt_ChTruoc))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         pack();

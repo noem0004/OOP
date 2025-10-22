@@ -198,7 +198,6 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t Th&#xf4;ng Tin"/>
-        <Property name="actionCommand" type="java.lang.String" value="C&#x1ead;p Nh&#x1ead;t Th&#xf4;ng Tin"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_CapNhatActionPerformed"/>
@@ -263,6 +262,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="C&#x1eac;P NH&#x1eac;T TH&#xd4;NG TIN"/>
       </Properties>

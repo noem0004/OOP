@@ -11,7 +11,7 @@ import javax.swing.table.TableColumnModel;
 
 
 public class ManageUser extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     private boolean goi = false;
     private static String TNganh;
     private static String MLop;
@@ -20,13 +20,25 @@ public class ManageUser extends javax.swing.JFrame {
         this.TNganh = MNganh;
         initComponents();
         setLocationRelativeTo(null);
-        ctn.c();
+        kn.c();
         viewtableNganh();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        // Thêm một bộ lắng nghe sự kiện để xử lý việc đóng cửa sổ.
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                // Khi đóng cửa sổ, quay trở lại giao diện chính của admin.
+                new ManageClass().setVisible(true);
+                // Đóng form hiện tại.
+                dispose();
+            }
+        });
     }
     //======================================================================================================================================================================
     public ManageUser() {
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         showComboBox(); // Tải dữ liệu cho ComboBox Lớp (bộ lọc).
         showcomboxnganh(); // Tải dữ liệu cho ComboBox Ngành (bộ lọc).
         setcolWidth(tb); // Tùy chỉnh độ rộng cột của bảng.
@@ -50,7 +62,7 @@ public class ManageUser extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     void showComboBox(){
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             PreparedStatement ps = c.prepareStatement("select TenLop from `lop` where `TenLop` != ?");ps.setString(1,"");
             ResultSet rs= ps.executeQuery();
             while(rs.next()){
@@ -63,7 +75,7 @@ public class ManageUser extends javax.swing.JFrame {
     }
     
     public void showcomboxnganh(){
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             PreparedStatement Pst = c.prepareStatement("select `TenNganh` from `nganh` where `TenNganh` != ?");Pst.setString(1,"");
             ResultSet rs2 = Pst.executeQuery();
             while(rs2.next()){
@@ -83,7 +95,7 @@ public class ManageUser extends javax.swing.JFrame {
     
     public void viewtable(){
         
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             
                 // Chuẩn bị câu lệnh SQL sử dụng cú pháp join cũ (dùng dấu phẩy).
                 String sql = "SELECT `dang_nhap`.MaTaiKhoan, `dang_nhap`.TenDangNhap,`ttnguoithi`.HoTen, `ttnguoithi`.NgaySinh, `ttnguoithi`.SDT,`lop`.TenLop, `nganh`.TenNganh " +
@@ -117,7 +129,7 @@ public class ManageUser extends javax.swing.JFrame {
         cb_nganh1.setVisible(false);
         lbl_Lop.setVisible(false);
         lbl_Nganh.setVisible(false);
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             
                 // Chuẩn bị câu lệnh SQL sử dụng cú pháp join cũ (dùng dấu phẩy).
                 String sql = "SELECT `dang_nhap`.MaTaiKhoan, `dang_nhap`.TenDangNhap,`ttnguoithi`.HoTen, `ttnguoithi`.NgaySinh, `ttnguoithi`.SDT,`lop`.TenLop, `nganh`.TenNganh " +
@@ -251,7 +263,9 @@ public class ManageUser extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình thi trắc nghiệm");
 
+        tb.setBackground(new java.awt.Color(204, 204, 204));
         tb.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -314,8 +328,12 @@ public class ManageUser extends javax.swing.JFrame {
             }
         });
 
+        lbl_Nganh.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_Nganh.setForeground(new java.awt.Color(102, 102, 102));
         lbl_Nganh.setText("Ngành");
 
+        lbl_Lop.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_Lop.setForeground(new java.awt.Color(102, 102, 102));
         lbl_Lop.setText("Lớp");
 
         cb_lop1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Lớp" }));
@@ -326,6 +344,7 @@ public class ManageUser extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("DANH SÁCH THÔNG TIN SINH VIÊN");
 
         jButton1.setBackground(new java.awt.Color(66, 99, 235));
@@ -363,7 +382,7 @@ public class ManageUser extends javax.swing.JFrame {
                                 .addComponent(bt_XoaSV, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 466, Short.MAX_VALUE)))
+                        .addGap(0, 455, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -461,7 +480,7 @@ public class ManageUser extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void cb_nganh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_nganh1ActionPerformed
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             DefaultTableModel tm = (DefaultTableModel)tb.getModel();
             // Nếu chọn mục đầu tiên ("Chọn Ngành Học"), hiển thị lại toàn bộ danh sách.
             if(cb_nganh1.getSelectedIndex() == 0){
@@ -498,7 +517,7 @@ public class ManageUser extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void cb_lop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_lop1ActionPerformed
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             DefaultTableModel tm = (DefaultTableModel)tb.getModel();
             // Nếu chọn mục đầu tiên ("Chọn Lớp"), hiển thị lại toàn bộ danh sách.
             if(cb_lop1.getSelectedIndex() == 0){
