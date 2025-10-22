@@ -11,16 +11,16 @@ import MaHoa.GoiGDN;
 
 public class EditAccount extends javax.swing.JFrame {
     private static String id;
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     
     
     //======================================================================================================================================================================
     public EditAccount(String id) {
         initComponents(); // Khởi tạo các thành phần giao diện.
         this.id = id; // Lưu mã tài khoản vào biến toàn cục.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
-        thongtincapnhat(); // Gọi phương thức để tải dữ liệu của tài khoản này lên form.
+        InfoUpdate(); // Gọi phương thức để tải dữ liệu của tài khoản này lên form.
         
         // Tùy chỉnh hành vi khi đóng cửa sổ.
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -39,9 +39,9 @@ public class EditAccount extends javax.swing.JFrame {
     
  
     //======================================================================================================================================================================
-    public void thongtincapnhat(){
+    public void InfoUpdate(){
         // Sử dụng try-with-resources để đảm bảo kết nối CSDL được đóng tự động.
-        try(Connection c = ctn.c() ){
+        try(Connection c = kn.c() ){
             // Chuẩn bị câu lệnh SQL để lấy thông tin từ hai bảng `dang_nhap` và `ttnguoithi`.
             PreparedStatement Pst = c.prepareStatement(""
                 + "select `TenDangNhap`, `MatKhau`, `HoTen`, `PhanLoai` from `dang_nhap`, `ttnguoithi` "
@@ -111,7 +111,7 @@ public class EditAccount extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("SỬA TÀI KHOẢN");
+        jLabel5.setText("EDIT ACCOUNT");
 
         bt_CapNhat.setBackground(new java.awt.Color(66, 99, 235));
         bt_CapNhat.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -143,11 +143,12 @@ public class EditAccount extends javax.swing.JFrame {
                             .addComponent(cb_vaitro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addComponent(bt_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                        .addComponent(bt_CapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +180,7 @@ public class EditAccount extends javax.swing.JFrame {
     private void bt_CapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CapNhatActionPerformed
         String vaitro = "NT"; // Mặc định vai trò là "NT" (Người Thi / Sinh Viên).
         
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             // Chuẩn bị câu lệnh SQL UPDATE để cập nhật bảng `dang_nhap`.
             PreparedStatement Pst = c.prepareStatement(""
                 + "UPDATE `dang_nhap` SET "

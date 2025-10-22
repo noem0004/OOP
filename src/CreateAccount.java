@@ -18,13 +18,13 @@ import javax.swing.JOptionPane;
 public class CreateAccount extends javax.swing.JFrame {
 
     private static final SecureRandom random = new SecureRandom();
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     
     
     //======================================================================================================================================================================
     public CreateAccount() {
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
         // Tùy chỉnh hành vi khi đóng cửa sổ.
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -45,7 +45,7 @@ public class CreateAccount extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     public boolean kiemTraTonTai(String id) throws SQLException{
-        try(Connection c = ctn.c()){ 
+        try(Connection c = kn.c()){ 
             // Chuẩn bị câu lệnh SQL để đếm số bản ghi có mã tài khoản trùng khớp.
             PreparedStatement Pst = c.prepareStatement(""
                 + "SELECT COUNT(*) FROM `Dang_Nhap`"
@@ -66,7 +66,7 @@ public class CreateAccount extends javax.swing.JFrame {
     
     
     //======================================================================================================================================================================
-    public static String taoSoNgauNhien10() {
+    public static String randomnumber() {
         StringBuilder sb = new StringBuilder(10);
         for (int i = 0; i < 10; i++) {
             sb.append(random.nextInt(10)); // Thêm một số ngẫu nhiên từ 0-9.
@@ -112,15 +112,16 @@ public class CreateAccount extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(113, 128, 150));
-        jLabel1.setText("Tên Đăng Nhập");
+        jLabel1.setText("username:");
+        jLabel1.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(113, 128, 150));
-        jLabel2.setText("Tạo Mật Khẩu");
+        jLabel2.setText("password");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(113, 128, 150));
-        jLabel3.setText("Xác Nhận Mật Khẩu");
+        jLabel3.setText("repassword");
 
         bt_TaoTaiKhoan.setBackground(new java.awt.Color(66, 99, 235));
         bt_TaoTaiKhoan.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -137,12 +138,16 @@ public class CreateAccount extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("TẠO TÀI KHOẢN");
+        jLabel7.setText("CREATE ACCOUNT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 105, Short.MAX_VALUE)
+                .addComponent(bt_TaoTaiKhoan)
+                .addGap(106, 106, 106))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -156,13 +161,9 @@ public class CreateAccount extends javax.swing.JFrame {
                             .addComponent(txt_XacNhanMatkhau, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Cb_Vaitro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
+                        .addGap(68, 68, 68)
                         .addComponent(jLabel7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 105, Short.MAX_VALUE)
-                .addComponent(bt_TaoTaiKhoan)
-                .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,11 +196,11 @@ public class CreateAccount extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void bt_TaoTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_TaoTaiKhoanActionPerformed
         String id = "";
-        String getTenDangnhap = txt_TenDangnhap.getText();
-        String getMaukhau = txt_XacNhanMatkhau.getText();
+        String getusername = txt_TenDangnhap.getText();
+        String getpass = txt_XacNhanMatkhau.getText();
         // Gán một ngày sinh mặc định cho bản ghi placeholder trong `ttnguoithi`.
         LocalDate ngaySinh = LocalDate.of(1111,01,01);
-        String vaitro ="";
+        String vaitro =null;
         
         // GHI CHÚ: Code nên có thêm các bước kiểm tra (validation) ở đây, ví dụ:
         // 1. Kiểm tra xem các ô text có bị bỏ trống không.
@@ -212,21 +213,21 @@ public class CreateAccount extends javax.swing.JFrame {
             vaitro = "NT";
         
         // Có vẻ như đây là bước gọi một lớp tùy chỉnh để mã hóa mật khẩu.
-        MaHoa_AD TMHAD = new MaHoa_AD(getMaukhau);
+        MaHoa_AD TMHAD = new MaHoa_AD(getpass);
         
         
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
 
             // Vòng lặp để đảm bảo tạo ra một ID ngẫu nhiên và DUY NHẤT.
             // Nó sẽ tiếp tục tạo ID mới cho đến khi tìm được một ID chưa tồn tại trong CSDL.
             do{
-                id = taoSoNgauNhien10();
+                id = randomnumber();
             }while (kiemTraTonTai(id));
             
             // BƯỚC 1: Thêm thông tin đăng nhập vào bảng `dang_nhap`.
             PreparedStatement pst2 = c.prepareStatement("INSERT INTO dang_nhap (MaTaiKhoan, TenDangNhap, MatKhau, PhanLoai) VALUES (?,?,?,?)");
             pst2.setString(1, id);
-            pst2.setString(2, getTenDangnhap);
+            pst2.setString(2, getusername);
             pst2.setString(3, TMHAD.getMH()); // Lưu mật khẩu đã được mã hóa.
             pst2.setString(4, vaitro);
             pst2.executeUpdate();

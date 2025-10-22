@@ -13,14 +13,14 @@ import javax.swing.table.TableColumnModel;
 
 
 public class ManageResult extends javax.swing.JFrame {
-    private List<History> CTLS = new ArrayList<>();
-    private Ketnoi ctn = new Ketnoi();
+    private List<History> History = new ArrayList<>();
+    private Ketnoi kn = new Ketnoi();
 
     
     //======================================================================================================================================================================
     public ManageResult() {
         initComponents(); // Khởi tạo các thành phần giao diện (nút, bảng, label,...).
-        ctn.c(); // Thực hiện kết nối thử đến CSDL.
+        kn.c(); // Thực hiện kết nối thử đến CSDL.
         setLocationRelativeTo(null);
         setcolWidth(tb); // Tùy chỉnh độ rộng cột của bảng.
         cbNganh();
@@ -49,7 +49,7 @@ public class ManageResult extends javax.swing.JFrame {
     }
     
     private void xemKETQUA(String tenNganh, String tenLop, String maDeThi) {
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             StringBuilder sql = new StringBuilder(
                 "SELECT lichsuthi.MaDe AS MD, ttnguoithi.MaTaiKhoan, ttnguoithi.HoTen, " +
                 "lop.TenLop, COALESCE(lichsuthi.SoCauDung, 0) AS SoCauDung, " +
@@ -89,7 +89,7 @@ public class ManageResult extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             DefaultTableModel tm = (DefaultTableModel) tb.getModel();
             tm.setRowCount(0);
-            CTLS.clear();
+            History.clear();
 
             while (rs.next()) {
                 tm.addRow(new Object[]{
@@ -103,7 +103,7 @@ public class ManageResult extends javax.swing.JFrame {
                     rs.getDate("NgayThi")          // ngày thi
                 });
 
-                CTLS.add(new History(rs.getString("TTCT")));
+                History.add(new History(rs.getString("TTCT")));
             }
 
 
@@ -116,7 +116,7 @@ public class ManageResult extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void cbNganh(){
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             PreparedStatement Pst = c.prepareStatement("select * from nganh");
             ResultSet rs = Pst.executeQuery();
             while(rs.next()){
@@ -128,7 +128,7 @@ public class ManageResult extends javax.swing.JFrame {
     }
     
     private void cbLop() {
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             cb_lop.removeAllItems();
             cb_lop.addItem("Chọn Lớp Học");
             PreparedStatement pst = c.prepareStatement("SELECT TenLop FROM lop");
@@ -143,7 +143,7 @@ public class ManageResult extends javax.swing.JFrame {
 
     
     private void cbDeThi() {
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             cb_DeThi.removeAllItems();
             cb_DeThi.addItem("Chọn Đề Thi");
             PreparedStatement pst = c.prepareStatement("SELECT MD, NoidungDeThi FROM dethi");
@@ -243,7 +243,7 @@ public class ManageResult extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel5.setText("QUẢN LÝ KẾT QUẢ THI");
+        jLabel5.setText("MANAGE RESULT");
 
         cb_DeThi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,16 +305,16 @@ public class ManageResult extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(348, 348, 348)
+                .addGap(381, 381, 381)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel5)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
@@ -349,7 +349,7 @@ public class ManageResult extends javax.swing.JFrame {
         int selectedRow = tb.getSelectedRow();
         // Lấy đối tượng ChiTietLichSu tương ứng từ danh sách CTLS bằng chỉ số vừa lấy.
         // Sau đó, gọi phương thức getCTTT_DT() để lấy chuỗi thông tin chi tiết và hiển thị lên JTextPane.
-        txp_ttct.setText(CTLS.get(selectedRow).getCTTT_DT());
+        txp_ttct.setText(History.get(selectedRow).getCTTT_DT());
     }//GEN-LAST:event_tbMouseClicked
 
     
@@ -387,7 +387,7 @@ public class ManageResult extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_DeThiActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             PreparedStatement Pst = c.prepareStatement("DELETE FROM `lichsuthi` WHERE `MaTaiKhoan` = ? and MaDe = ?");
             Pst.setString(1,tb.getValueAt(tb.getSelectedRow(), 1).toString()); 
             Pst.setString(2,tb.getValueAt(tb.getSelectedRow(), 0).toString());

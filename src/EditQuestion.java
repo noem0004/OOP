@@ -6,17 +6,17 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class EditQuestion extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     private static String MC;
-   
+    
     
     //======================================================================================================================================================================
     public EditQuestion(String mc) {
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
         this.MC = mc; // Lưu mã câu hỏi vào biến toàn cục.
-        capnhat(); // Gọi phương thức để tải dữ liệu của câu hỏi này lên form.
+        Update(); // Gọi phương thức để tải dữ liệu của câu hỏi này lên form.
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         // Thêm một bộ lắng nghe sự kiện để xử lý việc đóng cửa sổ.
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -27,11 +27,8 @@ public class EditQuestion extends javax.swing.JFrame {
             }
         });
     }
-    
-    
-    //======================================================================================================================================================================
-    public void capnhat(){
-        try(Connection c = ctn.c()){
+    public void Update(){
+        try(Connection c = kn.c()){
             // Chuẩn bị câu lệnh SQL để lấy thông tin chi tiết của một câu hỏi dựa vào Mã Câu (MC).
             PreparedStatement Pst2 = c.prepareStatement("select * from `cauhoi` where `MC` = ?");
             // Gán giá trị của biến MC vào câu lệnh SQL.
@@ -65,6 +62,9 @@ public class EditQuestion extends javax.swing.JFrame {
             // Khối catch trống.
         }
     }
+    
+    //======================================================================================================================================================================
+    
     
     
     //======================================================================================================================================================================
@@ -101,7 +101,7 @@ public class EditQuestion extends javax.swing.JFrame {
 
         lbl_MaDe.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl_MaDe.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_MaDe.setText("CẬP NHẬT CÂU HỎI");
+        lbl_MaDe.setText("UPDATE QUESTION");
 
         bt_SuaCauhoi.setBackground(new java.awt.Color(66, 99, 235));
         bt_SuaCauhoi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -241,7 +241,7 @@ public class EditQuestion extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void bt_SuaCauhoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_SuaCauhoiActionPerformed
         // Sử dụng try-with-resources để đảm bảo kết nối CSDL được đóng tự động.
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // Chuẩn bị câu lệnh SQL UPDATE để cập nhật lại thông tin câu hỏi.
             PreparedStatement Pst1 = c.prepareStatement(""
                 + "UPDATE `cauhoi` SET "

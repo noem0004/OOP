@@ -12,8 +12,8 @@ import javax.swing.table.TableColumnModel;
 
 
 public class ManageClass extends javax.swing.JFrame {
-    private Map<String,String> DuyetNganh;
-    private Ketnoi ctn = new Ketnoi();
+    private Map<String,String> NganhHoc;
+    private Ketnoi kn = new Ketnoi();
     private boolean isNganhLoaded = false;
     
     
@@ -23,7 +23,7 @@ public class ManageClass extends javax.swing.JFrame {
         initComponents(); 
         
         // Thực hiện một kết nối thử đến CSDL (có thể không cần thiết ở đây).
-        ctn.c(); 
+        kn.c(); 
         setLocationRelativeTo(null);
         // Gọi phương thức để tùy chỉnh độ rộng cột của bảng.
         setcolWidth(tb); 
@@ -62,7 +62,7 @@ public class ManageClass extends javax.swing.JFrame {
     }
 
     public void viewtable(){
-        try(Connection c = ctn.c()){ // Mở kết nối CSDL.
+        try(Connection c = kn.c()){ // Mở kết nối CSDL.
             // Chuẩn bị câu lệnh SQL để lấy Tên Lớp, Tên Ngành và đếm số lượng sinh viên trong mỗi lớp.
             // Lưu ý: Cú pháp "FROM table1, table2 WHERE..." là cú pháp JOIN cũ, nên dùng JOIN..ON.. để rõ ràng hơn.
             PreparedStatement Pst = c.prepareStatement("SELECT nganh.TenNganh, COUNT(ttnguoithi.MaTaiKhoan) AS SoLuongSinhVien " +
@@ -96,7 +96,7 @@ public class ManageClass extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     void showComboBox(){
-        try(Connection c = ctn.c()){ // Mở kết nối CSDL và tự động đóng khi kết thúc.
+        try(Connection c = kn.c()){ // Mở kết nối CSDL và tự động đóng khi kết thúc.
             // Chuẩn bị câu lệnh SQL để lấy tất cả TenLop từ bảng lop.
             PreparedStatement ps = c.prepareStatement("select TenLop from lop");
             // Thực thi câu lệnh và nhận kết quả.
@@ -113,7 +113,7 @@ public class ManageClass extends javax.swing.JFrame {
     }
     
     public void showcomboxnganh(){
-       try (Connection c = ctn.c()) { // Mở kết nối CSDL.
+       try (Connection c = kn.c()) { // Mở kết nối CSDL.
             // Xóa tất cả các mục hiện có trong ComboBox để tránh bị trùng lặp khi gọi lại.
             cb_nganh.removeAllItems();
             // Thêm một mục mặc định, mang tính hướng dẫn ở đầu danh sách.
@@ -309,7 +309,7 @@ public class ManageClass extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void bt_ThemLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ThemLopActionPerformed
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             // 1. Lấy MaNganh dựa vào TenNganh được chọn trong ComboBox cb_nganh.
             PreparedStatement Pst2 = c.prepareStatement("select `MaNganh` from `nganh` where `TenNganh` = ?");
             Pst2.setString(1,cb_nganh.getSelectedItem().toString());
@@ -339,7 +339,7 @@ public class ManageClass extends javax.swing.JFrame {
 
     //======================================================================================================================================================================
     private void bt_XoalopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_XoalopActionPerformed
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             // Chuẩn bị câu lệnh SQL để xóa một lớp dựa vào tên lớp.
             PreparedStatement Pst = c.prepareStatement("DELETE FROM `lop` WHERE `TenLop` = ?");
             // Lấy tên lớp cần xóa từ ComboBox cb_lop.
@@ -357,7 +357,7 @@ public class ManageClass extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void cb_nganhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_nganhActionPerformed
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // Kiểm tra xem có mục nào được chọn không, nếu không thì thoát.
             if(cb_nganh.getSelectedIndex() == -1){
                 return;
@@ -402,7 +402,7 @@ public class ManageClass extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void cb_lopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_lopActionPerformed
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
            DefaultTableModel tm = (DefaultTableModel)tb.getModel();
            
            // Nếu người dùng chọn mục đầu tiên ("Chọn Lớp").

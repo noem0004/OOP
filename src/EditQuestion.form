@@ -146,7 +146,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="C&#x1eac;P NH&#x1eac;T C&#xc2;U H&#x1ece;I"/>
+        <Property name="text" type="java.lang.String" value="UPDATE QUESTION"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="bt_SuaCauhoi">

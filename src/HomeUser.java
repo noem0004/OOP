@@ -21,7 +21,7 @@ public class HomeUser extends javax.swing.JFrame {
         kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
         // Kiểm tra xem người dùng đã làm bài thi này trước đó chưa.
-        if (!kiemtraBaiLam()) {
+        if (!CheckTest()) {
             // Nếu đã làm rồi (hàm trả về false), vô hiệu hóa nút "THI NGAY".
             bt_thi.setEnabled(false);
         } else {
@@ -30,13 +30,13 @@ public class HomeUser extends javax.swing.JFrame {
         }
         
         // Tải và hiển thị thông tin của người dùng và đề thi lên giao diện.
-        xuatthongtinUSER();
-        xuatDethi();
+        LoadUser();
+        LoadExam();
     }
     
     
     //======================================================================================================================================================================
-    private void xuatthongtinUSER() {
+    private void LoadUser() {
         try (Connection c = kn.c()) {
             // Chuẩn bị câu lệnh SQL để lấy thông tin từ nhiều bảng.
             // Cú pháp JOIN bằng dấu phẩy là cú pháp cũ, nên dùng JOIN...ON để rõ ràng hơn.
@@ -64,7 +64,7 @@ public class HomeUser extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-     private void xuatDethi() {
+     private void LoadExam() {
         try (Connection c = kn.c()) {
             String sql = "select NoidungDeThi from dethi, thi where dethi.MD = thi.MD and MaTaiKhoan = ?";
 
@@ -87,7 +87,7 @@ public class HomeUser extends javax.swing.JFrame {
 
     
     //======================================================================================================================================================================
-    private boolean kiemtraBaiLam() {
+    private boolean CheckTest() {
         try (Connection c = kn.c()) {
             // Truy vấn bảng `dakt` (có thể là "đã kiểm tra") để tìm bản ghi.
             PreparedStatement pst = c.prepareStatement(
@@ -363,14 +363,14 @@ public class HomeUser extends javax.swing.JFrame {
                     lb_trangthai.setText("Bài Thi Sẵn Sàng");
                     made = rs.getInt("MD");
                     // Cập nhật thông tin đề thi đã chọn
-                    if (!kiemtraBaiLam()) {
+                    if (!CheckTest()) {
                         // Nếu đã làm rồi (hàm trả về false), vô hiệu hóa nút "THI NGAY".
                         lb_trangthai.setText("Bài Thi Đã Thực Hiện");
                         bt_thi.setEnabled(false);
                     } else {
                         // Nếu chưa làm, cho phép nhấn nút "THI NGAY".
                         bt_thi.setEnabled(true);
-                        xuatthongtinUSER();
+                        LoadUser();
                     }
                 }
             }

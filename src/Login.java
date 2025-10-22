@@ -10,11 +10,11 @@ import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
-        ctn.c();
+        kn.c();
     }
     
     
@@ -119,7 +119,7 @@ public class Login extends javax.swing.JFrame {
         //  Tạo đối tượng TMH_Admin, có thể dùng để xử lý hoặc mã hóa mật khẩu
         MaHoa_AD TMHAD = new MaHoa_AD(getMatkhau);
 
-        try (Connection c = ctn.c()) { // Mở kết nối đến cơ sở dữ liệu bằng đối tượng CTN
+        try (Connection c = kn.c()) { // Mở kết nối đến cơ sở dữ liệu bằng đối tượng CTN
             //  Chuẩn bị câu truy vấn SQL kiểm tra thông tin đăng nhập
             PreparedStatement Pst = c.prepareStatement(
                 "SELECT `MaTaiKhoan`,`TenDangNhap`, `MatKhau`, `PhanLoai` FROM `dang_nhap` "

@@ -7,13 +7,13 @@ import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 public class CreateEX2 extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     
     
     //======================================================================================================================================================================
      public CreateEX2() {
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
         // Thiết lập hành vi khi đóng cửa sổ.
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -129,7 +129,7 @@ public class CreateEX2 extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("TẠO ĐỀ THI");
+        jLabel3.setText("CREATE EXAM");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(113, 128, 150));
@@ -216,10 +216,10 @@ public class CreateEX2 extends javax.swing.JFrame {
                                 .addGap(124, 124, 124)))
                         .addGap(0, 24, Short.MAX_VALUE)))
                 .addGap(25, 25, 25))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(180, 180, 180)
                 .addComponent(jLabel3)
-                .addGap(189, 189, 189))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,7 +295,7 @@ public class CreateEX2 extends javax.swing.JFrame {
             return;
         }else{
             // Nếu validation (dù bị lỗi) được bỏ qua, thực hiện thêm vào CSDL.
-            try(Connection c = ctn.c()){
+            try(Connection c = kn.c()){
                 // Chuẩn bị câu lệnh SQL INSERT để thêm một đề thi mới vào bảng `dethi`.
                 PreparedStatement Pst = c.prepareStatement("INSERT INTO `dethi`(`NoidungDeThi`, `ThoiGian`, `NgayTao`, `NgayThi`) "
                         + "VALUES (?,?,?,?)");

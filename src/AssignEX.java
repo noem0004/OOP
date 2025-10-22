@@ -10,13 +10,13 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class AssignEX extends javax.swing.JFrame {
-    private static int LMD;
+    private static int getMD;
     private Ketnoi kn = new Ketnoi();
     
     
     //======================================================================================================================================================================
     public AssignEX(int MD) {
-        this.LMD = MD; // Lưu mã đề thi vào biến toàn cục.
+        this.getMD = MD; // Lưu mã đề thi vào biến toàn cục.
         initComponents(); // Khởi tạo các thành phần giao diện.
         kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
@@ -39,7 +39,7 @@ public class AssignEX extends javax.swing.JFrame {
     //======================================================================================================================================================================
     private void showNguoiThi() {
         // Cập nhật tiêu đề để người dùng biết đang gán đề thi nào.
-        lbl_Dethi.setText("Gán Mã Đề Thi Số: " + LMD);
+        lbl_Dethi.setText("Gán Mã Đề Thi Số: " + getMD);
         
         // Chuẩn bị câu lệnh SQL để lấy thông tin chi tiết của tất cả người thi.
         // LEFT JOIN với bảng `thi` là mấu chốt:
@@ -173,11 +173,11 @@ public class AssignEX extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(74, 85, 104));
-        jLabel1.setText("Gán Theo Lớp");
+        jLabel1.setText("Class");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Quản lý gán đề thi");
+        jLabel2.setText("Manage Assign Exam");
 
         bt_GanDT1.setBackground(new java.awt.Color(66, 99, 235));
         bt_GanDT1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -209,7 +209,7 @@ public class AssignEX extends javax.swing.JFrame {
                             .addComponent(bt_GanDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_Dethi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(417, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -223,11 +223,12 @@ public class AssignEX extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lbl_Dethi))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_Dethi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -256,7 +257,7 @@ public class AssignEX extends javax.swing.JFrame {
 
         // Hiển thị hộp thoại xác nhận trước khi thực hiện hành động quan trọng.
         int confirm = JOptionPane.showConfirmDialog(this, 
-            "Gán đề số " + LMD + " cho " + selectedRows.length + " sinh viên đã chọn?",
+            "Gán đề số " + getMD + " cho " + selectedRows.length + " sinh viên đã chọn?",
             "Xác nhận", JOptionPane.YES_NO_OPTION);
 
         // Nếu người dùng không chọn "YES", dừng lại.
@@ -275,13 +276,13 @@ public class AssignEX extends javax.swing.JFrame {
 
                 PreparedStatement checkPst = c.prepareStatement(checkSql);
                 checkPst.setString(1, maTK);
-                checkPst.setInt(2, LMD);
+                checkPst.setInt(2, getMD);
                 ResultSet rs = checkPst.executeQuery();
 
                 if (!rs.next()) {
                     PreparedStatement insertPst = c.prepareStatement(insertSql);
                     insertPst.setString(1, maTK);
-                    insertPst.setInt(2, LMD);
+                    insertPst.setInt(2, getMD);
                     insertPst.setInt(3, 0); // trạng thái ban đầu (nếu có)
                     insertPst.executeUpdate();
                     countInsert++;
@@ -303,7 +304,7 @@ public class AssignEX extends javax.swing.JFrame {
 
     private void cb_LopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_LopActionPerformed
 
-        lbl_Dethi.setText("Gán Mã Đề Thi Số: " + LMD);
+        lbl_Dethi.setText("Gán Mã Đề Thi Số: " + getMD);
  
         try (Connection c = kn.c()){
             PreparedStatement pst = c.prepareStatement("SELECT dn.MaTaiKhoan, dn.TenDangNhap, tt.HoTen, l.TenLop, n.TenNganh, t.MD AS MaDeThi " + 
@@ -351,7 +352,7 @@ public class AssignEX extends javax.swing.JFrame {
         }
 
         int confirm = JOptionPane.showConfirmDialog(this, 
-            "Bạn có chắc muốn BỎ GÁN đề số " + LMD + " cho " + selectedRows.length + " sinh viên đã chọn?",
+            "Bạn có chắc muốn BỎ GÁN đề số " + getMD + " cho " + selectedRows.length + " sinh viên đã chọn?",
             "Xác nhận", JOptionPane.YES_NO_OPTION);
 
         if (confirm != JOptionPane.YES_OPTION) return;
@@ -367,14 +368,14 @@ public class AssignEX extends javax.swing.JFrame {
 
                 PreparedStatement checkPst = c.prepareStatement(checkSql);
                 checkPst.setString(1, maTK);
-                checkPst.setInt(2, LMD);
+                checkPst.setInt(2, getMD);
                 ResultSet rs = checkPst.executeQuery();
 
                 // 🔹 Nếu có bản ghi thì mới thực hiện xóa
                 if (rs.next()) {
                     PreparedStatement deletePst = c.prepareStatement(deleteSql);
                     deletePst.setString(1, maTK);
-                    deletePst.setInt(2, LMD);
+                    deletePst.setInt(2, getMD);
                     deletePst.executeUpdate();
                     countDelete++;
                 }
@@ -396,7 +397,7 @@ public class AssignEX extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> new AssignEX(LMD).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new AssignEX(getMD).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

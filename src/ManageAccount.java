@@ -14,13 +14,13 @@ import javax.swing.table.TableModel;
 
 public class ManageAccount extends javax.swing.JFrame {
     private  String idtk =""; 
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     
     
     //======================================================================================================================================================================
      public ManageAccount() {
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
         viewtable(); // Tải và hiển thị danh sách tài khoản.
         
@@ -48,7 +48,7 @@ public class ManageAccount extends javax.swing.JFrame {
     
     public void viewtable(){
         // Sử dụng try-with-resources để đảm bảo kết nối CSDL được đóng tự động.
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             // Chuẩn bị câu lệnh SQL để lấy các tài khoản có phân loại là "NT" (Người Thi).
             PreparedStatement Pst = c.prepareStatement("select * from `dang_nhap` where `phanloai` = ?");
             Pst.setString(1,"NT"); // Gán giá trị "NT" vào tham số.
@@ -151,7 +151,7 @@ public class ManageAccount extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("QUẢN LÝ TÀI KHOẢN");
+        jLabel1.setText("MANAGE ACCOUNT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,12 +169,12 @@ public class ManageAccount extends javax.swing.JFrame {
                         .addComponent(bt_SuaTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(bt_XoaTaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 187, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(297, 297, 297)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addGap(301, 301, 301))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +242,7 @@ public class ManageAccount extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void bt_XoaTaikhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_XoaTaikhoanActionPerformed
-        try(Connection c =ctn.c() ){
+        try(Connection c =kn.c() ){
             // Chuẩn bị câu lệnh SQL để xóa từ nhiều bảng (cú pháp này hoạt động trên MySQL).
             // Lệnh này sẽ xóa đồng thời bản ghi trong `dang_nhap` và `ttnguoithi`
             // có cùng `MaTaiKhoan`.

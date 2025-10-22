@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 
 public class EditInfoUser extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     private static String maTaiKhoan;
     
     
@@ -16,10 +16,10 @@ public class EditInfoUser extends javax.swing.JFrame {
     public EditInfoUser(String goi) {
         this.maTaiKhoan = goi; // Lưu mã tài khoản vào biến toàn cục.
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
-        showcomboxnganh(); // Tải dữ liệu cho ComboBox Ngành.
-        showTT(); // Tải thông tin hiện tại của người dùng lên form.
+        LoadNganh(); // Tải dữ liệu cho ComboBox Ngành.
+        LoadInfo(); // Tải thông tin hiện tại của người dùng lên form.
         
         // Tùy chỉnh hành vi khi đóng cửa sổ.
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -40,8 +40,8 @@ public class EditInfoUser extends javax.swing.JFrame {
     
     
     //======================================================================================================================================================================
-    private void showcomboxnganh(){
-        try(Connection c = ctn.c()){
+    private void LoadNganh(){
+        try(Connection c = kn.c()){
             PreparedStatement ps2 = c.prepareStatement("select `TenNganh` from `nganh` where `TenNganh` != ? ");ps2.setString(1,"");
             ResultSet rs2 = ps2.executeQuery();
             cb_nganh.removeAllItems();
@@ -61,7 +61,7 @@ public class EditInfoUser extends javax.swing.JFrame {
     }
     
     private void showComboBox(String chon){
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             // Chuẩn bị câu lệnh SQL để lấy các lớp thuộc ngành đã cho.
             PreparedStatement ps = c.prepareStatement("select tenlop from `lop`,`nganh` where `TenNganh` = ? and `lop`.`MaNganh` = `nganh`.`MaNganh` ");
             ps.setString(1,chon);
@@ -76,8 +76,8 @@ public class EditInfoUser extends javax.swing.JFrame {
         }
     }
     
-     private void showTT(){
-        try(Connection c = ctn.c()){
+     private void LoadInfo(){
+        try(Connection c = kn.c()){
             // Chuẩn bị câu lệnh SQL để lấy thông tin chi tiết của người dùng.
             PreparedStatement Pst = c.prepareStatement(
                 "SELECT `HoTen`, `SDT`, `NgaySinh`, `TenNganh`, `TenLop` " +
@@ -270,7 +270,7 @@ public class EditInfoUser extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void bt_CapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CapNhatActionPerformed
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // BƯỚC 1: Lấy `MaLop` và `MaNganh` (ID) từ tên lớp và tên ngành đã chọn.
             // Điều này là cần thiết vì bảng `ttnguoithi` lưu ID chứ không lưu tên.
             PreparedStatement Ps = c.prepareStatement(

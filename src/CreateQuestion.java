@@ -9,14 +9,14 @@ import javax.swing.JOptionPane;
 
 
 public class CreateQuestion extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     private boolean check = false;
     
     
     //======================================================================================================================================================================
     public CreateQuestion() {
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
         // Thiết lập hành vi khi người dùng nhấn nút 'X' trên cửa sổ.
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -119,7 +119,7 @@ public class CreateQuestion extends javax.swing.JFrame {
         bt_TaoCauHoi.setBackground(new java.awt.Color(66, 99, 235));
         bt_TaoCauHoi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         bt_TaoCauHoi.setForeground(new java.awt.Color(255, 255, 255));
-        bt_TaoCauHoi.setText("Tạo Câu Hỏi");
+        bt_TaoCauHoi.setText("Create");
         bt_TaoCauHoi.setBorderPainted(false);
         bt_TaoCauHoi.setFocusPainted(false);
         bt_TaoCauHoi.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +131,7 @@ public class CreateQuestion extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("TẠO CÂU HỎI");
+        jLabel9.setText("CREATE QUESTION");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,11 +161,11 @@ public class CreateQuestion extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(txt_dapan, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
-                        .addComponent(bt_TaoCauHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bt_TaoCauHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -198,14 +198,12 @@ public class CreateQuestion extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cb_loai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txt_dapan)
-                        .addGap(2, 2, 2)))
-                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_dapan)
+                    .addComponent(cb_loai, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
                 .addComponent(bt_TaoCauHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -221,7 +219,7 @@ public class CreateQuestion extends javax.swing.JFrame {
         if(cb_loai.getSelectedItem().toString().equals("Một Đáp Án"))
             loai = 1;
         else loai = 2;
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // Chuẩn bị câu lệnh SQL INSERT để thêm một câu hỏi mới vào bảng `cauhoi`.
             PreparedStatement pst1 = c.prepareStatement(""
                 + "INSERT INTO `cauhoi`(`noidungch`, `A`, `B`, `C`, `D`, `DapAn`, `loaida`) "
@@ -259,7 +257,7 @@ public class CreateQuestion extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     public boolean kiemTraTonTai(String macau, String made) throws SQLException{
-        try(Connection c = ctn.c()){ 
+        try(Connection c = kn.c()){ 
             PreparedStatement Pst = c.prepareStatement(""
                 + "SELECT COUNT(*) FROM `cauhoi`"
                 + " WHERE `MC` = ? and `MD` = ?");

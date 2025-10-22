@@ -8,13 +8,13 @@ import MaHoa.GoiGDN;
 import MaHoa.MaHoa_AD;
 
 public class ChangePWAD extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
-    private static String MTK;
+    private Ketnoi kn = new Ketnoi();
+    private static String mataikhoan;
     public ChangePWAD(String MTK) {
-        this.MTK = MTK;
+        this.mataikhoan = MTK;
         initComponents();
         setLocationRelativeTo(null);
-        ctn.c();
+        kn.c();
          setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         // Thêm một bộ lắng nghe sự kiện để xử lý việc đóng cửa sổ.
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,7 +62,7 @@ public class ChangePWAD extends javax.swing.JFrame {
         bt_CapNhatMK.setBackground(new java.awt.Color(66, 99, 235));
         bt_CapNhatMK.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         bt_CapNhatMK.setForeground(new java.awt.Color(255, 255, 255));
-        bt_CapNhatMK.setText("CẬP NHẬT MẬT KHẨU");
+        bt_CapNhatMK.setText("ĐỔI MẬT KHẨU");
         bt_CapNhatMK.setBorderPainted(false);
         bt_CapNhatMK.setFocusPainted(false);
         bt_CapNhatMK.addActionListener(new java.awt.event.ActionListener() {
@@ -118,18 +118,18 @@ public class ChangePWAD extends javax.swing.JFrame {
 
     private void bt_CapNhatMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_CapNhatMKActionPerformed
         if(txt_MKC.getText().isEmpty() || txt_MKM.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Xin Nhập Mật Khẩu!");
+            JOptionPane.showMessageDialog(null, "Hãy Nhập Mật Khẩu!");
         }else{
             MaHoa_AD TMH = new MaHoa_AD(txt_MKC.getText());
             MaHoa_AD MKM = new MaHoa_AD(txt_MKM.getText());
-            try(Connection c = ctn.c()){
-                PreparedStatement Pst = c.prepareStatement("select MatKhau from dang_nhap where MaTaiKhoan = ?");Pst.setString(1,MTK);
+            try(Connection c = kn.c()){
+                PreparedStatement Pst = c.prepareStatement("select MatKhau from dang_nhap where MaTaiKhoan = ?");Pst.setString(1,mataikhoan);
                 ResultSet rs = Pst.executeQuery();
                 if(rs.next()){
                     if(rs.getString("MatKhau").equals(TMH.getMH())){
                         PreparedStatement Pst1 = c.prepareStatement("UPDATE `dang_nhap` SET `MatKhau`= ? WHERE `MaTaiKhoan` = ?");
                         Pst1.setString(1,MKM.getMH());
-                        Pst1.setString(2,MTK);
+                        Pst1.setString(2,mataikhoan);
                         Pst1.executeUpdate();
                         this.dispose();
                         new GoiGDN(new HomeAD());
@@ -148,7 +148,7 @@ public class ChangePWAD extends javax.swing.JFrame {
     
     public static void main(String args[]) {
         
-        java.awt.EventQueue.invokeLater(() -> new ChangePWAD(MTK).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new ChangePWAD(mataikhoan).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

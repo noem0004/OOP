@@ -12,7 +12,7 @@ import javax.swing.table.TableModel;
 
 
 public class ManageQuestion extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     private String idMD = "";
     private String idMC = "";
     
@@ -20,7 +20,7 @@ public class ManageQuestion extends javax.swing.JFrame {
     //======================================================================================================================================================================
     public ManageQuestion() {
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
         setcolWidth(tb); // Tùy chỉnh độ rộng cột của bảng.
         viewtable(); // Tải và hiển thị danh sách câu hỏi.
@@ -48,7 +48,7 @@ public class ManageQuestion extends javax.swing.JFrame {
     
     public void viewtable(){
         // Sử dụng try-with-resources để đảm bảo kết nối CSDL được đóng tự động.
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             // Chuẩn bị câu lệnh SQL để lấy tất cả các cột từ bảng `cauhoi`.
             PreparedStatement Pst = c.prepareStatement("SELECT `MC`, `noidungch`, `A`, `B`, `C`, `D`, `DapAn` FROM `cauhoi`");
             // Lấy mô hình dữ liệu của bảng `tb` để có thể thêm/xóa dòng.
@@ -141,7 +141,7 @@ public class ManageQuestion extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("QUẢN LÝ CÂU HỎI");
+        jLabel1.setText("MANAGE QUESTION");
 
         reset.setBackground(new java.awt.Color(66, 99, 235));
         reset.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -175,7 +175,7 @@ public class ManageQuestion extends javax.swing.JFrame {
                                 .addGap(20, 20, 20))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(151, 151, 151)
+                                .addGap(86, 86, 86)
                                 .addComponent(reset, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))))
         );
@@ -242,7 +242,7 @@ public class ManageQuestion extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_XoaCauHoiActionPerformed
 
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             // Chuẩn bị câu lệnh SQL để xóa một bản ghi khỏi bảng `cauhoi`.
             PreparedStatement Pst = c.prepareStatement("DELETE FROM `cauhoi` WHERE `MC` = ?");
             // Gán giá trị của `idMC` (đã được lưu khi click chuột) vào câu lệnh.

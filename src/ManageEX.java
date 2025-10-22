@@ -8,15 +8,15 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class ManageEX extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     
 
     //======================================================================================================================================================================
     public ManageEX() {
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
-        showDeThi(); // Tải và hiển thị danh sách đề thi lên bảng.
+        LoadExam(); // Tải và hiển thị danh sách đề thi lên bảng.
         
         // Tùy chỉnh hành vi khi đóng cửa sổ.
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -35,9 +35,9 @@ public class ManageEX extends javax.swing.JFrame {
     
     
     //======================================================================================================================================================================
-    private void showDeThi() {
+    private void LoadExam() {
         // Sử dụng try-with-resources để đảm bảo kết nối CSDL được đóng tự động.
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // Chuẩn bị câu lệnh SQL để lấy thông tin các đề thi và đếm số lượng câu hỏi của mỗi đề.
             // LEFT JOIN: Đảm bảo những đề thi chưa có câu hỏi nào vẫn được hiển thị (với số lượng câu là 0).
             // GROUP BY: Bắt buộc phải có khi sử dụng hàm tổng hợp như COUNT().
@@ -144,7 +144,7 @@ public class ManageEX extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel1.setText("QUẢN LÝ ĐỀ THI");
+        jLabel1.setText("MANAGE EXAM");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,10 +154,6 @@ public class ManageEX extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(249, 249, 249))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bt_TaoCHDT, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
@@ -165,6 +161,10 @@ public class ManageEX extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bt_TaoDT1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(279, 279, 279))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

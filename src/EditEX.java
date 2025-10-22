@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 
 public class EditEX extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     private static int MADE;
     
     
@@ -17,9 +17,9 @@ public class EditEX extends javax.swing.JFrame {
     public EditEX(int Made) {
         this.MADE = Made;
         initComponents();
-        ctn.c();
+        kn.c();
         setLocationRelativeTo(null);
-        xuatthongtinDeThi();
+        LoadInfoEX();
         // Thiết lập hành vi khi đóng cửa sổ.
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -43,8 +43,8 @@ public class EditEX extends javax.swing.JFrame {
     
     
     //======================================================================================================================================================================
-    private void xuatthongtinDeThi(){
-        try(Connection c = ctn.c()){
+    private void LoadInfoEX(){
+        try(Connection c = kn.c()){
             PreparedStatement Pst = c.prepareStatement("SELECT `NoidungDeThi`, `ThoiGian`, `NgayTao`, `NgayThi` FROM `dethi` WHERE MD = ?");Pst.setInt(1,MADE);
             ResultSet rs = Pst.executeQuery();
             if(rs.next()){
@@ -121,7 +121,7 @@ public class EditEX extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("CẬP NHẬT ĐỀ THI");
+        jLabel3.setText("UPDATE EXAM");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(113, 128, 150));
@@ -154,16 +154,16 @@ public class EditEX extends javax.swing.JFrame {
                                 .addComponent(txt_ngaythi)))))
                 .addGap(15, 15, 15))
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(79, 79, 79)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel3)
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_noidung, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,7 +201,7 @@ public class EditEX extends javax.swing.JFrame {
             return;
         }else{
             
-            try(Connection c = ctn.c()){
+            try(Connection c = kn.c()){
                 
                 PreparedStatement Pst = c.prepareStatement("UPDATE `dethi` SET "
                         + "`NoidungDeThi`= ?,"

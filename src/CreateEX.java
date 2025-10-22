@@ -11,18 +11,18 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 public class CreateEX extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
-    private static int LMD;
+    private Ketnoi kn = new Ketnoi();
+    private static int getMD;
     
     
     //======================================================================================================================================================================
     public CreateEX(int LMD) {
-        this.LMD = LMD; // Lưu mã đề thi vào biến toàn cục.
+        this.getMD = LMD; // Lưu mã đề thi vào biến toàn cục.
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
         setcolWidth(tb); // Tùy chỉnh độ rộng cột của bảng.
-        showCauhoi(); // Tải và hiển thị danh sách các câu hỏi có thể thêm.
+        LoadQuestion(); // Tải và hiển thị danh sách các câu hỏi có thể thêm.
         
         // Thiết lập hành vi khi người dùng nhấn nút 'X' trên cửa sổ.
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -52,9 +52,9 @@ public class CreateEX extends javax.swing.JFrame {
         cm.getColumn(0).setMaxWidth(100);
     }
     
-    private void showCauhoi(){
+    private void LoadQuestion(){
         // Cập nhật tiêu đề để người dùng biết đang thao tác với đề thi nào.
-        lbl_Dethi.setText("Thêm/Xóa Câu Hỏi Cho Đề Thi Số: " + LMD);
+        lbl_Dethi.setText("Thêm/Xóa Câu Hỏi Cho Đề Thi: " + getMD);
         
         // Chuẩn bị câu lệnh SQL để lấy danh sách các câu hỏi chưa có trong đề.
         // Logic: Lấy tất cả câu hỏi từ bảng `cauhoi` có Mã Câu (MC)
@@ -63,10 +63,10 @@ public class CreateEX extends javax.swing.JFrame {
                        "WHERE c.MC NOT IN (SELECT MC FROM ctdt WHERE MD = ?)";
         
         // Sử dụng try-with-resources để đảm bảo kết nối CSDL được đóng tự động.
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             PreparedStatement Pst = c.prepareStatement(sql);
             // Gán giá trị của mã đề hiện tại vào dấu "?" trong câu truy vấn con.
-            Pst.setInt(1, LMD); 
+            Pst.setInt(1, getMD); 
             
             ResultSet rs = Pst.executeQuery();
             DefaultTableModel tm = (DefaultTableModel) tb.getModel();
@@ -143,7 +143,7 @@ public class CreateEX extends javax.swing.JFrame {
 
         lbl_Dethi.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lbl_Dethi.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_Dethi.setText("Quản lý câu hỏi");
+        lbl_Dethi.setText("Manage Question");
         lbl_Dethi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(226, 232, 240)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -154,13 +154,13 @@ public class CreateEX extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 933, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lbl_Dethi, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bt_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bt_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(lbl_Dethi, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -184,22 +184,22 @@ public class CreateEX extends javax.swing.JFrame {
         int[] selectrow = tb.getSelectedRows();
         int LMC = Integer.parseInt(tb.getValueAt(tb.getSelectedRow(), 0).toString());
         int count = 0;
-        try(Connection c = ctn.c()){
+        try(Connection c = kn.c()){
             for(int row : selectrow){
             // Chuẩn bị câu lệnh INSERT để tạo một bản ghi mới trong bảng `ctdt`.
             // Bảng `ctdt` là bảng trung gian, lưu mối quan hệ giữa câu hỏi và đề thi.
             PreparedStatement Pst = c.prepareStatement("INSERT INTO `ctdt`(`MC`, `MD`) VALUES (?,?)");
             // Gán Mã Câu (LMC) và Mã Đề (LMD) vào câu lệnh.
             Pst.setInt(1,LMC);
-            Pst.setInt(2,LMD);
+            Pst.setInt(2,getMD);
             // Thực thi lệnh INSERT.
             Pst.executeUpdate();
             // Sau khi thêm thành công, gọi lại hàm `showCauhoi()` để làm mới danh sách.
             // Câu hỏi vừa được thêm sẽ biến mất khỏi bảng này.
             count++;
             }
-            JOptionPane.showConfirmDialog(null,"Đã thêm " + count+" vào đề ["+LMD+"]");
-            showCauhoi();
+            JOptionPane.showConfirmDialog(null,"Đã thêm " + count+" vào đề ["+getMD+"]");
+            LoadQuestion();
         }catch(Exception e){
             // Khối catch trống.
         }
@@ -211,7 +211,7 @@ public class CreateEX extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CreateEX(LMD).setVisible(true);
+                new CreateEX(getMD).setVisible(true);
             }
         });
     }

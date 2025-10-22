@@ -41,12 +41,13 @@
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="bt_CapNhat" min="-2" pref="224" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" pref="229" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace pref="50" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="jLabel5" min="-2" pref="229" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -167,7 +168,7 @@
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="S&#x1eec;A T&#xc0;I KHO&#x1ea2;N"/>
+        <Property name="text" type="java.lang.String" value="EDIT ACCOUNT"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="bt_CapNhat">

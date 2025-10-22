@@ -13,8 +13,8 @@ import javax.swing.table.TableColumnModel;
 
 
 public class EXHistory extends javax.swing.JFrame {
-    private Ketnoi ctn = new Ketnoi();
-    private List<History> CTLS = new ArrayList<>();
+    private Ketnoi kn = new Ketnoi();
+    private List<History> History = new ArrayList<>();
     private static String MTK;
     private static int made;
     
@@ -25,7 +25,7 @@ public class EXHistory extends javax.swing.JFrame {
         this.made = mde;
         initComponents(); // Khởi tạo các thành phần giao diện.
         setLocationRelativeTo(null);
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         setcolWidth(tb); // Tùy chỉnh độ rộng cột của bảng.
         viewtable(); // Tải và hiển thị dữ liệu lịch sử thi.
         
@@ -52,7 +52,7 @@ public class EXHistory extends javax.swing.JFrame {
     
     public void viewtable() {
         // Sử dụng try-with-resources để đảm bảo kết nối CSDL được đóng tự động.
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // Chuẩn bị câu lệnh SQL để lấy lịch sử thi.
             // Câu lệnh này nối hai bảng `dethi` và `lichsuthi`, và lọc kết quả
             // theo mã tài khoản của người dùng hiện tại.
@@ -99,7 +99,7 @@ public class EXHistory extends javax.swing.JFrame {
                 );
                 // Thêm đối tượng chi tiết này vào danh sách `CTLS`.
                 // Danh sách này sẽ được dùng để hiển thị chi tiết khi người dùng nhấn vào một dòng.
-                CTLS.add(ct_ls);
+                History.add(ct_ls);
             }
         } catch (Exception e) {
             // Nếu có lỗi xảy ra trong quá trình truy vấn CSDL, hiển thị thông báo lỗi.
@@ -179,7 +179,7 @@ public class EXHistory extends javax.swing.JFrame {
         // Dựa vào chỉ số đó, lấy đối tượng ChiTietLichSu tương ứng từ danh sách CTLS.
         // Sau đó, gọi phương thức getCTTT_DT() để lấy chuỗi thông tin chi tiết của bài làm
         // và hiển thị lên JTextPane (txp_ttct).
-        txp_ttct.setText(CTLS.get(selectedRow).getCTTT_DT());
+        txp_ttct.setText(History.get(selectedRow).getCTTT_DT());
     }//GEN-LAST:event_tbMouseClicked
 
     
