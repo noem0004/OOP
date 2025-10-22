@@ -233,14 +233,13 @@ public class CreateAccount extends javax.swing.JFrame {
             // BƯỚC 2: Thêm một bản ghi placeholder (giữ chỗ) vào bảng thông tin người thi `ttnguoithi`.
             // Điều này đảm bảo mỗi tài khoản đều có một hồ sơ thông tin cá nhân tương ứng,
             // dù cho thông tin đó ban đầu có thể trống.
-            PreparedStatement pst3 = c.prepareStatement("INSERT INTO ttnguoithi (MaTaiKhoan,HoTen,Malop,MaDeThi,NgaySinh,MaNganh,SDT) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement pst3 = c.prepareStatement("INSERT INTO ttnguoithi (MaTaiKhoan,HoTen,Malop,NgaySinh,MaNganh,SDT) VALUES (?,?,?,?,?,?)");
             pst3.setString(1, id);
             pst3.setString(2, ""); // Họ tên để trống
             pst3.setInt(3, 0);    // Mã lớp mặc định
-            pst3.setInt(4, 0);    // Mã đề thi mặc định
-            pst3.setDate(5,java.sql.Date.valueOf(ngaySinh) ); // Ngày sinh mặc định
-            pst3.setString(6, "0"); // Mã ngành mặc định
-            pst3.setString(7, ""); // Số điện thoại để trống
+            pst3.setDate(4,java.sql.Date.valueOf(ngaySinh) ); // Ngày sinh mặc định
+            pst3.setString(5, "0"); // Mã ngành mặc định
+            pst3.setString(6, ""); // Số điện thoại để trống
             pst3.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Thêm người dùng thành công!");

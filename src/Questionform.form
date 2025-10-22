@@ -55,10 +55,10 @@
                               <Component id="lbl_time" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                              <Component id="bt_ChTruoc" min="-2" pref="140" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="bt_ChTruoc" min="-2" pref="153" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="bt_ChTieptheo" min="-2" max="-2" attributes="0"/>
+                              <Component id="bt_ChTieptheo" min="-2" pref="155" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
