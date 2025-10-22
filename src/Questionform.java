@@ -20,7 +20,7 @@ public class Questionform extends javax.swing.JFrame {
     private int i = 0;
     private List<Question> CHD = new ArrayList<>();
     private Map<Integer, String> luubai = new HashMap<>();
-    private Ketnoi ctn = new Ketnoi();
+    private Ketnoi kn = new Ketnoi();
     private javax.swing.Timer timer;
     private int thoiGianConLai;
     private int tongThoiGianLamBai;
@@ -29,11 +29,11 @@ public class Questionform extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     public Questionform(int made, String MTK) {
-        this.Made = made;
+        this.Made = 1;
         this.MTK = MTK;
         setLocationRelativeTo(null);
         initComponents(); // Khởi tạo các thành phần giao diện.
-        ctn.c(); // Mở kết nối CSDL.
+        kn.c(); // Mở kết nối CSDL.
         nhom(); // Nhóm các RadioButton lại với nhau.
         gancauhoi(); // Tải câu hỏi từ CSDL vào danh sách `CHD`.
         hienthicauhoi(0); // Hiển thị câu hỏi đầu tiên (index 0).
@@ -54,7 +54,7 @@ public class Questionform extends javax.swing.JFrame {
     //======================================================================================================================================================================
     public void gancauhoi() {
         bt_Nopbai.setVisible(false); // Ẩn nút "Nộp bài" lúc đầu.
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             // 1. Tải các câu hỏi của đề thi.
             PreparedStatement pst = c.prepareStatement("SELECT c.MC, c.noidungch, c.A, c.B, c.C, c.D, c.DapAn, c.loaida " +
                                                        "FROM cauhoi AS c JOIN ctdt ON c.MC = ctdt.MC WHERE ctdt.MD = ?");
@@ -507,7 +507,7 @@ public class Questionform extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     private void luuKetQuaVaoLichSuThi(int dung, int sai, String TTChiTiet) {
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             int tong = dung + sai;
             // Tính điểm trên thang 10.
             double kq = (tong > 0) ? ((double) dung / CHD.size()) * 10 : 0;
@@ -546,7 +546,7 @@ public class Questionform extends javax.swing.JFrame {
 
     //======================================================================================================================================================================
      private void getThoiGianLamBai() {
-        try (Connection c = ctn.c()) {
+        try (Connection c = kn.c()) {
             PreparedStatement pst = c.prepareStatement("SELECT ThoiGian FROM dethi WHERE MD = ?");
             pst.setInt(1, Made);
             ResultSet rs = pst.executeQuery();
