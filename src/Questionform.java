@@ -240,9 +240,9 @@ public class Questionform extends javax.swing.JFrame {
                                     .addComponent(D))
                                 .addGap(0, 483, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
+                        .addGap(183, 183, 183)
                         .addComponent(lbl_noidungdt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(107, 107, 107)
+                        .addGap(99, 99, 99)
                         .addComponent(bt_Nopbai, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,11 +260,15 @@ public class Questionform extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_Nopbai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_noidungdt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(bt_Nopbai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_noidungdt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(lbl_time)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblCauHoi, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,6 +319,7 @@ public class Questionform extends javax.swing.JFrame {
             i++;
             hienthicauhoi(i);
         }
+        
         // 3. Nếu đang ở câu cuối cùng.
         else if (i == CHD.size() - 1) {
             bt_ChTieptheo.setVisible(false); // Ẩn nút "Tiếp theo".
@@ -325,7 +330,10 @@ public class Questionform extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_ChTieptheoActionPerformed
     
-    
+    public void windowClosing(java.awt.event.WindowEvent evt) {
+                new ManageUser().setVisible(true); // Mở lại form chính.
+                dispose(); // Đóng form hiện tại.
+            }
     
     //======================================================================================================================================================================
     private void bt_ChTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ChTruocActionPerformed
