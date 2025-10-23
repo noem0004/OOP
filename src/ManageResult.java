@@ -417,70 +417,70 @@ public class ManageResult extends javax.swing.JFrame {
 
     private void XuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XuatActionPerformed
         // Yêu cầu người dùng chọn nơi lưu file
-    JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setDialogTitle("Lưu file CSV");
-    fileChooser.setFileFilter(new FileNameExtensionFilter("CSV files (*.csv)", "csv"));
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Lưu file CSV");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("CSV files (*.csv)", "csv"));
 
-    int userSelection = fileChooser.showSaveDialog(this);
+        int userSelection = fileChooser.showSaveDialog(this);
 
-    if (userSelection == JFileChooser.APPROVE_OPTION) {
-        File fileToSave = fileChooser.getSelectedFile();
-        
-        // Đảm bảo file có đuôi .csv
-        if (!fileToSave.getAbsolutePath().endsWith(".csv")) {
-            fileToSave = new File(fileToSave.getAbsolutePath() + ".csv");
-        }
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
 
-        try (FileOutputStream fos = new FileOutputStream(fileToSave)) {
-    
-    // === BƯỚC QUAN TRỌNG: GHI BOM ĐẦU TIÊN ===
-    // Ghi 3 byte 0xEF, 0xBB, 0xBF
-        fos.write(new byte[] { (byte)0xEF, (byte)0xBB, (byte)0xBF });
-
-    // === SAU ĐÓ: Ghi phần còn lại của tệp như bình thường ===
-    // Dùng Writer với UTF-8 (không-BOM, vì ta đã ghi BOM thủ công)
-        try (BufferedWriter bw = new BufferedWriter(
-             new OutputStreamWriter(fos, StandardCharsets.UTF_8))) {
-
-            TableModel model = tb.getModel();
-
-            // === GHI HEADER (TIÊU ĐỀ CỘT) ===
-            for (int i = 0; i < model.getColumnCount(); i++) {
-                bw.write(model.getColumnName(i));
-                if (i < model.getColumnCount() - 1) {
-                    bw.write(",");
-                }
+            // Đảm bảo file có đuôi .csv
+            if (!fileToSave.getAbsolutePath().endsWith(".csv")) {
+                fileToSave = new File(fileToSave.getAbsolutePath() + ".csv");
             }
-            bw.newLine();
 
-            // === GHI DỮ LIỆU (CÁC HÀNG) ===
-            for (int r = 0; r < model.getRowCount(); r++) {
-                for (int c = 0; c < model.getColumnCount(); c++) {
-                    Object value = model.getValueAt(r, c);
-                    String cellValue = (value == null) ? "" : value.toString();
+            try (FileOutputStream fos = new FileOutputStream(fileToSave)) {
 
-                    // Xử lý dấu phẩy
-                    if (cellValue.contains(",") || cellValue.contains("\"")) {
-                        cellValue = "\"" + cellValue.replace("\"", "\"\"") + "\"";
-                    }
+        // === BƯỚC QUAN TRỌNG: GHI BOM ĐẦU TIÊN ===
+        // Ghi 3 byte 0xEF, 0xBB, 0xBF
+            fos.write(new byte[] { (byte)0xEF, (byte)0xBB, (byte)0xBF });
 
-                    bw.write(cellValue);
-                    if (c < model.getColumnCount() - 1) {
+        // === SAU ĐÓ: Ghi phần còn lại của tệp như bình thường ===
+        // Dùng Writer với UTF-8 (không-BOM, vì ta đã ghi BOM thủ công)
+            try (BufferedWriter bw = new BufferedWriter(
+                 new OutputStreamWriter(fos, StandardCharsets.UTF_8))) {
+
+                TableModel model = tb.getModel();
+
+                // === GHI HEADER (TIÊU ĐỀ CỘT) ===
+                for (int i = 0; i < model.getColumnCount(); i++) {
+                    bw.write(model.getColumnName(i));
+                    if (i < model.getColumnCount() - 1) {
                         bw.write(",");
                     }
                 }
                 bw.newLine();
-            }
-        } // BufferedWriter đóng lại
 
-        // FileOutputStream sẽ đóng ở đây
+                // === GHI DỮ LIỆU (CÁC HÀNG) ===
+                for (int r = 0; r < model.getRowCount(); r++) {
+                    for (int c = 0; c < model.getColumnCount(); c++) {
+                        Object value = model.getValueAt(r, c);
+                        String cellValue = (value == null) ? "" : value.toString();
 
-        JOptionPane.showMessageDialog(this, "Xuất file CSV thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+                        // Xử lý dấu phẩy
+                        if (cellValue.contains(",") || cellValue.contains("\"")) {
+                            cellValue = "\"" + cellValue.replace("\"", "\"\"") + "\"";
+                        }
 
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Lỗi khi xuất file: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
-    }
-    }
+                        bw.write(cellValue);
+                        if (c < model.getColumnCount() - 1) {
+                            bw.write(",");
+                        }
+                    }
+                    bw.newLine();
+                }
+            } // BufferedWriter đóng lại
+
+            // FileOutputStream sẽ đóng ở đây
+
+            JOptionPane.showMessageDialog(this, "Xuất file CSV thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi xuất file: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_XuatActionPerformed
 
