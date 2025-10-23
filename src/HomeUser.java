@@ -134,7 +134,7 @@ public class HomeUser extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Chương ttrinhf thi trắc nghiệm");
+        setTitle("Chương trình thi trắc nghiệm");
 
         bt_thi.setBackground(new java.awt.Color(66, 99, 235));
         bt_thi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
