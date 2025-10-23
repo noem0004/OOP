@@ -4,12 +4,13 @@ import MaHoa.GoiGDN;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 public class HomeUser extends javax.swing.JFrame {
     private Ketnoi kn = new Ketnoi();
     private static String MTK;
-    private static int made;
+    private static int made = 0;
     
     
     //======================================================================================================================================================================
@@ -302,8 +303,9 @@ public class HomeUser extends javax.swing.JFrame {
     private void bt_thiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_thiActionPerformed
          try (Connection c = kn.c()) {
             // 1. Lấy lại mã đề thi được gán cho tài khoản này (để đảm bảo chắc chắn).
-            PreparedStatement pst = c.prepareStatement("SELECT MD FROM thi WHERE MaTaiKhoan = ?");
+            PreparedStatement pst = c.prepareStatement("SELECT thi.MD FROM thi, dethi WHERE MaTaiKhoan = ? and NoidungDeThi = ? and dethi.MD = thi.MD ");
             pst.setString(1, MTK);
+            pst.setString(2, cbde.getSelectedItem().toString());
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
@@ -340,47 +342,63 @@ public class HomeUser extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_LichSuActionPerformed
 
     private void cbdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbdeActionPerformed
-        try (Connection c = kn.c()) {
-            String sql = "SELECT thi.MD, thi.trangthai, NoidungDeThi, ThoiGian " +
-                         "FROM dethi, thi " +
-                         "WHERE dethi.MD = thi.MD " +
-                         "AND dethi.NoidungDeThi = ? " +
-                         "AND thi.MaTaiKhoan = ?";
+        // 1. Kiểm tra xem ComboBox có item nào được chọn không
+    if (cbde.getSelectedItem() == null) {
+        return; // Không làm gì nếu ComboBox trống
+    }
 
-            PreparedStatement pst = c.prepareStatement(sql);
-            pst.setString(1, cbde.getSelectedItem().toString());
-            pst.setString(2, MTK);
+    try (Connection c = kn.c()) {
+        String sql = "SELECT thi.MD, thi.trangthai, NoidungDeThi, ThoiGian " +
+                     "FROM dethi, thi " +
+                     "WHERE dethi.MD = thi.MD " +
+                     "AND dethi.NoidungDeThi = ? " +
+                     "AND thi.MaTaiKhoan = ?";
 
-            ResultSet rs = pst.executeQuery();
+        PreparedStatement pst = c.prepareStatement(sql);
+        pst.setString(1, cbde.getSelectedItem().toString());
+        pst.setString(2, MTK);
 
-            if (rs.next()) {
-                if (!KTtrangthaithi()){
-                    lbl_dethi.setText("Tên Đề Thi: "+rs.getString("NoidungDeThi").toUpperCase());
-                    lbl_time.setText("Thời Gian Làm Bài: "+rs.getInt("ThoiGian"));
-                    lb_trangthai.setText("Bài Thi Chưa Sẵn Sàng");
+        ResultSet rs = pst.executeQuery();
+
+        if (rs.next()) {
+            // 1. LẤY TẤT CẢ DỮ LIỆU CẦN THIẾT
+            made = rs.getInt("MD"); // Cập nhật 'made' ngay lập tức
+            int trangthai = rs.getInt("trangthai");
+            String noiDungDeThi = rs.getString("NoidungDeThi");
+            int thoiGian = rs.getInt("ThoiGian");
+
+            // 2. CẬP NHẬT GIAO DIỆN CHUNG
+            lbl_dethi.setText("Tên Đề Thi: " + noiDungDeThi.toUpperCase());
+            lbl_time.setText("Thời Gian Làm Bài: " + thoiGian);
+
+            // 3. XỬ LÝ LOGIC DỰA TRÊN DỮ LIỆU ĐÃ LẤY
+            if (trangthai == 0) { // Thay thế cho !KTtrangthaithi()
+                lb_trangthai.setText("Bài Thi Chưa Sẵn Sàng");
+                bt_thi.setEnabled(false);
+            } else {
+                // Bài thi sẵn sàng (trangthai == 1)
+                // Bây giờ kiểm tra xem đã làm chưa
+                if (!CheckTest()) { // CheckTest() sẽ dùng 'made' vừa được cập nhật
+                    lb_trangthai.setText("Bài Thi Đã Thực Hiện");
                     bt_thi.setEnabled(false);
                 } else {
-                    lbl_dethi.setText("Tên Đề Thi: "+rs.getString("NoidungDeThi").toUpperCase());
-                    lbl_time.setText("Thời Gian Làm Bài: "+rs.getInt("ThoiGian"));
                     lb_trangthai.setText("Bài Thi Sẵn Sàng");
-                    made = rs.getInt("MD");
-                    // Cập nhật thông tin đề thi đã chọn
-                    if (!CheckTest()) {
-                        // Nếu đã làm rồi (hàm trả về false), vô hiệu hóa nút "THI NGAY".
-                        lb_trangthai.setText("Bài Thi Đã Thực Hiện");
-                        bt_thi.setEnabled(false);
-                    } else {
-                        // Nếu chưa làm, cho phép nhấn nút "THI NGAY".
-                        bt_thi.setEnabled(true);
-                        LoadUser();
-                    }
+                    bt_thi.setEnabled(true);
+                    // LoadUser(); // Vẫn nên xóa dòng này
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, 
-                "Lỗi khi kiểm tra trạng thái đề thi: " + e.getMessage());
+        } else {
+            // Trường hợp không tìm thấy đề thi (nên xử lý)
+            lb_trangthai.setText("Không tìm thấy đề");
+            bt_thi.setEnabled(false);
         }
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this,
+                "Lỗi khi kiểm tra trạng thái đề thi: " + e.getMessage());
+    }
+    
+    System.out.println("Ma de hien tai la: " + made); // Giờ nó sẽ luôn đúng
             // TODO add your handling code here:
     }//GEN-LAST:event_cbdeActionPerformed
 

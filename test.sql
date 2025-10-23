@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 22, 2025 lúc 08:38 AM
+-- Thời gian đã tạo: Th10 21, 2025 lúc 07:59 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.0.30
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -714,6 +714,16 @@ CREATE TABLE `lichsuthi` (
   `TTCT` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `lichsuthi`
+--
+
+INSERT INTO `lichsuthi` (`MLS`, `MaTaiKhoan`, `MaDe`, `KQ`, `socaudung`, `NgayThi`, `ThoiGianLam`, `TTCT`) VALUES
+(32, '7273897839', 2, 0, 0, '2025-10-16', '0:0:3', '===== KẾT QUẢ CHI TIẾT BÀI LÀM =====\n\nCâu 1: ai dẹp trai nhất\n   A. D\n   B. H\n   C. H\n   D. K\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 2: Trong HTML, thẻ nào để chèn hình ảnh?\n   A. <image>\n   B. <img>\n   C. <picture>\n   D. <src>\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 3: Biến static trong Java thuộc về?\n   A. Đối tượng\n   B. Lớp\n   C. Phương thức\n   D. Biến cục bộ\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 4: Kết quả của biểu thức (true && false) || true là?\n   A. true\n   B. false\n   C. error\n   D. null\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 5: Trong MySQL, để xóa bảng dùng lệnh nào?\n   A. DROP TABLE\n   B. DELETE TABLE\n   C. REMOVE TABLE\n   D. CLEAR TABLE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 6: Trong Java, từ khóa nào dùng để kế thừa lớp?\n   A. super\n   B. extends\n   C. this\n   D. inherits\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: AB\n   Kết quả: Sai\n\nCâu 7: Kết quả của 2 + 2 * 2 = ?\n   A. 6\n   B. 8\n   C. 4\n   D. 2\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 8: Phương thức main() trong Java phải có dạng nào?\n   A. public void main(String args[])\n   B. static void main(String args[])\n   C. public static void main(String[] args)\n   D. void main()\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 9: Đâu là cú pháp đúng để khai báo mảng trong Java?\n   A. int[] arr;\n   B. int arr[];\n   C. Cả hai đều đúng\n   D. arr int[];\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 10: Phép toán nào có độ ưu tiên cao nhất?\n   A. +\n   B. -\n   C. *\n   D. =\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\n=====================================\nTỔNG KẾT:\n   Tổng số câu: 10\n   Số câu đúng: 0\n   Số câu sai: 10\n   Số điểm: 0.00\n'),
+(33, '7273897839', 3, 0, 0, '2025-11-15', '0:0:3', '===== KẾT QUẢ CHI TIẾT BÀI LÀM =====\n\nCâu 1: Câu lệnh SQL nào dùng để cập nhật dữ liệu?\n   A. INSERT\n   B. UPDATE\n   C. ALTER\n   D. CHANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 2: Phần mở rộng của file Java là?\n   A. .jav\n   B. .java\n   C. .class\n   D. .jar\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 3: Đâu là cú pháp đúng để khai báo mảng trong Java?\n   A. int[] arr;\n   B. int arr[];\n   C. Cả hai đều đúng\n   D. arr int[];\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 4: Trong HTML, thẻ nào để chèn hình ảnh?\n   A. <image>\n   B. <img>\n   C. <picture>\n   D. <src>\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 5: Trong MySQL, khóa chính được định nghĩa bằng?\n   A. PRIMARY KEY\n   B. FOREIGN KEY\n   C. UNIQUE KEY\n   D. IDENTITY\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 6: Trong SQL, để sắp xếp dữ liệu dùng từ khóa nào?\n   A. GROUP BY\n   B. ORDER BY\n   C. SORT\n   D. ARRANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 7: Kiểu dữ liệu nào lưu chuỗi ký tự trong Java?\n   A. int\n   B. String\n   C. char\n   D. float\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 8: Kết quả của 5 + 2 * 3 là?\n   A. 21\n   B. 11\n   C. 13\n   D. 10\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 9: ai dẹp trai nhất\n   A. D\n   B. H\n   C. H\n   D. K\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\n=====================================\nTỔNG KẾT:\n   Tổng số câu: 9\n   Số câu đúng: 0\n   Số câu sai: 9\n   Số điểm: 0.00\n'),
+(34, '5555697626', 3, 0, 0, '2025-11-15', '0:0:5', '===== KẾT QUẢ CHI TIẾT BÀI LÀM =====\n\nCâu 1: Câu lệnh SQL nào dùng để cập nhật dữ liệu?\n   A. INSERT\n   B. UPDATE\n   C. ALTER\n   D. CHANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 2: Phần mở rộng của file Java là?\n   A. .jav\n   B. .java\n   C. .class\n   D. .jar\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 3: Đâu là cú pháp đúng để khai báo mảng trong Java?\n   A. int[] arr;\n   B. int arr[];\n   C. Cả hai đều đúng\n   D. arr int[];\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 4: Trong HTML, thẻ nào để chèn hình ảnh?\n   A. <image>\n   B. <img>\n   C. <picture>\n   D. <src>\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 5: Trong MySQL, khóa chính được định nghĩa bằng?\n   A. PRIMARY KEY\n   B. FOREIGN KEY\n   C. UNIQUE KEY\n   D. IDENTITY\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 6: Trong SQL, để sắp xếp dữ liệu dùng từ khóa nào?\n   A. GROUP BY\n   B. ORDER BY\n   C. SORT\n   D. ARRANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 7: Kiểu dữ liệu nào lưu chuỗi ký tự trong Java?\n   A. int\n   B. String\n   C. char\n   D. float\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 8: Kết quả của 5 + 2 * 3 là?\n   A. 21\n   B. 11\n   C. 13\n   D. 10\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 9: ai dẹp trai nhất\n   A. D\n   B. H\n   C. H\n   D. K\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\n=====================================\nTỔNG KẾT:\n   Tổng số câu: 9\n   Số câu đúng: 0\n   Số câu sai: 9\n   Số điểm: 0.00\n'),
+(35, '5555697626', 5, 0, 0, '2025-10-21', '0:0:3', '===== KẾT QUẢ CHI TIẾT BÀI LÀM =====\n\nCâu 1: 5 % 2 trong Java cho kết quả là?\n   A. 1\n   B. 2\n   C. 2.5\n   D. 0\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 2: Phép toán nào có độ ưu tiên cao nhất?\n   A. +\n   B. -\n   C. *\n   D. =\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 3: Phần mở rộng của file Java là?\n   A. .jav\n   B. .java\n   C. .class\n   D. .jar\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 4: Trong SQL, để sắp xếp dữ liệu dùng từ khóa nào?\n   A. GROUP BY\n   B. ORDER BY\n   C. SORT\n   D. ARRANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 5: Phương thức main() trong Java phải có dạng nào?\n   A. public void main(String args[])\n   B. static void main(String args[])\n   C. public static void main(String[] args)\n   D. void main()\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 6: Đâu là cú pháp đúng để khai báo mảng trong Java?\n   A. int[] arr;\n   B. int arr[];\n   C. Cả hai đều đúng\n   D. arr int[];\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: C\n   Kết quả: Sai\n\nCâu 7: Trong SQL, câu lệnh nào dùng để lấy dữ liệu?\n   A. INSERT\n   B. SELECT\n   C. UPDATE\n   D. DELETE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: BC\n   Kết quả: Sai\n\nCâu 8: Kiểu dữ liệu nào lưu chuỗi ký tự trong Java?\n   A. int\n   B. String\n   C. char\n   D. float\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\nCâu 9: Kết quả của biểu thức (true && false) || true là?\n   A. true\n   B. false\n   C. error\n   D. null\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: A\n   Kết quả: Sai\n\nCâu 10: Câu lệnh SQL nào dùng để cập nhật dữ liệu?\n   A. INSERT\n   B. UPDATE\n   C. ALTER\n   D. CHANGE\n   Bạn chưa chọn đáp án nào.\n   Đáp án đúng: B\n   Kết quả: Sai\n\n=====================================\nTỔNG KẾT:\n   Tổng số câu: 10\n   Số câu đúng: 0\n   Số câu sai: 10\n   Số điểm: 0.00\n');
+
 -- --------------------------------------------------------
 
 --
@@ -907,8 +917,7 @@ ALTER TABLE `cauhoi`
 --
 ALTER TABLE `ctdt`
   ADD PRIMARY KEY (`IDCau`),
-  ADD KEY `fk_ttnt_MC_MD` (`MC`,`MD`),
-  ADD KEY `FK_Dethi_ctdt` (`MD`);
+  ADD KEY `fk_ttnt_MC_MD` (`MC`,`MD`);
 
 --
 -- Chỉ mục cho bảng `dakt`
@@ -936,8 +945,8 @@ ALTER TABLE `dethi`
 --
 ALTER TABLE `lichsuthi`
   ADD PRIMARY KEY (`MLS`),
-  ADD KEY `FK_LS_DN` (`MaTaiKhoan`),
-  ADD KEY `FK_LS_DT` (`MaDe`);
+  ADD KEY `fk_lst_dt` (`MaDe`),
+  ADD KEY `fk_lst_dn` (`MaTaiKhoan`) USING BTREE;
 
 --
 -- Chỉ mục cho bảng `lop`
@@ -964,8 +973,7 @@ ALTER TABLE `thi`
 --
 ALTER TABLE `ttnguoithi`
   ADD KEY `fk_ttnt_dang_nhap` (`MaTaiKhoan`),
-  ADD KEY `fk_ttnt_lop_nganh` (`Malop`,`MaNganh`),
-  ADD KEY `fk_ttn_nganh` (`MaNganh`);
+  ADD KEY `fk_ttnt_lop_nganh` (`Malop`,`MaNganh`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -1024,13 +1032,6 @@ ALTER TABLE `ctdt`
 ALTER TABLE `dakt`
   ADD CONSTRAINT `fk_dakt_dang_nhap` FOREIGN KEY (`MaTaiKhoan`) REFERENCES `dang_nhap` (`MaTaiKhoan`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_dakt_dethi` FOREIGN KEY (`MD`) REFERENCES `dethi` (`MD`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Các ràng buộc cho bảng `lichsuthi`
---
-ALTER TABLE `lichsuthi`
-  ADD CONSTRAINT `lichsuthi_ibfk_1` FOREIGN KEY (`MaTaiKhoan`) REFERENCES `dang_nhap` (`MaTaiKhoan`) ON DELETE CASCADE,
-  ADD CONSTRAINT `lichsuthi_ibfk_2` FOREIGN KEY (`MaDe`) REFERENCES `dethi` (`MD`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `lop`
