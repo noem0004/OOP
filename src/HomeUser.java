@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-
 public class HomeUser extends javax.swing.JFrame {
     private Ketnoi kn = new Ketnoi();
     private static String MTK;
@@ -135,6 +134,11 @@ public class HomeUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình thi trắc nghiệm");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         bt_thi.setBackground(new java.awt.Color(66, 99, 235));
         bt_thi.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -385,6 +389,11 @@ public class HomeUser extends javax.swing.JFrame {
         this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_LichSu1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+                      new Login().setVisible(true); // Mở lại form chính.
+                dispose(); // Đóng form hiện tại.
+    }//GEN-LAST:event_formWindowClosing
 
     
     //======================================================================================================================================================================

@@ -1,6 +1,4 @@
 
-
-
 import MaHoa.Ketnoi;
 import MaHoa.Question;
 import MaHoa.GoiGDN;
@@ -29,7 +27,7 @@ public class Questionform extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     public Questionform(int made, String MTK) {
-        this.Made = 18;
+        this.Made = made;
         this.MTK = MTK;
         setLocationRelativeTo(null);
         initComponents(); // Khởi tạo các thành phần giao diện.
@@ -39,6 +37,7 @@ public class Questionform extends javax.swing.JFrame {
         hienthicauhoi(0); // Hiển thị câu hỏi đầu tiên (index 0).
         getThoiGianLamBai(); // Lấy thời gian làm bài từ CSDL.
         startTimer(); // Bắt đầu đếm ngược thời gian.
+ 
     }
     
     
@@ -172,6 +171,11 @@ public class Questionform extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình thi trắc nghiệm");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lblCauHoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCauHoi.setText("jLabel1");
@@ -240,9 +244,9 @@ public class Questionform extends javax.swing.JFrame {
                                     .addComponent(D))
                                 .addGap(0, 483, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
+                        .addGap(58, 58, 58)
                         .addComponent(lbl_noidungdt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(99, 99, 99)
+                        .addGap(224, 224, 224)
                         .addComponent(bt_Nopbai, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,10 +334,6 @@ public class Questionform extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_ChTieptheoActionPerformed
     
-    public void windowClosing(java.awt.event.WindowEvent evt) {
-                new ManageUser().setVisible(true); // Mở lại form chính.
-                dispose(); // Đóng form hiện tại.
-            }
     
     //======================================================================================================================================================================
     private void bt_ChTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ChTruocActionPerformed
@@ -391,6 +391,10 @@ public class Questionform extends javax.swing.JFrame {
         this.dispose();
         new GoiGDN(new HomeUser(MTK, Made)); // DGD có thể là một lớp tùy chỉnh để hiển thị dialog.   
     }//GEN-LAST:event_bt_NopbaiActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+    }//GEN-LAST:event_formWindowClosing
     
     
     //======================================================================================================================================================================
