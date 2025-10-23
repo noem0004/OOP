@@ -1,6 +1,7 @@
 
 import MaHoa.Ketnoi;
 import MaHoa.GoiGDN;
+import MaHoa.Question;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,11 +10,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-
+import java.util.ArrayList;
+import java.util.List;
 public class CreateEX extends javax.swing.JFrame {
     private Ketnoi kn = new Ketnoi();
     private static int getMD;
-    
+    private List<Question> LCH = new ArrayList<>();
     
     //======================================================================================================================================================================
     public CreateEX(int LMD) {
@@ -44,8 +46,6 @@ public class CreateEX extends javax.swing.JFrame {
             }
         });
     }
-    
-    
     //======================================================================================================================================================================
     void setcolWidth(JTable jt){
         TableColumnModel cm = jt.getColumnModel();
@@ -54,7 +54,7 @@ public class CreateEX extends javax.swing.JFrame {
     
     private void LoadQuestion(){
         // Cập nhật tiêu đề để người dùng biết đang thao tác với đề thi nào.
-        lbl_Dethi.setText("Thêm/Xóa Câu Hỏi Cho Đề Thi: " + getMD);
+        lbl_Dethi.setText("Thêm/Xóa Question Cho Đề Thi Số: " + getMD);
         
         // Chuẩn bị câu lệnh SQL để lấy danh sách các câu hỏi chưa có trong đề.
         // Logic: Lấy tất cả câu hỏi từ bảng `cauhoi` có Mã Câu (MC)
@@ -83,6 +83,8 @@ public class CreateEX extends javax.swing.JFrame {
                     rs.getString("D"),
                     "Chưa thêm" // Hiển thị trạng thái mặc định.
                 };
+                Question ch = new Question(rs.getInt("MC"), getMD);
+                LCH.add(ch);
                 tm.addRow(o);
             }
         } catch(SQLException e) {
@@ -180,9 +182,7 @@ public class CreateEX extends javax.swing.JFrame {
     
     
     private void bt_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ThemActionPerformed
-        // Lấy Mã Câu hỏi (MC) từ dòng đang được chọn trong bảng (cột đầu tiên, index 0).
         int[] selectrow = tb.getSelectedRows();
-        int LMC = Integer.parseInt(tb.getValueAt(tb.getSelectedRow(), 0).toString());
         int count = 0;
         try(Connection c = kn.c()){
             for(int row : selectrow){
@@ -190,8 +190,8 @@ public class CreateEX extends javax.swing.JFrame {
             // Bảng `ctdt` là bảng trung gian, lưu mối quan hệ giữa câu hỏi và đề thi.
             PreparedStatement Pst = c.prepareStatement("INSERT INTO `ctdt`(`MC`, `MD`) VALUES (?,?)");
             // Gán Mã Câu (LMC) và Mã Đề (LMD) vào câu lệnh.
-            Pst.setInt(1,LMC);
-            Pst.setInt(2,getMD);
+            Pst.setInt(1,LCH.get(row).getMc());
+            Pst.setInt(2, getMD);
             // Thực thi lệnh INSERT.
             Pst.executeUpdate();
             // Sau khi thêm thành công, gọi lại hàm `showCauhoi()` để làm mới danh sách.

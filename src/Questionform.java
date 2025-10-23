@@ -29,7 +29,7 @@ public class Questionform extends javax.swing.JFrame {
     
     //======================================================================================================================================================================
     public Questionform(int made, String MTK) {
-        this.Made = 1;
+        this.Made = made;
         this.MTK = MTK;
         setLocationRelativeTo(null);
         initComponents(); // Khởi tạo các thành phần giao diện.

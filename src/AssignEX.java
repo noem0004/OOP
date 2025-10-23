@@ -20,7 +20,7 @@ public class AssignEX extends javax.swing.JFrame {
         initComponents(); // Khởi tạo các thành phần giao diện.
         kn.c(); // Mở kết nối CSDL.
         setLocationRelativeTo(null);
-        showNguoiThi(); // Tải và hiển thị danh sách tất cả các thí sinh.
+        LoadNT(); // Tải và hiển thị danh sách tất cả các thí sinh.
         showLop();
         // Tùy chỉnh hành vi khi đóng cửa sổ.
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -37,7 +37,7 @@ public class AssignEX extends javax.swing.JFrame {
 
     
     //======================================================================================================================================================================
-    private void showNguoiThi() {
+    private void LoadNT() {
         // Cập nhật tiêu đề để người dùng biết đang gán đề thi nào.
         lbl_Dethi.setText("Gán Mã Đề Thi Số: " + getMD);
         
@@ -47,19 +47,15 @@ public class AssignEX extends javax.swing.JFrame {
         // - Nếu người thi đã có đề trong bảng `thi`, cột `MaDeThi` sẽ có giá trị.
         // - Nếu người thi CHƯA có đề, cột `MaDeThi` sẽ là NULL.
         String sql = 
-            "SELECT " +
-            "dn.MaTaiKhoan, " +
-            "dn.TenDangNhap, " +
-            "tt.HoTen, " +
-            "l.TenLop, " +
-            "n.TenNganh, " +
-            "t.MD AS MaDeThi " + // Lấy mã đề đã được gán (nếu có)
-            "FROM ttnguoithi tt " +
-            "JOIN dang_nhap dn ON tt.MaTaiKhoan = dn.MaTaiKhoan " +
+            "SELECT dn.MaTaiKhoan, dn.TenDangNhap, tt.HoTen, l.TenLop, n.TenNganh, GROUP_CONCAT(t.MD SEPARATOR ', ') AS MaDeThi " +
+            "FROM dang_nhap dn " +
+            "JOIN ttnguoithi tt ON dn.MaTaiKhoan = tt.MaTaiKhoan " +
             "JOIN lop l ON tt.MaLop = l.MaLop " +
             "JOIN nganh n ON tt.MaNganh = n.MaNganh " +
             "LEFT JOIN thi t ON dn.MaTaiKhoan = t.MaTaiKhoan " +
-            "WHERE dn.phanloai = 'NT'"; // Chỉ lấy những tài khoản là 'Người Thi'
+            "WHERE dn.phanloai = 'NT' " +
+            "GROUP BY dn.MaTaiKhoan, dn.TenDangNhap, tt.HoTen, l.TenLop, n.TenNganh " +
+            "ORDER BY (t.MD IS NULL), t.MD ASC"; // Chỉ lấy những tài khoản là 'Người Thi'
 
         try (Connection c = kn.c();
              PreparedStatement pst = c.prepareStatement(sql);
@@ -71,7 +67,7 @@ public class AssignEX extends javax.swing.JFrame {
             while (rs.next()) {
                 Object maDe = rs.getObject("MaDeThi"); // Dùng getObject để xử lý NULL dễ dàng.
                 // Tạo chuỗi trạng thái dựa trên việc mã đề có NULL hay không.
-                String trangThai = (maDe == null) ? "Chưa có đề" : "Đã có đề (" + maDe + ")";
+                String trangThai = (maDe == null) ? "Chưa có" : "Đã có (" + maDe + ")";
                 
                 // Thêm một dòng mới vào bảng với thông tin đã xử lý.
                 tm.addRow(new Object[]{
@@ -196,10 +192,10 @@ public class AssignEX extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
+                        .addGap(238, 238, 238)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_Lop, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -208,27 +204,20 @@ public class AssignEX extends javax.swing.JFrame {
                             .addComponent(bt_GanDT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bt_GanDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_Dethi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(417, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_Dethi, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbl_Dethi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lbl_Dethi))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -292,7 +281,7 @@ public class AssignEX extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,
                 "Đã gán mới " + countInsert + " đề thi cho các sinh viên được chọn.");
 
-            showNguoiThi();
+            LoadNT();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -384,7 +373,7 @@ public class AssignEX extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,
                 "Đã bỏ gán " + countDelete + " đề thi cho các sinh viên được chọn.");
 
-            showNguoiThi(); // Cập nhật lại danh sách hiển thị
+            LoadNT(); // Cập nhật lại danh sách hiển thị
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, 

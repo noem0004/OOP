@@ -10,7 +10,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets; // Để hỗ trợ tiếng Việt
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.TableModel;
 
 public class ManageResult extends javax.swing.JFrame {
     private List<History> History = new ArrayList<>();
@@ -167,7 +176,6 @@ public class ManageResult extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txp_ttct = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         cb_Nganh = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -177,6 +185,7 @@ public class ManageResult extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        Xuat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình thi trắc nghiệm");
@@ -214,11 +223,6 @@ public class ManageResult extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Danh Sách Kết Quả Bài Thi ");
         jLabel1.setToolTipText("");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Thông Tin Chi Tiết Đề Thi");
-        jLabel2.setToolTipText("");
 
         cb_Nganh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn Ngành Học" }));
         cb_Nganh.addActionListener(new java.awt.event.ActionListener() {
@@ -269,6 +273,16 @@ public class ManageResult extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
         jLabel7.setText("Làm Bài Lại");
 
+        Xuat.setBackground(new java.awt.Color(51, 102, 255));
+        Xuat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Xuat.setForeground(new java.awt.Color(255, 255, 255));
+        Xuat.setText("Xuất Excel");
+        Xuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XuatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -281,11 +295,7 @@ public class ManageResult extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1087, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(0, 55, Short.MAX_VALUE))))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cb_Nganh, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,7 +311,10 @@ public class ManageResult extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Xuat, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -315,9 +328,7 @@ public class ManageResult extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
@@ -333,8 +344,9 @@ public class ManageResult extends javax.swing.JFrame {
                     .addComponent(cb_Nganh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_lop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_DeThi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(jButton1)
+                    .addComponent(Xuat))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -403,6 +415,75 @@ public class ManageResult extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void XuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XuatActionPerformed
+        // Yêu cầu người dùng chọn nơi lưu file
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Lưu file CSV");
+    fileChooser.setFileFilter(new FileNameExtensionFilter("CSV files (*.csv)", "csv"));
+
+    int userSelection = fileChooser.showSaveDialog(this);
+
+    if (userSelection == JFileChooser.APPROVE_OPTION) {
+        File fileToSave = fileChooser.getSelectedFile();
+        
+        // Đảm bảo file có đuôi .csv
+        if (!fileToSave.getAbsolutePath().endsWith(".csv")) {
+            fileToSave = new File(fileToSave.getAbsolutePath() + ".csv");
+        }
+
+        try (FileOutputStream fos = new FileOutputStream(fileToSave)) {
+    
+    // === BƯỚC QUAN TRỌNG: GHI BOM ĐẦU TIÊN ===
+    // Ghi 3 byte 0xEF, 0xBB, 0xBF
+        fos.write(new byte[] { (byte)0xEF, (byte)0xBB, (byte)0xBF });
+
+    // === SAU ĐÓ: Ghi phần còn lại của tệp như bình thường ===
+    // Dùng Writer với UTF-8 (không-BOM, vì ta đã ghi BOM thủ công)
+        try (BufferedWriter bw = new BufferedWriter(
+             new OutputStreamWriter(fos, StandardCharsets.UTF_8))) {
+
+            TableModel model = tb.getModel();
+
+            // === GHI HEADER (TIÊU ĐỀ CỘT) ===
+            for (int i = 0; i < model.getColumnCount(); i++) {
+                bw.write(model.getColumnName(i));
+                if (i < model.getColumnCount() - 1) {
+                    bw.write(",");
+                }
+            }
+            bw.newLine();
+
+            // === GHI DỮ LIỆU (CÁC HÀNG) ===
+            for (int r = 0; r < model.getRowCount(); r++) {
+                for (int c = 0; c < model.getColumnCount(); c++) {
+                    Object value = model.getValueAt(r, c);
+                    String cellValue = (value == null) ? "" : value.toString();
+
+                    // Xử lý dấu phẩy
+                    if (cellValue.contains(",") || cellValue.contains("\"")) {
+                        cellValue = "\"" + cellValue.replace("\"", "\"\"") + "\"";
+                    }
+
+                    bw.write(cellValue);
+                    if (c < model.getColumnCount() - 1) {
+                        bw.write(",");
+                    }
+                }
+                bw.newLine();
+            }
+        } // BufferedWriter đóng lại
+
+        // FileOutputStream sẽ đóng ở đây
+
+        JOptionPane.showMessageDialog(this, "Xuất file CSV thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Lỗi khi xuất file: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+    }
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_XuatActionPerformed
+
     
     //======================================================================================================================================================================
     public static void main(String args[]) {
@@ -410,12 +491,12 @@ public class ManageResult extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Xuat;
     private javax.swing.JComboBox<String> cb_DeThi;
     private javax.swing.JComboBox<String> cb_Nganh;
     private javax.swing.JComboBox<String> cb_lop;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

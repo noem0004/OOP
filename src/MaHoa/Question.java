@@ -1,6 +1,7 @@
 package MaHoa;
 
 public class Question {
+    private int md;
     private int mc; // Mã câu hỏi
     private String noiDung;
     private String dapAnA;
@@ -19,6 +20,10 @@ public class Question {
         this.dapAnD = dapAnD;
         this.dapAnDung = dapAnDung;
         this.loaiDa = loaiDA;
+    }
+    public Question(int mc, int md){
+        this.mc = mc;
+        this.md = md;
     }
 
     // Thêm các hàm getter cho tất cả các thuộc tính
